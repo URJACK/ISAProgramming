@@ -2,11 +2,9 @@ package com.controller;
 
 import com.google.gson.Gson;
 import com.json.Info_Status;
+import com.json.Info_Status_Id;
 import com.model.user.User;
-import com.register.logInRegister.ForgetRegister;
-import com.register.logInRegister.ForgetRegister_Confirm;
-import com.register.logInRegister.LoginRegister;
-import com.register.logInRegister.LoginRegisterImp1;
+import com.register.logInRegister.*;
 import com.register.logUpRegister.CheckNumberRegister;
 import com.register.logUpRegister.LogUpRegister;
 import com.register.logUpRegister.LogUpRegisterimp1;
@@ -131,13 +129,36 @@ public class HomepageController {
             rsp.setCharacterEncoding("UTF-8");
             rsp.setContentType("text/html");
 
-            Info_Status is = new Info_Status();
+            Info_Status_Id isi = new Info_Status_Id();
 
             LoginRegister lr = new LoginRegisterImp1();
-            lr.regist(rq,is);
+            lr.regist(rq, isi);
 
             PrintWriter writer = rsp.getWriter();
-            writer.write(new Gson().toJson(is));
+            writer.write(new Gson().toJson(isi));
+            writer.flush();
+            writer.close();
+
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @RequestMapping("/defaultlogin")
+    public void defaultlogin(HttpServletRequest rq, HttpServletResponse rsp) {
+        try {
+            rq.setCharacterEncoding("UTF-8");
+            rsp.setCharacterEncoding("UTF-8");
+            rsp.setContentType("text/html");
+
+            Info_Status is = new Info_Status();
+            LoginRegister lr = new DefaultLoginRegister();
+            lr.regist(rq, is);
+
+            PrintWriter writer = rsp.getWriter();
+            writer.print(new Gson().toJson(is));
             writer.flush();
             writer.close();
 

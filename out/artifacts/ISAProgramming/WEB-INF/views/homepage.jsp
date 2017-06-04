@@ -34,7 +34,7 @@
                            data-target="#navright_signup_modal">Sign Up</a>
                     </ul>
                     <ul class="nav navbar-nav navbar-right" id="navright_hidden" style="display: none;">
-                        <img id="navright_hidden_img">
+                        <img id="navright_hidden_img" src="/img/user">
                         <li><a id="navright_hidden_name"></a></li>
                     </ul>
                 </div>
