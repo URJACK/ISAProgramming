@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.model.user.Friend" table="friend" schema="isaprogramdb">
+        <id name="id" column="id"/>
+        <property name="userAid" column="userAid"/>
+        <property name="userBid" column="userBid"/>
+        <one-to-one name="userA" class="com.model.user.User" cascade="all"/>
+        <one-to-one name="userB" class="com.model.user.User" cascade="all"/>
+        <set name="chats" inverse="true">
+            <key>
+                <column name="rid"/>
+            </key>
+            <one-to-many not-found="ignore" class="com.model.user.FriendChat"/>
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,27 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="ISAProgramming">
+    <output-path>$PROJECT_DIR$/out/artifacts/ISAProgramming</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="ISAProgramming/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="ISAProgramming" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="application" name="Spring-4.2.9.RELEASE" />
+          <element id="library" level="application" name="Hibernate 4.0.1-4.1.1 (2)" />
+          <element id="library" level="application" name="Spring MVC-4.2.9.RELEASE (2)" />
+          <element id="file-copy" path="$PROJECT_DIR$/src/lib/gson-2.7.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/src/lib/javax.servlet.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/src/lib/mysql-connector-java.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/src/lib/mail/dsn.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/src/lib/mail/imap.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/src/lib/mail/pop3.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/src/lib/mail/smtp.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/src/lib/mail/gimap.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/src/lib/mail/mailapi.jar" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
