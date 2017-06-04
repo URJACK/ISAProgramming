@@ -167,4 +167,27 @@ public class HomepageController {
             e.printStackTrace();
         }
     }
+
+    @RequestMapping("/getname")
+    public void getname(HttpServletRequest rq, HttpServletResponse rsp){
+        try {
+            rq.setCharacterEncoding("UTF-8");
+            rsp.setCharacterEncoding("UTF-8");
+            rsp.setContentType("text/html");
+
+            Info_Status is = new Info_Status();
+            LoginRegister lr = new GetNameRegister();
+            lr.regist(rq,is);
+
+            PrintWriter writer = rsp.getWriter();
+            writer.print(new Gson().toJson(is));
+            writer.flush();
+            writer.close();
+
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

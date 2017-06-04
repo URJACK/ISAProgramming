@@ -10,7 +10,8 @@
           href="/css/bootstrap.min.css">
 </head>
 <body>
-<div class="container" id="container" style="width: 100%">
+
+<div class="container" id="topbar" style="width: 100%">
     <div class="row">
         <div class="navbar navbar-inverse navbar-static-top">
             <div class="container">
@@ -34,13 +35,15 @@
                            data-target="#navright_signup_modal">Sign Up</a>
                     </ul>
                     <ul class="nav navbar-nav navbar-right" id="navright_hidden" style="display: none;">
-                        <img id="navright_hidden_img" src="/img/user">
+                        <li class="navbar-btn"><img id="navright_hidden_img" src="/img/user"></li>
                         <li><a id="navright_hidden_name"></a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
+</div>
+<div class="container" style="width: 100%">
     <div class="row" id="main">
         <div class="col-md-12 column">
             <div class="jumbotron col-md-8 col-md-offset-2 col-xs-12">
@@ -51,8 +54,11 @@
                     ·网络安全竞争日益激烈，我们急需一批热血青年来捍卫我们的网络安全，保卫我们的网络疆土。为选拔、培养、输送信息安全人才，在学校和学院领导,协会指导老师的帮助和指导下我们成立了信息安全协会。<br>
                 </p>
                 <h2>测评系统介绍</h2>
-                <p>这是<ffz style="color: #333;font-size: 25px;font-family:
-'微软雅黑'">信息安全协会</ffz>的在线编程测评系统。在这里，你可以和协会的其他成员一起提升自己的代码水平。<br>
+                <p>这是
+                    <ffz style="color: #333;font-size: 25px;font-family:
+'微软雅黑'">信息安全协会
+                    </ffz>
+                    的在线编程测评系统。在这里，你可以和协会的其他成员一起提升自己的代码水平。<br>
                     我们目前已经支持以下语言:<br>
                     <button class="btn btn-default" style="color: red" font-family='微软雅黑' title="About Java" data-
                             container="body" data-toggle="popover" data-trigger='hover' data-placement='bottom'
@@ -95,8 +101,9 @@
                         </div>
                         <div class="form-group">
                             <a class="btn btn-primary" title="忘记密码" data-toggle="popover" data-trigger="hover"
-                               data-placement="right" data-content="点击该按钮从而我们会尝试着向你的邮箱里发送了验证邮件(十分钟内不会重复发送):在你的邮箱里，会收到该有的验证邮件，得到验证码并输入它!"
-                            id="signin_forget">Forget Password?</a>
+                               data-placement="right"
+                               data-content="点击该按钮从而我们会尝试着向你的邮箱里发送了验证邮件(十分钟内不会重复发送):在你的邮箱里，会收到该有的验证邮件，得到验证码并输入它!"
+                               id="signin_forget">Forget Password?</a>
                         </div>
                         <div class="form-group" style="display: none" id="signin_checknumber">
                             <label>CAPTCHA</label>
@@ -140,14 +147,16 @@
                         </div>
                         <div class="form-group">
                             <label>Email</label>
-                            <input type="text" id="signup_email" placeholder="Please Input Your Email" name="email" class="form-control">
+                            <input type="text" id="signup_email" placeholder="Please Input Your Email" name="email"
+                                   class="form-control">
                         </div>
                         <div class="form-group" id="signup_warning">
 
                         </div>
                         <div class="form-group" style="display: none">
                             <label>CheckNumber</label>
-                            <input type="text" id="signup_checknumber" placeholder="The Checknumber is in your Email" name="checknumber" class="form-control">
+                            <input type="text" id="signup_checknumber" placeholder="The Checknumber is in your Email"
+                                   name="checknumber" class="form-control">
                         </div>
                     </form>
                 </div>
@@ -165,6 +174,7 @@
         $("[data-toggle='popover']").popover();
     })
 </script>
-<script type="text/javascript" src="/js/homepage.js"></script>
+<script type="text/javascript" src="/js/topbar.js"></script>
+
 </body>
 </html>

@@ -16,7 +16,7 @@ import java.util.Properties;
 @RequestMapping("/img")
 public class PhotoController {
 
-    private static String LOCATION;
+    private static String LOCATION_USER;
     static {
         Properties properties = new Properties();
         try {
@@ -26,8 +26,8 @@ public class PhotoController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        LOCATION = properties.getProperty("img_user");
-        System.out.println(LOCATION);
+        LOCATION_USER = properties.getProperty("img_user");
+        System.out.println(LOCATION_USER);
     }
 
     @RequestMapping("/user")
@@ -35,7 +35,7 @@ public class PhotoController {
         try {
             rsp.setContentType("image/img");
             int id = (int) rq.getSession().getAttribute("id");
-            File file = new File(String.format(LOCATION,id));
+            File file = new File(String.format(LOCATION_USER,id));
             InputStream inputStream = new FileInputStream(file);
             byte[] img = new byte[inputStream.available()];
             inputStream.read(img);
