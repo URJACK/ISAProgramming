@@ -41,10 +41,10 @@ $(function () {
         warning_content.innerHTML = str;
     }
     // When this page is loaded, the method is executed to change the view
-    var afterSuccessSignin = function (id) {
+    var afterSuccessSignin = function () {
         $('#navright').css('display', 'none');
         $('#navright_hidden').css('display', 'block');
-        $('#navright_hidden_img').get(0).src="/img/user?id="+id;
+        $('#navright_hidden_img').get(0).src="/img/user";
     };
     $('#signin_forget').click(function () {
         if (!receivemail_in) {
@@ -144,7 +144,7 @@ $(function () {
                     if (json.status){
                         setTimeout(function () {
                             $('#navright_signin_modal').modal('hide');
-                            afterSuccessSignin(json.id);
+                            afterSuccessSignin();
                         },1000);
                     }
                 }
@@ -183,7 +183,7 @@ $(function () {
             console.log(json.infos);
             if (json.status){
                 setTimeout(function () {
-                    afterSuccessSignin(json.id);
+                    afterSuccessSignin();
                 })
             }
         }

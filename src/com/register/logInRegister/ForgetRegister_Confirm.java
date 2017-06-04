@@ -43,4 +43,5 @@ public class ForgetRegister_Confirm implements LoginRegister{
             return 2;
         }
     }
+
 }

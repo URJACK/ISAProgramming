@@ -2,7 +2,6 @@ package com.controller;
 
 import com.google.gson.Gson;
 import com.json.Info_Status;
-import com.json.Info_Status_Id;
 import com.model.user.User;
 import com.register.logInRegister.*;
 import com.register.logUpRegister.CheckNumberRegister;
@@ -129,13 +128,13 @@ public class HomepageController {
             rsp.setCharacterEncoding("UTF-8");
             rsp.setContentType("text/html");
 
-            Info_Status_Id isi = new Info_Status_Id();
+            Info_Status is = new Info_Status();
 
             LoginRegister lr = new LoginRegisterImp1();
-            lr.regist(rq, isi);
+            lr.regist(rq, is);
 
             PrintWriter writer = rsp.getWriter();
-            writer.write(new Gson().toJson(isi));
+            writer.write(new Gson().toJson(is));
             writer.flush();
             writer.close();
 

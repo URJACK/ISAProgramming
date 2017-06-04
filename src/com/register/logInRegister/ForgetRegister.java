@@ -7,7 +7,6 @@ import com.tool.SessionOpenner;
 import org.hibernate.Session;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 /**
  * Created by FuFangzhou on 2017/6/1.
@@ -43,4 +42,5 @@ public class ForgetRegister implements LoginRegister{
         }
         return 1;
     }
+
 }
