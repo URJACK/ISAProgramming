@@ -201,6 +201,11 @@
                     <label>Confirm Password</label>
                     <input type="text" placeholder="确认新密码" class="form-control" id="main_tab_info_confirmpassword">
                 </div>
+                <div class="form-group">
+                    <div class="alert alert-warning">
+                        <strong id="main_tab_info_content"></strong>
+                    </div>
+                </div>
                 <div class="form-group" style="display: none">
                     <a class="btn btn-success" id="main_tab_info_commit">确认修改</a>
                 </div>

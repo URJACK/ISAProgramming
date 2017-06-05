@@ -7,6 +7,9 @@ $(function () {
         alert("你的账户信息不符合");
         window.location = "/home";
     };
+    var setTabInfoContent = function(str){
+        $('#main_tab_info_content').get(0).innerHTML = str;
+    };
     var auto_LoginSuccess = function () {
         $.ajax({
             url:'/model/user',
@@ -38,6 +41,37 @@ $(function () {
             $('#main_tab_info_commit').get(0).parentNode.style.display='none';
             needChangePassword = false;
         }
+    });
+    $('#main_tab_info_commit').click(function () {
+        var newpassword = $('#main_tab_info_newpassword').val();
+        var oldpassword = $('#main_tab_info_oldpassword').val();
+        var confirmpassword = $('#main_tab_info_confirmpassword').val();
+        var passwordreg = /^[a-zA-Z]\w{2,15}$/;
+        if (newpassword != confirmpassword){
+            setTabInfoContent("你输入的密码两次不一样");
+            return;
+        }
+        if(!passwordreg.test(newpassword)){
+            setTabInfoContent("密码必须首字符为字母，之后跟上2~15个数字字母下划线");
+            return;
+        }
+        if(newpassword == oldpassword){
+            setTabInfoContent("你的新密码与旧密码相同");
+            return;
+        }
+
+        $.ajax({
+            url:"/setting/password",
+            data:{
+                account:account,
+                newpassword:$('#main_tab_info_newpassword').val()
+            },
+            success:function (json) {
+                json = JSON.parse(json);
+                setTabInfoContent(json.infos);
+
+            }
+        })
     });
     setTimeout(function () {
         if (!auto_login) {
