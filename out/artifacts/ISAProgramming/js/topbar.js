@@ -1,3 +1,5 @@
+var account = "Null";
+var auto_login = false;        //是否登陆成功
 $(function () {
     var receivemail_up = false;
     var receivemail_in = false;
@@ -143,7 +145,6 @@ $(function () {
                     json = JSON.parse(json);
                     setSigninWarning(json.infos);
                     if (json.status) {
-                        var account = "正在读取名字";
                         $.ajax({
                             url: "/home/getname",
                             type: "POST",
@@ -173,7 +174,7 @@ $(function () {
                     password: $('#signin_password').val(),
                     checknumber: $('#signin_checknumber_content').val()
                 },
-                success: function (json,status) {
+                success: function (json) {
                     json = JSON.parse(json);
                     setSigninWarning(json.infos);
                     if (json.status) {
@@ -185,14 +186,17 @@ $(function () {
             });
         }
     });
+    $('#navright_hidden_name_setting').click(function () {
+       window.location ="/setting";
+    });
     $.ajax({
         url: "/home/defaultlogin",
         type: "POST",
         success: function (json) {
-            var account = "正在读取名字";
             json = JSON.parse(json);
             console.log(json.infos);
             if (json.status) {
+                auto_login = true;
                 $.ajax({
                     url: "/home/getname",
                     type: "POST",
@@ -204,5 +208,5 @@ $(function () {
                 });
             }
         }
-    })
+    });
 });

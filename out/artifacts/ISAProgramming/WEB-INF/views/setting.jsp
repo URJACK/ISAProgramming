@@ -1,10 +1,11 @@
+<!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport"
           content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-    <title>$Title$</title>
+    <title>ISA Programing</title>
     <link rel="stylesheet" type="text/css"
           href="/css/bootstrap.min.css">
 </head>
@@ -141,7 +142,6 @@
         </div>
     </div>
 </div>
-
 <script type="text/javascript" src="/js/jquery-2.1.0.js"></script>
 <script type="text/javascript" src="/js/bootstrap.min.js"></script>
 <script type="text/javascript">
@@ -150,6 +150,6 @@
     })
 </script>
 <script type="text/javascript" src="/js/topbar.js"></script>
-
+<script type="text/javascript" src="/js/setting.js"></script>
 </body>
 </html>
