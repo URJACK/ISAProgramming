@@ -16,6 +16,7 @@
           href="/css/bootstrap.min.css">
 </head>
 <body>
+
 <div class="container" id="topbar" style="width: 100%">
     <div class="row">
         <div class="navbar navbar-inverse navbar-static-top">
@@ -48,7 +49,6 @@
         </div>
     </div>
 </div>
-
 <div class="modal fade" id="navright_signin_modal" tabindex="-1" role='dialog'>
     <div class="modal-dialog">
         <div class="modal-content">
@@ -149,5 +149,6 @@
     })
 </script>
 <script type="text/javascript" src="/js/topbar.js"></script>
+
 </body>
 </html>

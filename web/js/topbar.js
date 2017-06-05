@@ -145,9 +145,9 @@ $(function () {
                     if (json.status) {
                         var account = "正在读取名字";
                         $.ajax({
-                            url:"/home/getname",
-                            type:"POST",
-                            success:function (json) {
+                            url: "/home/getname",
+                            type: "POST",
+                            success: function (json) {
                                 json = JSON.parse(json);
                                 account = json.infos;
                             }
@@ -173,7 +173,7 @@ $(function () {
                     password: $('#signin_password').val(),
                     checknumber: $('#signin_checknumber_content').val()
                 },
-                success: function (json) {
+                success: function (json,status) {
                     json = JSON.parse(json);
                     setSigninWarning(json.infos);
                     if (json.status) {
@@ -194,9 +194,9 @@ $(function () {
             console.log(json.infos);
             if (json.status) {
                 $.ajax({
-                    url:"/home/getname",
-                    type:"POST",
-                    success:function (json) {
+                    url: "/home/getname",
+                    type: "POST",
+                    success: function (json) {
                         json = JSON.parse(json);
                         account = json.infos;
                         afterSuccessSignin(account);

@@ -10,6 +10,7 @@
           href="/css/bootstrap.min.css">
 </head>
 <body>
+
 <div class="container" id="topbar" style="width: 100%">
     <div class="row">
         <div class="navbar navbar-inverse navbar-static-top">
@@ -34,7 +35,7 @@
                            data-target="#navright_signup_modal">Sign Up</a>
                     </ul>
                     <ul class="nav navbar-nav navbar-right" id="navright_hidden" style="display: none;">
-                        <li class="navbar-btn"><img id="navright_hidden_img" src="/img/user"></li>
+                        <li class="navbar-btn"><img id="navright_hidden_img"></li>
                         <li><a id="navright_hidden_name"></a></li>
                     </ul>
                 </div>
@@ -174,5 +175,6 @@
     })
 </script>
 <script type="text/javascript" src="/js/topbar.js"></script>
+
 </body>
 </html>

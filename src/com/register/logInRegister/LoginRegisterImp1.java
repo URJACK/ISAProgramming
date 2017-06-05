@@ -37,6 +37,11 @@ public class LoginRegisterImp1 implements LoginRegister {
             is.setStatus(false);
             is.setInfo("尚未找到该用户");
             return 0;
+        } catch (Exception e){
+            e.printStackTrace();
+            is.setInfo("服务器发生了错误");
+            is.setStatus(false);
+            return 0;
         }
         return 0;
     }
