@@ -3,10 +3,10 @@ package com.controller;
 import com.google.gson.Gson;
 import com.json.Info_Status;
 import com.model.user.User;
-import com.register.logInRegister.*;
-import com.register.logUpRegister.CheckNumberRegister;
-import com.register.logUpRegister.LogUpRegister;
-import com.register.logUpRegister.LogUpRegisterimp1;
+import com.worker.logInWorker.*;
+import com.worker.logUpWorker.CheckNumberWorker;
+import com.worker.logUpWorker.LogUpWorker;
+import com.worker.logUpWorker.LogUpWorkerimp;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -43,8 +43,8 @@ public class HomepageController {
             Info_Status is = new Info_Status();
             is.setStatus(true);
 
-            LogUpRegister lug = new LogUpRegisterimp1();
-            lug.regist(rq, user, is); //将User 和 is 做相应处理
+            LogUpWorker lug = new LogUpWorkerimp();
+            lug.work(rq, user, is); //将User 和 is 做相应处理
 
             PrintWriter writer = rsp.getWriter();
             writer.print(new Gson().toJson(is));
@@ -65,7 +65,7 @@ public class HomepageController {
 
             Info_Status is = new Info_Status();
 
-            CheckNumberRegister cng = new CheckNumberRegister();
+            CheckNumberWorker cng = new CheckNumberWorker();
             cng.check(rq, is);
 
             PrintWriter writer = rsp.getWriter();
@@ -86,8 +86,8 @@ public class HomepageController {
 
             Info_Status is = new Info_Status();
 
-            LoginRegister fr = new ForgetRegister();
-            fr.regist(rq, is);
+            LoginWorker fr = new ForgetWorker();
+            fr.work(rq, is);
 
             PrintWriter writer = rsp.getWriter();
             writer.print(new Gson().toJson(is));
@@ -108,8 +108,8 @@ public class HomepageController {
 
             Info_Status is = new Info_Status();
 
-            LoginRegister fr = new ForgetRegister_Confirm();
-            fr.regist(rq, is);
+            LoginWorker fr = new ForgetWorker_Confirm();
+            fr.work(rq, is);
 
             PrintWriter writer = rsp.getWriter();
             writer.print(new Gson().toJson(is));
@@ -130,8 +130,8 @@ public class HomepageController {
 
             Info_Status is = new Info_Status();
 
-            LoginRegister lr = new LoginRegisterImp1();
-            lr.regist(rq, is);
+            LoginWorker lr = new LoginWorkerImp();
+            lr.work(rq, is);
 
             PrintWriter writer = rsp.getWriter();
             writer.write(new Gson().toJson(is));
@@ -153,8 +153,8 @@ public class HomepageController {
             rsp.setContentType("text/html");
 
             Info_Status is = new Info_Status();
-            LoginRegister lr = new DefaultLoginRegister();
-            lr.regist(rq, is);
+            LoginWorker lr = new DefaultLoginWorker();
+            lr.work(rq, is);
 
             PrintWriter writer = rsp.getWriter();
             writer.print(new Gson().toJson(is));
@@ -176,8 +176,8 @@ public class HomepageController {
             rsp.setContentType("text/html");
 
             Info_Status is = new Info_Status();
-            LoginRegister lr = new GetNameRegister();
-            lr.regist(rq,is);
+            LoginWorker lr = new GetNameWorker();
+            lr.work(rq,is);
 
             PrintWriter writer = rsp.getWriter();
             writer.print(new Gson().toJson(is));
