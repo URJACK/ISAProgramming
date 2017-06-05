@@ -27,7 +27,7 @@ $(function () {
             }
         })
     };
-    $('#main_tab_info_changepassword').click(function () {
+    var changeModifyPasswordStatus = function () {
         if (needChangePassword == false) {
             $('#main_tab_info_oldpassword').get(0).parentNode.style.display='block';
             $('#main_tab_info_newpassword').get(0).parentNode.style.display='block';
@@ -41,21 +41,22 @@ $(function () {
             $('#main_tab_info_commit').get(0).parentNode.style.display='none';
             needChangePassword = false;
         }
-    });
+    };
+    $('#main_tab_info_changepassword').click(changeModifyPasswordStatus);
     $('#main_tab_info_commit').click(function () {
-        var newpassword = $('#main_tab_info_newpassword').val();
-        var oldpassword = $('#main_tab_info_oldpassword').val();
+        var vnewpassword = $('#main_tab_info_newpassword').val();
+        var voldpassword = $('#main_tab_info_oldpassword').val();
         var confirmpassword = $('#main_tab_info_confirmpassword').val();
         var passwordreg = /^[a-zA-Z]\w{2,15}$/;
-        if (newpassword != confirmpassword){
+        if (vnewpassword != confirmpassword){
             setTabInfoContent("你输入的密码两次不一样");
             return;
         }
-        if(!passwordreg.test(newpassword)){
+        if(!passwordreg.test(vnewpassword)){
             setTabInfoContent("密码必须首字符为字母，之后跟上2~15个数字字母下划线");
             return;
         }
-        if(newpassword == oldpassword){
+        if(vnewpassword == voldpassword){
             setTabInfoContent("你的新密码与旧密码相同");
             return;
         }
@@ -64,12 +65,18 @@ $(function () {
             url:"/setting/password",
             data:{
                 account:account,
-                newpassword:$('#main_tab_info_newpassword').val()
+                oldpassword:voldpassword,
+                newpassword:vnewpassword
             },
             success:function (json) {
                 json = JSON.parse(json);
                 setTabInfoContent(json.infos);
-
+                if (json.status){
+                    setTimeout(function () {
+                        changeModifyPasswordStatus();
+                        $('#main_tab_info_changepassword').get(0).parentNode.style.display='none';
+                    },1000)
+                }
             }
         })
     });

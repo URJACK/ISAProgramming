@@ -17,14 +17,20 @@ public class PasswordChangeWorker implements SettingWorker{
         try {
             String account = rq.getParameter("account");
             String newpassword = rq.getParameter("newpassword");
+            String oldpassword = rq.getParameter("oldpassword");
             Session session = SessionOpenner.getInstance().getSession();
             Transaction transaction = session.beginTransaction();
             User user = (User) session.createQuery(String.format("FROM User WHERE account='%s'", account)).list().get(0);
-            user.setPassword(newpassword);
-            session.saveOrUpdate(user);
-            transaction.commit();
-            is.setInfo("你已经成功的修改了密码");
-            is.setStatus(true);
+            if(user.getPassword().equals(oldpassword)) {
+                user.setPassword(newpassword);
+                session.saveOrUpdate(user);
+                transaction.commit();
+                is.setInfo("你已经成功的修改了密码");
+                is.setStatus(true);
+            }else {
+                is.setInfo("你的旧密码输入不正确");
+                is.setStatus(false);
+            }
         }catch (Exception e){
             is.setInfo("因为未知的原因，服务器出现了错误");
             is.setStatus(false);
