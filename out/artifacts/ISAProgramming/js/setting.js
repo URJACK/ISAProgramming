@@ -53,11 +53,17 @@ $(function () {
     var changeMoreInformation = function () {
         if (!needChangeMoreInformation) {
             setTabMoreInfoContent("请开始修改你的信息");
+            $('#main_tab_moreinfo_commit').removeClass('btn-primary');
+            $('#main_tab_moreinfo_commit').addClass('btn-success');
+            $('#main_tab_moreinfo_commit').get(0).innerHTML = "确认修改";
             $('#main_tab_moreinfo_introduce').removeAttr('readonly');
             $('#main_tab_moreinfo_class').removeAttr('readonly');
             $('#main_tab_moreinfo_major').removeAttr('readonly');
             needChangeMoreInformation = true;
         }else {
+            $('#main_tab_moreinfo_commit').removeClass('btn-success');
+            $('#main_tab_moreinfo_commit').addClass('btn-primary');
+            $('#main_tab_moreinfo_commit').get(0).innerHTML = "再次修改";
             $('#main_tab_moreinfo_introduce').attr('readonly','');
             $('#main_tab_moreinfo_class').attr('readonly','');
             $('#main_tab_moreinfo_major').attr('readonly','');

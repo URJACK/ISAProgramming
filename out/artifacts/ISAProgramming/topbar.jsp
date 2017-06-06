@@ -26,9 +26,9 @@
                         <li class="dropdown">
                             <a href="#" id="navright_hidden_name" class="dropdown-toggle" data-toggle="dropdown"></a>
                             <ul class="dropdown-menu">
-                                <li><a class="text-primary" href="#" id="navright_hidden_name_setting">setting</a></li>
+                                <li><a class="text-primary" href="#" id="navright_hidden_name_setting">About MySelf</a></li>
                                 <li class="divider"></li>
-                                <li><a class="text-primary" href="#" id="navright_hidden_name_logout">log out</a></li>
+                                <li><a class="text-primary" href="#" id="navright_hidden_name_logout">Log Out</a></li>
                             </ul>
                         </li>
 
