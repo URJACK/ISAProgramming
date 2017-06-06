@@ -168,6 +168,10 @@
                 <li><a href="#main_tab_question" data-toggle="tab">
                     完成的题目</a>
                 </li>
+                <li class="divider"></li>
+                <li><a href="#main_tab_friend" data-toggle="tab">
+                    我的好友</a>
+                </li>
             </ul>
         </li>
     </ul>
@@ -229,6 +233,11 @@
                 Application Server such as JBOSS, Web Logic etc.
             </p>
         </div>
+        <div class="tab-pane fade" id="main_tab_friend">
+            <p>HereYou Can See Your Friend
+            </p>
+        </div>
+
     </div>
 </div>
 </body>

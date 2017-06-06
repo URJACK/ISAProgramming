@@ -330,7 +330,15 @@
       <Position>6</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <key id="87" parent="23" name="PRIMARY">
+    <column id="87" parent="23" name="introduce">
+      <Position>7</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="88" parent="23" name="major">
+      <Position>8</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <key id="89" parent="23" name="PRIMARY">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>

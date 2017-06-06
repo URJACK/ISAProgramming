@@ -1,7 +1,7 @@
 package com.worker.ModelGetWorker;
 
 import com.json.Info_Status_User;
-import com.model.user.User;
+import com.model.User;
 import com.tool.SessionOpenner;
 import org.hibernate.Session;
 

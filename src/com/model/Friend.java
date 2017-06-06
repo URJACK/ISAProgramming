@@ -1,17 +1,17 @@
-package com.model.user;
+package com.model;
 
 import java.util.Set;
 
 /**
- * Created by FuFangzhou on 2017/6/1.
+ * Created by FuFangzhou on 2017/6/6.
  */
 public class Friend {
     private int id;
     private int userAid;
     private int userBid;
-    private Set<FriendChat> chats;
     private User userA;
     private User userB;
+    private Set<FriendChat> chats;
 
     public int getId() {
         return id;
@@ -59,14 +59,6 @@ public class Friend {
         return result;
     }
 
-    public Set<FriendChat> getChats() {
-        return chats;
-    }
-
-    public void setChats(Set<FriendChat> chats) {
-        this.chats = chats;
-    }
-
     public User getUserA() {
         return userA;
     }
@@ -81,5 +73,13 @@ public class Friend {
 
     public void setUserB(User userB) {
         this.userB = userB;
+    }
+
+    public Set<FriendChat> getChats() {
+        return chats;
+    }
+
+    public void setChats(Set<FriendChat> chats) {
+        this.chats = chats;
     }
 }

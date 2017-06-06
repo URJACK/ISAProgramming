@@ -2,7 +2,7 @@ package com.controller;
 
 import com.google.gson.Gson;
 import com.json.Info_Status;
-import com.model.user.User;
+import com.model.User;
 import com.worker.logInWorker.*;
 import com.worker.logUpWorker.CheckNumberWorker;
 import com.worker.logUpWorker.LogUpWorker;
@@ -77,6 +77,7 @@ public class HomepageController {
         }
     }
 
+    //点击遗忘密码后，向邮箱发送验证码
     @RequestMapping("/forget")
     public void forget(HttpServletRequest rq, HttpServletResponse rsp) {
         try {
@@ -99,6 +100,7 @@ public class HomepageController {
         }
     }
 
+    //收到邮箱验证码后，收到的请求
     @RequestMapping("/forget2")
     public void forget2(HttpServletRequest rq, HttpServletResponse rsp) {
         try {
@@ -121,6 +123,7 @@ public class HomepageController {
         }
     }
 
+    //收到的登陆请求
     @RequestMapping("/login")
     public void login(HttpServletRequest rq, HttpServletResponse rsp) {
         try {
@@ -145,6 +148,7 @@ public class HomepageController {
         }
     }
 
+    //每次刷新页面自动会调用这个请求
     @RequestMapping("/defaultlogin")
     public void defaultlogin(HttpServletRequest rq, HttpServletResponse rsp) {
         try {
@@ -168,6 +172,7 @@ public class HomepageController {
         }
     }
 
+    //自动登陆成功之后，会再次请求一次获取account
     @RequestMapping("/getname")
     public void getname(HttpServletRequest rq, HttpServletResponse rsp){
         try {

@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.model.TopicResponse" table="topic_response" schema="isaprogramdb">
+        <id name="id" column="id"/>
+        <property name="tid" column="tid"/>
+        <property name="responserid" column="responserid"/>
+        <property name="index" column="index"/>
+        <property name="content" column="content"/>
+        <one-to-one name="responser" class="com.model.User"/>
+        <one-to-one name="topic" class="com.model.Topic"/>
+    </class>
+</hibernate-mapping>

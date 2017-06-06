@@ -1,7 +1,7 @@
 package com.worker.logUpWorker;
 
 import com.json.Info_Status;
-import com.model.user.User;
+import com.model.User;
 
 import javax.servlet.http.HttpServletRequest;
 

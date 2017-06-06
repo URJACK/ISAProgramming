@@ -1,7 +1,7 @@
-package com.model.user;
+package com.model;
 
 /**
- * Created by FuFangzhou on 2017/6/1.
+ * Created by FuFangzhou on 2017/6/6.
  */
 public class FriendChat {
     private int id;

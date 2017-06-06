@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.model.Topic" table="topic" schema="isaprogramdb">
+        <id name="id" column="id"/>
+        <property name="uid" column="uid"/>
+        <property name="title" column="title"/>
+        <property name="content" column="content"/>
+        <one-to-one name="user" class="com.model.User"/>
+    </class>
+</hibernate-mapping>

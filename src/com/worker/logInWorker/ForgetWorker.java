@@ -1,7 +1,7 @@
 package com.worker.logInWorker;
 
 import com.json.Info_Status;
-import com.model.user.User;
+import com.model.User;
 import com.tool.MailSender;
 import com.tool.SessionOpenner;
 import org.hibernate.Session;
