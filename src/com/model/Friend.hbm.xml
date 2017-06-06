@@ -8,8 +8,8 @@
         <id name="id" column="id"/>
         <property name="userAid" column="userAid"/>
         <property name="userBid" column="userBid"/>
-        <one-to-one name="userA" class="com.model.User"/>
-        <one-to-one name="userB" class="com.model.User"/>
+        <many-to-one name="userA" class="com.model.User" cascade="all" unique="true" column="userAid" insert="false" update="false"/>
+        <many-to-one name="userB" class="com.model.User" unique="true" cascade="all" column="userBid" insert="false" update="false"/>
         <set name="chats" inverse="true">
             <key>
                 <column name="rid"/>

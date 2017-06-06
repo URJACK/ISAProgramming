@@ -4,14 +4,14 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="com.model.user.FriendChat" table="friend_chat" schema="isaprogramdb">
+    <class name="com.model.FriendChat" table="friend_chat" schema="isaprogramdb">
         <id name="id" column="id"/>
         <property name="rid" column="rid"/>
         <property name="senderid" column="senderid"/>
         <property name="content" column="content"/>
-        <many-to-one name="friend" class="com.model.user.Friend" insert="false" update="false" cascade="all">
+        <many-to-one name="friend" class="com.model.Friend" insert="false" update="false">
             <column name="rid"/>
         </many-to-one>
-        <one-to-one name="sender" class="com.model.user.User"/>
+        <one-to-one name="sender" class="com.model.User"/>
     </class>
 </hibernate-mapping>

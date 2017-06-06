@@ -34,7 +34,7 @@
                            data-target="#navright_signup_modal">Sign Up</a>
                     </ul>
                     <ul class="nav navbar-nav navbar-right" id="navright_hidden" style="display: none;">
-                        <li class="navbar-btn"><img class="img-circle" id="navright_hidden_img"></li>
+                        <li class="navbar-btn"><img class="img-circle" id="navright_hidden_img" style="width: 30px;height: 30px"></li>
                         <li class="dropdown">
                             <a href="#" id="navright_hidden_name" class="dropdown-toggle" data-toggle="dropdown"></a>
                             <ul class="dropdown-menu">

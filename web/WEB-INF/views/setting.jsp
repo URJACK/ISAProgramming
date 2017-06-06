@@ -34,7 +34,7 @@
                            data-target="#navright_signup_modal">Sign Up</a>
                     </ul>
                     <ul class="nav navbar-nav navbar-right" id="navright_hidden" style="display: none;">
-                        <li class="navbar-btn"><img class="img-circle" id="navright_hidden_img"></li>
+                        <li class="navbar-btn"><img class="img-circle" id="navright_hidden_img" style="width: 30px;height: 30px"></li>
                         <li class="dropdown">
                             <a href="#" id="navright_hidden_name" class="dropdown-toggle" data-toggle="dropdown"></a>
                             <ul class="dropdown-menu">
@@ -195,15 +195,15 @@
                 </div>
                 <div class="form-group" style="display: none">
                     <label>Old Password</label>
-                    <input type="text" placeholder="请输入旧密码" class="form-control" id="main_tab_info_oldpassword">
+                    <input type="password" placeholder="请输入旧密码" class="form-control" id="main_tab_info_oldpassword">
                 </div>
                 <div class="form-group" style="display: none">
                     <label>New Password</label>
-                    <input type="text" placeholder="请输入新密码" class="form-control" id="main_tab_info_newpassword">
+                    <input type="password" placeholder="请输入新密码" class="form-control" id="main_tab_info_newpassword">
                 </div>
                 <div class="form-group" style="display: none">
                     <label>Confirm Password</label>
-                    <input type="text" placeholder="确认新密码" class="form-control" id="main_tab_info_confirmpassword">
+                    <input type="password" placeholder="确认新密码" class="form-control" id="main_tab_info_confirmpassword">
                 </div>
                 <div class="form-group">
                     <div class="alert alert-warning">

@@ -4,12 +4,14 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="com.model.user.User" table="user" schema="isaprogramdb">
+    <class name="com.model.User" table="user" schema="isaprogramdb">
         <id name="id" column="id"/>
         <property name="account" column="account"/>
         <property name="password" column="password"/>
         <property name="email" column="email"/>
         <property name="date" column="date"/>
         <property name="clazz" column="class"/>
+        <property name="introduce" column="introduce"/>
+        <property name="major" column="major"/>
     </class>
 </hibernate-mapping>
