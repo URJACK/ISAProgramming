@@ -1,7 +1,5 @@
 package com.json;
 
-import com.model.user.User;
-
 /**
  * Created by FuFangzhou on 2017/6/5.
  */
@@ -11,6 +9,33 @@ public class Info_Status_User {
     String account;
     String email;
     String date;
+    int clazz;
+    String introduce;
+    String major;
+
+    public int getClazz() {
+        return clazz;
+    }
+
+    public void setClazz(int clazz) {
+        this.clazz = clazz;
+    }
+
+    public String getIntroduce() {
+        return introduce;
+    }
+
+    public void setIntroduce(String introduce) {
+        this.introduce = introduce;
+    }
+
+    public String getMajor() {
+        return major;
+    }
+
+    public void setMajor(String major) {
+        this.major = major;
+    }
 
     public String getInfos() {
         return infos;

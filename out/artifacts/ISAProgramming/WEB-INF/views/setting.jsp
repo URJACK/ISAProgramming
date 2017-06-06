@@ -77,12 +77,29 @@
                 </div>
             </form>
         </div>
-        <div class="tab-pane fade " id="main_tab_moreinfo">
-            <p>iOS is a mobile operating system developed and distributed by Apple
-                Inc. Originally released in 2007 for the iPhone, iPod Touch, and
-                Apple TV. iOS is derived from OS X, with which it shares the
-                Darwin foundation. iOS is Apple's mobile version of the
-                OS X operating system used on Apple computers.</p>
+        <div class="tab-pane fade" id="main_tab_moreinfo">
+            <form>
+                <div class="form-group">
+                    <label>Introduce</label>
+                    <textarea id="main_tab_moreinfo_introduce" class="form-control" readonly>正在获取自我介绍</textarea>
+                </div>
+                <div class="form-group">
+                    <label>Major</label>
+                    <input type="text" id="main_tab_moreinfo_major" class="form-control" readonly value="正在获取主修">
+                </div>
+                <div class="form-group">
+                    <label>class</label>
+                    <input type="text" id="main_tab_moreinfo_class" class="form-control" readonly value="正在获取班级">
+                </div>
+                <div class="form-group">
+                    <div class="alert alert-warning">
+                        <strong id="main_tab_moreinfo_content"></strong>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <a class="btn btn-primary" id="main_tab_moreinfo_commit">点击更改</a>
+                </div>
+            </form>
         </div>
         <div class="tab-pane fade " id="main_tab_topic">
             <p>jMeter is an Open Source testing software. It is 100% pure

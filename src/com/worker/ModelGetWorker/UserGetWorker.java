@@ -29,6 +29,19 @@ public class UserGetWorker implements ModelGetWorker {
             is.setAccount(account);
             is.setEmail(user.getEmail());
             is.setDate(user.getDate().toString());
+            //MORE INFOMATION
+            if (user.getMajor()!=null)
+                is.setMajor(user.getMajor());
+            else
+                is.setMajor("尚未设置主修");
+            if (user.getClazz()!=null)
+                is.setClazz(user.getClazz());
+            else
+                is.setClazz(-1);
+            if (user.getIntroduce()!=null)
+                is.setIntroduce(user.getIntroduce());
+            else
+                is.setIntroduce("尚未设置自我介绍");
             is.setStatus(true);
         } catch (IndexOutOfBoundsException e) {
             is.setInfos("因为其他原因，尚未找到该用户");

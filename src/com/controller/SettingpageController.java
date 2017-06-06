@@ -2,6 +2,7 @@ package com.controller;
 
 import com.google.gson.Gson;
 import com.json.Info_Status;
+import com.worker.SettingWorker.MoreInfoChangeWorker;
 import com.worker.SettingWorker.PasswordChangeWorker;
 import com.worker.SettingWorker.SettingWorker;
 import org.springframework.stereotype.Controller;
@@ -21,12 +22,13 @@ import java.io.UnsupportedEncodingException;
 @RequestMapping("/setting")
 public class SettingpageController {
     @RequestMapping("")
-    public ModelAndView def(){
+    public ModelAndView def() {
         ModelAndView mv = new ModelAndView("setting");
         return mv;
     }
+
     @RequestMapping("/password")
-    public void password(HttpServletRequest rq, HttpServletResponse rsp){
+    public void password(HttpServletRequest rq, HttpServletResponse rsp) {
         try {
             rq.setCharacterEncoding("UTF-8");
             rsp.setCharacterEncoding("UTF-8");
@@ -34,6 +36,28 @@ public class SettingpageController {
 
             Info_Status is = new Info_Status();
             SettingWorker sw = new PasswordChangeWorker();
+            sw.work(rq, is);
+
+            PrintWriter writer = rsp.getWriter();
+            writer.print(new Gson().toJson(is));
+            writer.flush();
+            writer.close();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @RequestMapping("/moreinfo")
+    public void moreinfo(HttpServletRequest rq, HttpServletResponse rsp) {
+        try {
+            rq.setCharacterEncoding("UTF-8");
+            rsp.setCharacterEncoding("UTF-8");
+            rsp.setContentType("text/html");
+
+            Info_Status is = new Info_Status();
+            SettingWorker sw = new MoreInfoChangeWorker();
             sw.work(rq,is);
 
             PrintWriter writer = rsp.getWriter();
