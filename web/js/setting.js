@@ -19,7 +19,7 @@ $(function () {
         var tbody = $('#main_tab_friend_tbody').get(0);
         var arr = tbody.getElementsByTagName('tr');
         while (arr.length != 0)
-            arr.removeChild(arr[0]);
+            tbody.removeChild(arr[0]);
 
         for (var i = 0; i < friends.length; i++) {
             var child = document.createElement('tr');
@@ -30,20 +30,36 @@ $(function () {
             var oQuery = document.createElement('a');
             var oDelete = document.createElement('a');
             var oChat = document.createElement('a');
+
             oQuery.innerHTML = "Query";
             oDelete.innerHTML = "Delete";
             oChat.innerHTML = "Chat";
             oQuery.href = '#';
             oDelete.href = '#';
             oChat.href = '#';
-            oPerate_Div.addClass('btn-group');
-            oPerate_Div.addClass('btn-group-sm');
+            var jqoQuery = $(oQuery);
+            var jqoDelete = $(oDelete);
+            var jqoChat = $(oChat);
+            var jqoPerate_Div = $(oPerate_Div);
+            jqoPerate_Div.addClass('btn-group');
+            jqoPerate_Div.addClass('btn-group-sm');
+            jqoQuery.addClass('btn');
+            jqoDelete.addClass('btn');
+            jqoChat.addClass('btn');
+            jqoQuery.addClass('btn btn-default');
+            jqoDelete.addClass('btn btn-default');
+            jqoChat.addClass('btn btn-default');
+            jqoChat.attr('clk','');
+            jqoDelete.attr('clk','');
+            jqoQuery.attr('clk','');
+
             oPerate_Div.appendChild(oQuery);
             oPerate_Div.appendChild(oDelete);
             oPerate_Div.appendChild(oChat);
+
             oPerate.appendChild(oPerate_Div);
-            oEmail = friends[i].email;
-            oAccount = friends[i].account;
+            oEmail.innerHTML = friends[i].email;
+            oAccount.innerHTML = friends[i].account;
             child.appendChild(oAccount);
             child.appendChild(oEmail);
             child.appendChild(oPerate);
@@ -77,7 +93,7 @@ $(function () {
             },
             success: function (json) {
                 json = JSON.parse(json);
-                console.log(json.infos)
+                console.log(json.infos);
                 firendslist = json.obj;
                 if (json.status) {
                     refreshFirendsList(firendslist);

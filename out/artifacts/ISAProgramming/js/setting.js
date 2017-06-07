@@ -30,6 +30,7 @@ $(function () {
             var oQuery = document.createElement('a');
             var oDelete = document.createElement('a');
             var oChat = document.createElement('a');
+
             oQuery.innerHTML = "Query";
             oDelete.innerHTML = "Delete";
             oChat.innerHTML = "Chat";
@@ -48,10 +49,14 @@ $(function () {
             jqoQuery.addClass('btn btn-default');
             jqoDelete.addClass('btn btn-default');
             jqoChat.addClass('btn btn-default');
+            jqoChat.attr('clk','');
+            jqoDelete.attr('clk','');
+            jqoQuery.attr('clk','');
 
             oPerate_Div.appendChild(oQuery);
             oPerate_Div.appendChild(oDelete);
             oPerate_Div.appendChild(oChat);
+
             oPerate.appendChild(oPerate_Div);
             oEmail.innerHTML = friends[i].email;
             oAccount.innerHTML = friends[i].account;
@@ -88,7 +93,7 @@ $(function () {
             },
             success: function (json) {
                 json = JSON.parse(json);
-                console.log(json.infos)
+                console.log(json.infos);
                 firendslist = json.obj;
                 if (json.status) {
                     refreshFirendsList(firendslist);

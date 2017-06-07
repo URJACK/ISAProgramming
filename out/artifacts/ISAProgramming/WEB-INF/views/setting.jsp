@@ -130,7 +130,7 @@
                         </tr>
                         </thead>
                         <tbody id="main_tab_friend_tbody">
-                        
+
                         </tbody>
                     </table>
                 </div>
@@ -138,5 +138,11 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $("[clk='']").click(function () {
+        var counter = 0;
+        console.log("CLK Ok"+counter++);
+    });
+</script>
 </body>
 </html>
