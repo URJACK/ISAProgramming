@@ -56,11 +56,23 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="Test.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Test.java">
+      <file leaf-file-name="FriendGetWorker.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/worker/ModelGetWorker/FriendGetWorker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="437">
-              <caret line="19" column="24" lean-forward="true" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
+            <state relative-caret-position="455">
+              <caret line="24" column="60" lean-forward="false" selection-start-line="24" selection-start-column="60" selection-end-line="24" selection-end-column="60" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FriendDAO.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/DAO/FriendDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="524">
+              <caret line="34" column="41" lean-forward="false" selection-start-line="34" selection-start-column="41" selection-end-line="34" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -69,45 +81,35 @@
         </entry>
       </file>
       <file leaf-file-name="setting.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/js/setting.js">
+        <entry file="file://$PROJECT_DIR$/out/artifacts/ISAProgramming/js/setting.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="23">
-              <caret line="3" column="14" lean-forward="false" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
+            <state relative-caret-position="28">
+              <caret line="49" column="45" lean-forward="false" selection-start-line="49" selection-start-column="45" selection-end-line="49" selection-end-column="45" />
               <folding>
                 <element signature="e#0#45#0" expanded="false" />
-                <element signature="e#60#5281#0" expanded="false" />
-                <element signature="e#180#250#0" expanded="false" />
-                <element signature="e#295#362#0" expanded="false" />
-                <element signature="e#411#482#0" expanded="false" />
-                <element signature="e#524#1356#0" expanded="false" />
-                <element signature="e#541#1348#0" expanded="false" />
-                <element signature="e#593#641#0" expanded="false" />
-                <element signature="e#680#1338#0" expanded="false" />
-                <element signature="e#797#1324#0" expanded="false" />
-                <element signature="e#1407#2253#0" expanded="false" />
-                <element signature="e#1450#1847#0" expanded="false" />
-                <element signature="e#1853#2247#0" expanded="false" />
-                <element signature="e#2299#2910#0" expanded="false" />
-                <element signature="e#2341#2648#0" expanded="false" />
-                <element signature="e#2653#2904#0" expanded="false" />
-                <element signature="e#3035#4321#0" expanded="false" />
-                <element signature="e#3335#3412#0" expanded="false" />
-                <element signature="e#3458#3551#0" expanded="false" />
-                <element signature="e#3594#3671#0" expanded="false" />
-                <element signature="e#3688#4314#0" expanded="false" />
-                <element signature="e#3746#3880#0" expanded="false" />
-                <element signature="e#3919#4304#0" expanded="false" />
-                <element signature="e#4042#4290#0" expanded="false" />
-                <element signature="e#4087#4265#0" expanded="false" />
-                <element signature="e#4377#5096#0" expanded="false" />
-                <element signature="e#4417#5049#0" expanded="false" />
-                <element signature="e#4438#5038#0" expanded="false" />
-                <element signature="e#4502#4754#0" expanded="false" />
-                <element signature="e#4796#5024#0" expanded="false" />
-                <element signature="e#4934#5006#0" expanded="false" />
-                <element signature="e#5126#5252#0" expanded="false" />
-                <element signature="e#5153#5196#0" expanded="false" />
-                <element signature="e#5202#5246#0" expanded="false" />
+                <element signature="e#316#383#0" expanded="false" />
+                <element signature="e#432#503#0" expanded="false" />
+                <element signature="e#2470#3735#0" expanded="false" />
+                <element signature="e#2539#2587#0" expanded="false" />
+                <element signature="e#2626#3284#0" expanded="false" />
+                <element signature="e#2743#3270#0" expanded="false" />
+                <element signature="e#3786#4632#0" expanded="false" />
+                <element signature="e#3829#4226#0" expanded="false" />
+                <element signature="e#4232#4626#0" expanded="false" />
+                <element signature="e#4678#5293#0" expanded="false" />
+                <element signature="e#5718#5795#0" expanded="false" />
+                <element signature="e#5841#5934#0" expanded="false" />
+                <element signature="e#5977#6054#0" expanded="false" />
+                <element signature="e#6071#6697#0" expanded="false" />
+                <element signature="e#6129#6263#0" expanded="false" />
+                <element signature="e#6302#6687#0" expanded="false" />
+                <element signature="e#6425#6673#0" expanded="false" />
+                <element signature="e#6470#6648#0" expanded="false" />
+                <element signature="e#6760#7489#0" expanded="false" />
+                <element signature="e#6822#7430#0" expanded="false" />
+                <element signature="e#7519#7645#0" expanded="false" />
+                <element signature="e#7546#7589#0" expanded="false" />
+                <element signature="e#7595#7639#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -116,8 +118,8 @@
       <file leaf-file-name="setting.jsp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/setting.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="506">
-              <caret line="143" column="24" lean-forward="false" selection-start-line="143" selection-start-column="24" selection-end-line="143" selection-end-column="24" />
+            <state relative-caret-position="483">
+              <caret line="132" column="28" lean-forward="false" selection-start-line="132" selection-start-column="28" selection-end-line="132" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -163,11 +165,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/com/register/CheckNumberRegister/CheckNumberRegister.java" />
-        <option value="$PROJECT_DIR$/src/com/register/logUpRegister/Register.java" />
-        <option value="$PROJECT_DIR$/src/com/register/logUpRegister/LogUpRegister.java" />
-        <option value="$PROJECT_DIR$/src/com/register/logUpRegister/CheckNumberRegister.java" />
-        <option value="$PROJECT_DIR$/src/com/controller/DefaultLoginRegister.java" />
         <option value="$PROJECT_DIR$/src/com/json/Info_Status_Id.java" />
         <option value="$PROJECT_DIR$/src/com/register/logInRegister/LoginRegister.java" />
         <option value="$PROJECT_DIR$/src/com/register/logInRegister/ForgetRegister_Confirm.java" />
@@ -183,7 +180,6 @@
         <option value="$PROJECT_DIR$/web/jsp/topbar.jsp" />
         <option value="$PROJECT_DIR$/src/com/worker/logInWorker/LoginWorker.java" />
         <option value="$PROJECT_DIR$/src/com/worker/ModelGetWorker/ModelGetWorker.java" />
-        <option value="$PROJECT_DIR$/src/com/controller/ModelGetController.java" />
         <option value="$PROJECT_DIR$/src/com/worker/logUpWorker/CheckNumberWorker.java" />
         <option value="$PROJECT_DIR$/src/com/worker/logUpWorker/LogUpWorkerimp.java" />
         <option value="$PROJECT_DIR$/src/com/worker/logUpWorker/LogUpWorker.java" />
@@ -197,22 +193,28 @@
         <option value="$PROJECT_DIR$/src/com/model/Friend.java" />
         <option value="$PROJECT_DIR$/web/js/topbar.txt" />
         <option value="$PROJECT_DIR$/src/com/model/User.java" />
-        <option value="$PROJECT_DIR$/src/hibernate.cfg.xml" />
         <option value="$PROJECT_DIR$/src/com/model/User.hbm.xml" />
         <option value="$PROJECT_DIR$/src/com/model/Friend.hbm.xml" />
         <option value="$PROJECT_DIR$/web/WEB-INF/views/topbar.jsp" />
         <option value="$PROJECT_DIR$/web/WEB-INF/views/homepage.jsp" />
         <option value="$PROJECT_DIR$/web/index.jsp" />
         <option value="$PROJECT_DIR$/src/com/json/Info_Status_User.java" />
-        <option value="$PROJECT_DIR$/src/com/worker/ModelGetWorker/UserGetWorker.java" />
         <option value="$PROJECT_DIR$/src/com/controller/MoreInfoChangeWorker.java" />
         <option value="$PROJECT_DIR$/src/com/controller/SettingpageController.java" />
         <option value="$PROJECT_DIR$/src/com/worker/SettingWorker/SettingWorker.java" />
-        <option value="$PROJECT_DIR$/web/js/setting.js" />
         <option value="$PROJECT_DIR$/src/com/worker/SettingWorker/MoreInfoChangeWorker.java" />
         <option value="$PROJECT_DIR$/web/topbar.jsp" />
-        <option value="$PROJECT_DIR$/out/artifacts/ISAProgramming/js/setting.js" />
         <option value="$PROJECT_DIR$/src/Test.java" />
+        <option value="$PROJECT_DIR$/src/com/json/Info_Status_Object.java" />
+        <option value="$PROJECT_DIR$/src/com/json/Friend_Json.java" />
+        <option value="$PROJECT_DIR$/src/com/controller/ModelGetController.java" />
+        <option value="$PROJECT_DIR$/src/com/worker/ModelGetWorker/UserGetWorker.java" />
+        <option value="$PROJECT_DIR$/src/com/DAO/UserDAO.java" />
+        <option value="$PROJECT_DIR$/src/com/worker/ModelGetWorker/FriendGetWorker.java" />
+        <option value="$PROJECT_DIR$/web/js/setting.js" />
+        <option value="$PROJECT_DIR$/src/hibernate.cfg.xml" />
+        <option value="$PROJECT_DIR$/src/com/DAO/FriendDAO.java" />
+        <option value="$PROJECT_DIR$/out/artifacts/ISAProgramming/js/setting.js" />
         <option value="$PROJECT_DIR$/web/WEB-INF/views/setting.jsp" />
       </list>
     </option>
@@ -881,6 +883,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="DAO" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ISAProgramming" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ISAProgramming" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -957,7 +981,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../HibernateDemo3" />
+    <property name="last_opened_file_path" value="D:/Githubs/Webdemo4" />
     <property name="nodejs_interpreter_path" value="E:/Nodejs/node" />
     <property name="js.eslint.eslintPackage" value="" />
     <property name="js-jscs-nodeInterpreter" value="E:\Nodejs\node.exe" />
@@ -970,25 +994,6 @@
     <property name="extract.method.default.visibility" value="private" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\IDEA_Projects\ISAProgramming\web" />
-      <recent name="E:\IDEA_Projects\ISAProgramming\web\WEB-INF\views" />
-      <recent name="E:\IDEA_Projects\ISAProgramming\src\picture\user" />
-      <recent name="E:\IDEA_Projects\ISAProgramming\src\com\picture" />
-      <recent name="E:\IDEA_Projects\ISAProgramming\src\lib" />
-    </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.worker.SettingWorker" />
-      <recent name="com.controller" />
-      <recent name="com.register.logInRegister" />
-      <recent name="com.json" />
-      <recent name="com.register.logUpRegister" />
-    </key>
-    <key name="ImportMappingsDialog.RecentPackages">
-      <recent name="" />
-      <recent name="com.model" />
-      <recent name="com.model.user" />
-    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.tool" />
     </key>
@@ -997,6 +1002,25 @@
       <recent name="E:\IDEA_Projects\ISAProgramming\web" />
       <recent name="E:\IDEA_Projects\ISAProgramming\src" />
       <recent name="E:\IDEA_Projects\ISAProgramming\src\com\model" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.DAO" />
+      <recent name="com.worker.ModelGetWorker" />
+      <recent name="com.worker.SettingWorker" />
+      <recent name="com.controller" />
+      <recent name="com.register.logInRegister" />
+    </key>
+    <key name="ImportMappingsDialog.RecentPackages">
+      <recent name="" />
+      <recent name="com.model" />
+      <recent name="com.model.user" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\IDEA_Projects\ISAProgramming\web" />
+      <recent name="E:\IDEA_Projects\ISAProgramming\web\WEB-INF\views" />
+      <recent name="E:\IDEA_Projects\ISAProgramming\src\picture\user" />
+      <recent name="E:\IDEA_Projects\ISAProgramming\src\com\picture" />
+      <recent name="E:\IDEA_Projects\ISAProgramming\src\lib" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Test">
@@ -1536,12 +1560,12 @@
       <workItem from="1496728107123" duration="2844000" />
       <workItem from="1496743519575" duration="186000" />
       <workItem from="1496754680984" duration="17403000" />
-      <workItem from="1496796091083" duration="3230000" />
+      <workItem from="1496796091083" duration="8160000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="91206000" />
+    <option name="totallyTimeSpent" value="96136000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="0" width="1924" height="1048" extended-state="0" />
@@ -1593,7 +1617,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/out/artifacts/ISAProgramming/js/setting.js</url>
-          <line>55</line>
+          <line>116</line>
         </line-breakpoint>
       </breakpoints>
       <option name="time" value="1" />
@@ -1605,42 +1629,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/jsp/topbar.jsp" />
-    <entry file="file://$PROJECT_DIR$/src/com/controller/PhotoController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-92">
-          <caret line="11" column="3" lean-forward="true" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/worker/logInWorker/GetNameWorker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="9" column="23" lean-forward="false" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/worker/ModelGetWorker/ModelGetWorker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="8" column="8" lean-forward="false" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/worker/logInWorker/LoginWorker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="10" column="12" lean-forward="false" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_91/src.zip!/java/sql/Date.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="159" column="34" lean-forward="true" selection-start-line="159" selection-start-column="34" selection-end-line="159" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/model/user/User.java" />
     <entry file="file://$PROJECT_DIR$/src/com/model/user/Friend.hbm.xml" />
     <entry file="file://$PROJECT_DIR$/src/com/model/user/Friend.java" />
@@ -1648,6 +1636,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
           <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1655,6 +1644,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="299">
           <caret line="13" column="37" lean-forward="false" selection-start-line="13" selection-start-column="37" selection-end-line="13" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1662,6 +1654,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="161">
           <caret line="17" column="45" lean-forward="false" selection-start-line="17" selection-start-column="45" selection-end-line="17" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1758,6 +1753,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
           <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1775,14 +1771,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/hibernate.cfg.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="16" column="40" lean-forward="true" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/model/User.hbm.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
@@ -1795,6 +1783,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="213">
           <caret line="69" column="16" lean-forward="false" selection-start-line="69" selection-start-column="16" selection-end-line="69" selection-end-column="16" />
+          <folding>
+            <element signature="e#1368#1369#0" expanded="true" />
+            <element signature="e#1396#1397#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1895,24 +1887,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="179">
           <caret line="57" column="19" lean-forward="false" selection-start-line="57" selection-start-column="19" selection-end-line="57" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/controller/ModelGetController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="28" column="46" lean-forward="false" selection-start-line="28" selection-start-column="46" selection-end-line="28" selection-end-column="46" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <element signature="e#1025#1026#0" expanded="true" />
+            <element signature="e#1053#1054#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/worker/ModelGetWorker/UserGetWorker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="43" column="41" lean-forward="false" selection-start-line="43" selection-start-column="41" selection-end-line="43" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1969,7 +1947,7 @@
         <state relative-caret-position="110">
           <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1987,49 +1965,7 @@
         <state relative-caret-position="345">
           <caret line="47" column="13" lean-forward="true" selection-start-line="47" selection-start-column="13" selection-end-line="47" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/out/artifacts/ISAProgramming/js/setting.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="130" column="7" lean-forward="true" selection-start-line="130" selection-start-column="7" selection-end-line="130" selection-end-column="7" />
-          <folding>
-            <element signature="e#0#45#0" expanded="false" />
-            <element signature="e#180#250#0" expanded="false" />
-            <element signature="e#295#362#0" expanded="false" />
-            <element signature="e#411#482#0" expanded="false" />
-            <element signature="e#524#1356#0" expanded="false" />
-            <element signature="e#541#1348#0" expanded="false" />
-            <element signature="e#593#641#0" expanded="false" />
-            <element signature="e#680#1338#0" expanded="false" />
-            <element signature="e#797#1324#0" expanded="false" />
-            <element signature="e#1407#2253#0" expanded="false" />
-            <element signature="e#1450#1847#0" expanded="false" />
-            <element signature="e#1853#2247#0" expanded="false" />
-            <element signature="e#2299#3328#0" expanded="false" />
-            <element signature="e#2341#2857#0" expanded="false" />
-            <element signature="e#2862#3322#0" expanded="false" />
-            <element signature="e#3453#4739#0" expanded="false" />
-            <element signature="e#3753#3830#0" expanded="false" />
-            <element signature="e#3876#3969#0" expanded="false" />
-            <element signature="e#4012#4089#0" expanded="false" />
-            <element signature="e#4106#4732#0" expanded="false" />
-            <element signature="e#4164#4298#0" expanded="false" />
-            <element signature="e#4337#4722#0" expanded="false" />
-            <element signature="e#4460#4708#0" expanded="false" />
-            <element signature="e#4505#4683#0" expanded="false" />
-            <element signature="e#4795#5514#0" expanded="false" />
-            <element signature="e#4835#5467#0" expanded="false" />
-            <element signature="e#4856#5456#0" expanded="false" />
-            <element signature="e#4920#5172#0" expanded="false" />
-            <element signature="e#5214#5442#0" expanded="false" />
-            <element signature="e#5352#5424#0" expanded="false" />
-            <element signature="e#5544#5670#0" expanded="false" />
-            <element signature="e#5571#5614#0" expanded="false" />
-            <element signature="e#5620#5664#0" expanded="false" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2044,53 +1980,175 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/worker/ModelGetWorker/UserGetWorker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="27" column="56" lean-forward="false" selection-start-line="27" selection-start-column="56" selection-end-line="27" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/json/Info_Status_Object.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="10" column="30" lean-forward="false" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+          <folding>
+            <element signature="e#211#212#0" expanded="true" />
+            <element signature="e#253#254#0" expanded="true" />
+            <element signature="e#287#288#0" expanded="true" />
+            <element signature="e#320#321#0" expanded="true" />
+            <element signature="e#349#350#0" expanded="true" />
+            <element signature="e#394#395#0" expanded="true" />
+            <element signature="e#430#431#0" expanded="true" />
+            <element signature="e#460#461#0" expanded="true" />
+            <element signature="e#486#487#0" expanded="true" />
+            <element signature="e#524#525#0" expanded="true" />
+            <element signature="e#554#555#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/DAO/UserDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="9" column="64" lean-forward="false" selection-start-line="9" selection-start-column="64" selection-end-line="9" selection-end-column="64" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/worker/ModelGetWorker/ModelGetWorker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="7" column="17" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/json/Friend_Json.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="7" column="17" lean-forward="true" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+          <folding>
+            <element signature="e#162#163#0" expanded="true" />
+            <element signature="e#192#193#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/controller/ModelGetController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="53" column="29" lean-forward="true" selection-start-line="53" selection-start-column="29" selection-end-line="53" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/web/js/setting.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="3" column="14" lean-forward="false" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
+        <state relative-caret-position="736">
+          <caret line="83" column="17" lean-forward="true" selection-start-line="83" selection-start-column="17" selection-end-line="83" selection-end-column="17" />
           <folding>
             <element signature="e#0#45#0" expanded="false" />
-            <element signature="e#60#5281#0" expanded="false" />
-            <element signature="e#180#250#0" expanded="false" />
-            <element signature="e#295#362#0" expanded="false" />
-            <element signature="e#411#482#0" expanded="false" />
-            <element signature="e#524#1356#0" expanded="false" />
-            <element signature="e#541#1348#0" expanded="false" />
-            <element signature="e#593#641#0" expanded="false" />
-            <element signature="e#680#1338#0" expanded="false" />
-            <element signature="e#797#1324#0" expanded="false" />
-            <element signature="e#1407#2253#0" expanded="false" />
-            <element signature="e#1450#1847#0" expanded="false" />
-            <element signature="e#1853#2247#0" expanded="false" />
-            <element signature="e#2299#2910#0" expanded="false" />
-            <element signature="e#2341#2648#0" expanded="false" />
-            <element signature="e#2653#2904#0" expanded="false" />
-            <element signature="e#3035#4321#0" expanded="false" />
-            <element signature="e#3335#3412#0" expanded="false" />
-            <element signature="e#3458#3551#0" expanded="false" />
-            <element signature="e#3594#3671#0" expanded="false" />
-            <element signature="e#3688#4314#0" expanded="false" />
-            <element signature="e#3746#3880#0" expanded="false" />
-            <element signature="e#3919#4304#0" expanded="false" />
-            <element signature="e#4042#4290#0" expanded="false" />
-            <element signature="e#4087#4265#0" expanded="false" />
-            <element signature="e#4377#5096#0" expanded="false" />
-            <element signature="e#4417#5049#0" expanded="false" />
-            <element signature="e#4438#5038#0" expanded="false" />
-            <element signature="e#4502#4754#0" expanded="false" />
-            <element signature="e#4796#5024#0" expanded="false" />
-            <element signature="e#4934#5006#0" expanded="false" />
-            <element signature="e#5126#5252#0" expanded="false" />
-            <element signature="e#5153#5196#0" expanded="false" />
-            <element signature="e#5202#5246#0" expanded="false" />
+            <element signature="e#201#271#0" expanded="false" />
+            <element signature="e#316#383#0" expanded="false" />
+            <element signature="e#432#503#0" expanded="false" />
+            <element signature="e#553#1975#0" expanded="false" />
+            <element signature="e#2290#2817#0" expanded="false" />
+            <element signature="e#3333#4179#0" expanded="false" />
+            <element signature="e#3376#3773#0" expanded="false" />
+            <element signature="e#3779#4173#0" expanded="false" />
+            <element signature="e#4225#4840#0" expanded="false" />
+            <element signature="e#4267#4574#0" expanded="false" />
+            <element signature="e#4580#4834#0" expanded="false" />
+            <element signature="e#4965#6251#0" expanded="false" />
+            <element signature="e#5265#5342#0" expanded="false" />
+            <element signature="e#5388#5481#0" expanded="false" />
+            <element signature="e#5524#5601#0" expanded="false" />
+            <element signature="e#5618#6244#0" expanded="false" />
+            <element signature="e#5676#5810#0" expanded="false" />
+            <element signature="e#5849#6234#0" expanded="false" />
+            <element signature="e#5972#6220#0" expanded="false" />
+            <element signature="e#6017#6195#0" expanded="false" />
+            <element signature="e#6307#7036#0" expanded="false" />
+            <element signature="e#6348#6988#0" expanded="false" />
+            <element signature="e#6369#6977#0" expanded="false" />
+            <element signature="e#6435#6691#0" expanded="false" />
+            <element signature="e#6734#6963#0" expanded="false" />
+            <element signature="e#6873#6945#0" expanded="false" />
+            <element signature="e#7066#7192#0" expanded="false" />
+            <element signature="e#7093#7136#0" expanded="false" />
+            <element signature="e#7142#7186#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hibernate.cfg.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="11" column="41" lean-forward="true" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/worker/ModelGetWorker/FriendGetWorker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="455">
+          <caret line="24" column="60" lean-forward="false" selection-start-line="24" selection-start-column="60" selection-end-line="24" selection-end-column="60" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/out/artifacts/ISAProgramming/js/setting.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="28">
+          <caret line="49" column="45" lean-forward="false" selection-start-line="49" selection-start-column="45" selection-end-line="49" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#45#0" expanded="false" />
+            <element signature="e#316#383#0" expanded="false" />
+            <element signature="e#432#503#0" expanded="false" />
+            <element signature="e#2470#3735#0" expanded="false" />
+            <element signature="e#2539#2587#0" expanded="false" />
+            <element signature="e#2626#3284#0" expanded="false" />
+            <element signature="e#2743#3270#0" expanded="false" />
+            <element signature="e#3786#4632#0" expanded="false" />
+            <element signature="e#3829#4226#0" expanded="false" />
+            <element signature="e#4232#4626#0" expanded="false" />
+            <element signature="e#4678#5293#0" expanded="false" />
+            <element signature="e#5718#5795#0" expanded="false" />
+            <element signature="e#5841#5934#0" expanded="false" />
+            <element signature="e#5977#6054#0" expanded="false" />
+            <element signature="e#6071#6697#0" expanded="false" />
+            <element signature="e#6129#6263#0" expanded="false" />
+            <element signature="e#6302#6687#0" expanded="false" />
+            <element signature="e#6425#6673#0" expanded="false" />
+            <element signature="e#6470#6648#0" expanded="false" />
+            <element signature="e#6760#7489#0" expanded="false" />
+            <element signature="e#6822#7430#0" expanded="false" />
+            <element signature="e#7519#7645#0" expanded="false" />
+            <element signature="e#7546#7589#0" expanded="false" />
+            <element signature="e#7595#7639#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/DAO/FriendDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="524">
+          <caret line="34" column="41" lean-forward="false" selection-start-line="34" selection-start-column="41" selection-end-line="34" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/setting.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="143" column="24" lean-forward="false" selection-start-line="143" selection-start-column="24" selection-end-line="143" selection-end-column="24" />
+        <state relative-caret-position="483">
+          <caret line="132" column="28" lean-forward="false" selection-start-line="132" selection-start-column="28" selection-end-line="132" selection-end-column="28" />
           <folding />
         </state>
       </provider>

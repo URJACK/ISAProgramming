@@ -2,7 +2,9 @@ package com.controller;
 
 import com.google.gson.Gson;
 import com.json.Info_Status;
+import com.json.Info_Status_Object;
 import com.json.Info_Status_User;
+import com.worker.ModelGetWorker.FriendGetWorker;
 import com.worker.ModelGetWorker.ModelGetWorker;
 import com.worker.ModelGetWorker.UserGetWorker;
 import org.springframework.stereotype.Controller;
@@ -34,6 +36,27 @@ public class ModelGetController {
             writer.flush();
             writer.close();
 
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @RequestMapping("/friend")
+    public void friend(HttpServletRequest rq,HttpServletResponse rsp){
+        try {
+            rq.setCharacterEncoding("UTF-8");
+            rsp.setCharacterEncoding("UTF-8");
+            rsp.setContentType("text/html");
+
+            Info_Status_Object iso = new Info_Status_Object();
+            ModelGetWorker mgw = new FriendGetWorker();
+            mgw.work(rq,iso);
+
+            PrintWriter writer = rsp.getWriter();
+            writer.print(new Gson().toJson(iso));
+            writer.flush();
+            writer.close();
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         } catch (IOException e) {

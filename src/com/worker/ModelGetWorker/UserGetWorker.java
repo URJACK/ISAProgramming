@@ -1,5 +1,6 @@
 package com.worker.ModelGetWorker;
 
+import com.DAO.UserDAO;
 import com.json.Info_Status_User;
 import com.model.User;
 import com.tool.SessionOpenner;
@@ -24,21 +25,21 @@ public class UserGetWorker implements ModelGetWorker {
         try {
             String account = rq.getParameter("account");
             Session session = SessionOpenner.getInstance().getSession();
-            User user = (User) session.createQuery(String.format("FROM User where account='%s'", account)).list().get(0);
+            User user = UserDAO.getUser(account, session);
             is.setInfos("完成了查询");
             is.setAccount(account);
             is.setEmail(user.getEmail());
             is.setDate(user.getDate().toString());
             //MORE INFOMATION
-            if (user.getMajor()!=null)
+            if (user.getMajor() != null)
                 is.setMajor(user.getMajor());
             else
                 is.setMajor("尚未设置主修");
-            if (user.getClazz()!=null)
+            if (user.getClazz() != null)
                 is.setClazz(user.getClazz());
             else
                 is.setClazz(-1);
-            if (user.getIntroduce()!=null)
+            if (user.getIntroduce() != null)
                 is.setIntroduce(user.getIntroduce());
             else
                 is.setIntroduce("尚未设置自我介绍");

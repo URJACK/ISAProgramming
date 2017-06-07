@@ -4,6 +4,7 @@
 $(function () {
     var needChangePassword = false;
     var needChangeMoreInformation = false;
+    var firendslist;
     var auto_LoginFailed = function () {
         alert("你的账户信息不符合");
         window.location = "/home";
@@ -13,6 +14,52 @@ $(function () {
     };
     var setTabMoreInfoContent = function (str) {
         $('#main_tab_moreinfo_content').get(0).innerHTML = str;
+    };
+    var refreshFirendsList = function (friends) {
+        var tbody = $('#main_tab_friend_tbody').get(0);
+        var arr = tbody.getElementsByTagName('tr');
+        while (arr.length != 0)
+            tbody.removeChild(arr[0]);
+
+        for (var i = 0; i < friends.length; i++) {
+            var child = document.createElement('tr');
+            var oAccount = document.createElement('td');
+            var oEmail = document.createElement('td');
+            var oPerate = document.createElement('td');
+            var oPerate_Div = document.createElement('div');
+            var oQuery = document.createElement('a');
+            var oDelete = document.createElement('a');
+            var oChat = document.createElement('a');
+            oQuery.innerHTML = "Query";
+            oDelete.innerHTML = "Delete";
+            oChat.innerHTML = "Chat";
+            oQuery.href = '#';
+            oDelete.href = '#';
+            oChat.href = '#';
+            var jqoQuery = $(oQuery);
+            var jqoDelete = $(oDelete);
+            var jqoChat = $(oChat);
+            var jqoPerate_Div = $(oPerate_Div);
+            jqoPerate_Div.addClass('btn-group');
+            jqoPerate_Div.addClass('btn-group-sm');
+            jqoQuery.addClass('btn');
+            jqoDelete.addClass('btn');
+            jqoChat.addClass('btn');
+            jqoQuery.addClass('btn btn-default');
+            jqoDelete.addClass('btn btn-default');
+            jqoChat.addClass('btn btn-default');
+
+            oPerate_Div.appendChild(oQuery);
+            oPerate_Div.appendChild(oDelete);
+            oPerate_Div.appendChild(oChat);
+            oPerate.appendChild(oPerate_Div);
+            oEmail.innerHTML = friends[i].email;
+            oAccount.innerHTML = friends[i].account;
+            child.appendChild(oAccount);
+            child.appendChild(oEmail);
+            child.appendChild(oPerate);
+            tbody.appendChild(child);
+        }
     };
     var auto_LoginSuccess = function () {
         $.ajax({
@@ -33,7 +80,21 @@ $(function () {
                     $('#main_tab_moreinfo_major').get(0).value = json.major;
                 }
             }
-        });
+        });         //得到User 的个人信息
+        $.ajax({
+            url: '/model/friend',
+            data: {
+                account: account
+            },
+            success: function (json) {
+                json = JSON.parse(json);
+                console.log(json.infos)
+                firendslist = json.obj;
+                if (json.status) {
+                    refreshFirendsList(firendslist);
+                }
+            }
+        })
     };
     var changeModifyPasswordStatus = function () {
         if (needChangePassword == false) {
@@ -53,20 +114,14 @@ $(function () {
     var changeMoreInformation = function () {
         if (!needChangeMoreInformation) {
             setTabMoreInfoContent("请开始修改你的信息");
-            $('#main_tab_moreinfo_commit').removeClass('btn-primary');
-            $('#main_tab_moreinfo_commit').addClass('btn-success');
-            $('#main_tab_moreinfo_commit').get(0).innerHTML = "确认修改";
             $('#main_tab_moreinfo_introduce').removeAttr('readonly');
             $('#main_tab_moreinfo_class').removeAttr('readonly');
             $('#main_tab_moreinfo_major').removeAttr('readonly');
             needChangeMoreInformation = true;
-        }else {
-            $('#main_tab_moreinfo_commit').removeClass('btn-success');
-            $('#main_tab_moreinfo_commit').addClass('btn-primary');
-            $('#main_tab_moreinfo_commit').get(0).innerHTML = "再次修改";
-            $('#main_tab_moreinfo_introduce').attr('readonly','');
-            $('#main_tab_moreinfo_class').attr('readonly','');
-            $('#main_tab_moreinfo_major').attr('readonly','');
+        } else {
+            $('#main_tab_moreinfo_introduce').attr('readonly', '');
+            $('#main_tab_moreinfo_class').attr('readonly', '');
+            $('#main_tab_moreinfo_major').attr('readonly', '');
             needChangeMoreInformation = false;
         }
     };
@@ -109,24 +164,24 @@ $(function () {
         })
     });
     $('#main_tab_moreinfo_commit').click(function () {
-        if (needChangeMoreInformation){
+        if (needChangeMoreInformation) {
             $.ajax({
-                url:"/setting/moreinfo",
-                data:{
-                    account:account,
-                    introduce:$('#main_tab_moreinfo_introduce').val(),
-                    major:$('#main_tab_moreinfo_major').val(),
-                    clazz:$('#main_tab_moreinfo_class').val()
+                url: "/setting/moreinfo",
+                data: {
+                    account: account,
+                    introduce: $('#main_tab_moreinfo_introduce').val(),
+                    major: $('#main_tab_moreinfo_major').val(),
+                    clazz: $('#main_tab_moreinfo_class').val()
                 },
-                success:function (json) {
+                success: function (json) {
                     json = JSON.parse(json);
                     setTabMoreInfoContent(json.infos);
-                    if (json.status){
+                    if (json.status) {
                         changeMoreInformation();
                     }
                 }
             })
-        }else
+        } else
             changeMoreInformation();
     });
     setTimeout(function () {

@@ -130,17 +130,7 @@
                         </tr>
                         </thead>
                         <tbody id="main_tab_friend_tbody">
-                        <tr>
-                            <td>Fufangzhou</td>
-                            <td>3161@qq.com</td>
-                            <td>
-                                <div class="btn-group btn-group-sm">
-                                    <a href="#" class="btn btn-default">你好</a>
-                                    <a href="#" class="btn btn-default">查询</a>
-                                    <a href="#" class="btn btn-default">获取</a>
-                                </div>
-                            </td>
-                        </tr>
+                            
                         </tbody>
                     </table>
                 </div>
