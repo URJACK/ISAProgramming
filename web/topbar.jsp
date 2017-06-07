@@ -42,7 +42,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">账户登陆</h4></div>
+                <h4 class="modal-title">SIGN IN</h4></div>
             <div class="modal-body">
                 <div class="container-fluid">
                     <form>
@@ -88,7 +88,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">账户注册</h4></div>
+                <h4 class="modal-title">SIGN UP</h4></div>
             <div class="modal-body">
                 <div class="container-fluid">
                     <form>

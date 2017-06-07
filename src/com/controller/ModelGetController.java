@@ -7,6 +7,7 @@ import com.json.Info_Status_User;
 import com.worker.ModelGetWorker.FriendGetWorker;
 import com.worker.ModelGetWorker.ModelGetWorker;
 import com.worker.ModelGetWorker.UserGetWorker;
+import com.worker.ModelGetWorker.UserOtherGetWorker;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -20,6 +21,7 @@ import java.io.UnsupportedEncodingException;
 @RequestMapping("/model")
 public class ModelGetController {
 
+    //查询自己的其他信息
     @RequestMapping("/user")
     public void user(HttpServletRequest rq, HttpServletResponse rsp){
         try {
@@ -42,6 +44,8 @@ public class ModelGetController {
             e.printStackTrace();
         }
     }
+
+    //查询自己的好友
     @RequestMapping("/friend")
     public void friend(HttpServletRequest rq,HttpServletResponse rsp){
         try {
@@ -60,6 +64,28 @@ public class ModelGetController {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    //查询一个非自己的用户的信息
+    @RequestMapping("/otheruser")
+    public void otheruser(HttpServletRequest rq,HttpServletResponse rsp){
+        try {
+            rq.setCharacterEncoding("UTF-8");
+            rsp.setCharacterEncoding("UTF-8");
+            rsp.setContentType("text/html");
+
+            Info_Status_Object iso = new Info_Status_Object();
+            ModelGetWorker mgw = new UserOtherGetWorker();
+            mgw.work(rq,iso);
+
+            PrintWriter writer = rsp.getWriter();
+            writer.print(new Gson().toJson(iso));
+            writer.flush();
+            writer.close();
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
