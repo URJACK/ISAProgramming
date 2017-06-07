@@ -8,6 +8,11 @@
     <title>ISA Programing</title>
     <link rel="stylesheet" type="text/css"
           href="/css/bootstrap.min.css">
+    <style>
+        td,th{
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
 <jsp:include page="/topbar.jsp"/>
@@ -23,7 +28,7 @@
                data-toggle="dropdown">More<b class="caret"></b>
             </a>
             <ul class="dropdown-menu" role="menu">
-                <li><a href="#main_tab_topic"  data-toggle="tab">
+                <li><a href="#main_tab_topic" data-toggle="tab">
                     发表的帖子</a>
                 </li>
                 <li class="divider"></li>
@@ -113,10 +118,45 @@
             </p>
         </div>
         <div class="tab-pane fade" id="main_tab_friend">
-            <p>HereYou Can See Your Friend
-            </p>
+            <div class="row">
+                <div class="col-md-5 col-xs-12">
+                    <table class="table table-striped">
+                        <caption>你的好友</caption>
+                        <thead>
+                        <tr>
+                            <th>Account</th>
+                            <th>Email</th>
+                            <th>Operation</th>
+                        </tr>
+                        </thead>
+                        <tbody id="main_tab_friend_tbody">
+                        <tr>
+                            <td>Fufangzhou</td>
+                            <td>3161@qq.com</td>
+                            <td>
+                                <div class="btn-group btn-group-sm">
+                                    <a href="#" class="btn btn-default">你好</a>
+                                    <a href="#" class="btn btn-default">查询</a>
+                                    <a href="#" class="btn btn-default">获取</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Fufangzhou</td>
+                            <td>3161@qq.com</td>
+                            <td>
+                                <div class="btn-group btn-group-sm">
+                                    <a href="#" class="btn btn-default">你好</a>
+                                    <a href="#" class="btn btn-default">查询</a>
+                                    <a href="#" class="btn btn-default">获取</a>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-
     </div>
 </div>
 </body>
