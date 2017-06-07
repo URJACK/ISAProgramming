@@ -139,7 +139,7 @@
     </div>
 </div>
 <script type="text/javascript">
-    $("[clk='']").click(function () {
+    $("a[clk='1']").click(function () {
         var counter = 0;
         console.log("CLK Ok"+counter++);
     });

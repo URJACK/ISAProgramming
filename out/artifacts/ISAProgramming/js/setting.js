@@ -49,9 +49,9 @@ $(function () {
             jqoQuery.addClass('btn btn-default');
             jqoDelete.addClass('btn btn-default');
             jqoChat.addClass('btn btn-default');
-            jqoChat.attr('clk','');
-            jqoDelete.attr('clk','');
-            jqoQuery.attr('clk','');
+            jqoChat.attr('clk','1');
+            jqoDelete.attr('clk','1');
+            jqoQuery.attr('clk','1');
 
             oPerate_Div.appendChild(oQuery);
             oPerate_Div.appendChild(oDelete);
