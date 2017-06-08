@@ -156,7 +156,7 @@
                 </div>
                 <div class="col-md-7 col-xs-12" id="main_tab_friend_display">
 
-                    <div class="row">
+                    <div class="row" id="main_tab_friend_display_chatbox">
                         <div class="row">
                             <label class="col-md-offset-1 col-xs-offset-0 col-md-2 col-xs-12">Debug</label>
                             <label class="text-primary bg-primary col-md-offset-2 col-xs-offset-1 col-md-8 col-xs-10"
@@ -177,10 +177,10 @@
                         <div class="input-group col-md-offset-1 col-md-11 col-xs-offset-0 col-xs-12">
                             <div class="container">
                                 <div class="col-md-8 col-xs-8">
-                                    <textarea class="bg-info text-info" style="width: 100%; height: 100px;border-radius: 10px"></textarea>
+                                    <textarea class="bg-info text-info" style="width: 100%; height: 100px;border-radius: 10px" id="main_tab_friend_display_inputbox"></textarea>
                                 </div>
                                 <div class="col-md-2 col-xs-4">
-                                    <img src="/source/mail.svg" style="height: 100px">
+                                    <img src="/source/mail.svg" style="height: 100px" id="main_tab_friend_display_send">
                                 </div>
                             </div>
                         </div>

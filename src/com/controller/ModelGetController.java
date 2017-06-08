@@ -4,10 +4,7 @@ import com.google.gson.Gson;
 import com.json.Info_Status;
 import com.json.Info_Status_Object;
 import com.json.Info_Status_User;
-import com.worker.ModelGetWorker.FriendGetWorker;
-import com.worker.ModelGetWorker.ModelGetWorker;
-import com.worker.ModelGetWorker.UserGetWorker;
-import com.worker.ModelGetWorker.UserOtherGetWorker;
+import com.worker.ModelGetWorker.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -71,12 +68,12 @@ public class ModelGetController {
     //查询一个非自己的用户的信息
     @RequestMapping("/otheruser")
     public void otheruser(HttpServletRequest rq,HttpServletResponse rsp){
+        Info_Status_Object iso = new Info_Status_Object();
         try {
             rq.setCharacterEncoding("UTF-8");
             rsp.setCharacterEncoding("UTF-8");
             rsp.setContentType("text/html");
 
-            Info_Status_Object iso = new Info_Status_Object();
             ModelGetWorker mgw = new UserOtherGetWorker();
             mgw.work(rq,iso);
 
@@ -87,6 +84,33 @@ public class ModelGetController {
 
         } catch (Exception e) {
             e.printStackTrace();
+            iso.setStatus(false);
+            iso.setInfos("Server Error");
+            iso.setObj(null);
+        }
+    }
+
+    //'A'发来请求，查看与'B'的聊天记录
+    @RequestMapping("/chat")
+    public void chat(HttpServletRequest rq,HttpServletResponse rsp){
+        Info_Status_Object iso = new Info_Status_Object();
+        try {
+            rq.setCharacterEncoding("UTF-8");
+            rsp.setCharacterEncoding("UTF-8");
+            rsp.setContentType("text/html");
+
+            ModelGetWorker mgw = new ChatInfosGetWorker();
+            mgw.work(rq,iso);
+
+            PrintWriter writer = rsp.getWriter();
+            writer.write(new Gson().toJson(iso));
+            writer.flush();
+            writer.close();
+        }catch (Exception e){
+            e.printStackTrace();
+            iso.setStatus(false);
+            iso.setInfos("Server Error");
+            iso.setObj(null);
         }
     }
 }

@@ -6,7 +6,7 @@ $(function () {
     var needChangeMoreInformation = false;
     var targetAccount;                  //被当前用户选中要查看或者聊天的目标Account
     var firendslist;
-    var chatIndex = -1;                      //记录当前聊天记录的条数
+    var chatIndex = 0;                      //记录当前聊天记录的条数
     //自动登陆如果失败了
     var auto_LoginFailed = function () {
         alert("你的账户信息不符合");
@@ -28,7 +28,7 @@ $(function () {
             display.removeChild(arr[0]);
     };
     //在朋友界面点击查询后 根据传入的Json 设置Friend 界面的右边的内容
-    var resetElementInFriendContent = function (obj) {
+    var resetElementInFriendContent_Query = function (obj) {
         clearElement_FriendContent();
 
         var display = $('#main_tab_friend_display').get(0);
@@ -103,7 +103,7 @@ $(function () {
                 json = JSON.parse(json);
                 console.log(json.infos);
                 if (json.status) {
-                    resetElementInFriendContent(json.obj);
+                    resetElementInFriendContent_Query(json.obj);
                 }
             }
         })
@@ -112,17 +112,51 @@ $(function () {
     var friend_delete = function () {
         console.log("delete");
     };
-    //在朋友界面点击聊天:会将chatIndex 的数值进行重置为-1。
+    //根据传入的obj设置 聊天的内容
+    var refreshChatRecord = function (obj) {
+
+    };
+    //在朋友界面点击聊天后 直接设置Friend 右边界面 容纳聊天记录的主体
+    var resetElementInFriendContent_Chat = function () {
+        $('#main_tab_friend_display').get(0).innerHTML = "\
+            <div class='row' id='main_tab_friend_display_chatbox'>\
+        </div>\
+        <br>\
+        <div class='row'>\
+            <div class='input-group col-md-offset-1 col-md-11 col-xs-offset-0 col-xs-12'>\
+            <div class='container'>\
+            <div class='col-md-8 col-xs-8'>\
+            <textarea class='bg-info text-info' style='width: 100%; height: 100px;border-radius: 10px' id='main_tab_friend_display_inputbox'></textarea>\
+            </div>\
+            <div class='col-md-2 col-xs-4'>\
+            <img src='/source/mail.svg' style='height: 100px' id='main_tab_friend_display_send'>\
+            </div>\
+            </div>\
+            </div>\
+            </div>";
+
+    };
+    //在朋友界面点击聊天:会将chatIndex 的数值进行重置为0。
     var friend_chat = function () {
         targetAccount = this.parentNode.parentNode.parentNode.children[0].innerHTML;
+        chatIndex = 0;
+        clearElement_FriendContent();
+        resetElementInFriendContent_Chat();
         $.ajax({
-            url:"/model/chat",
-            type:"POST",
-            data:{
-                account:account,
-                targetaccount:targetAccount,
+            url: "/model/chat",
+            type: "POST",
+            data: {
+                account: account,
+                targetaccount: targetAccount,
+                chatindex: chatIndex
+            },
+            success: function (json) {
+                json = JSON.parse(json);
+                console.log(json.infos);
+                if (json.status) {
+                    refreshChatRecord(json.obj);
+                }
             }
-
         })
     };
     //刷新朋友界面的列表
