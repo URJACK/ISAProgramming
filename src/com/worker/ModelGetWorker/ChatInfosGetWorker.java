@@ -23,11 +23,26 @@ public class ChatInfosGetWorker implements ModelGetWorker {
         String accountA = rq.getParameter("account");
         String accountB = rq.getParameter("targetaccount");
         int chatIndex = Integer.parseInt(rq.getParameter("chatindex"));
+        System.out.println(accountA);
+        System.out.println(accountB);
+        System.out.println(chatIndex);
+        Session session;
+        User userA;
+        User userB;
         try {
-
-            Session session = SessionOpenner.getInstance().getSession();
-            User userA = (User) session.createQuery(String.format("FROM User WHERE account '%s'", accountA)).list().get(0);
-            User userB = (User) session.createQuery(String.format("FROM User WHERE account '%s'", accountB)).list().get(0);
+            session = SessionOpenner.getInstance().getSession();
+            userA = (User) session.createQuery(String.format("FROM User WHERE account='%s'", accountA)).list().get(0);
+            userB = (User) session.createQuery(String.format("FROM User WHERE account='%s'", accountB)).list().get(0);
+        }catch (IndexOutOfBoundsException e){
+            iso.setInfos("Server Query User Error");
+            iso.setStatus(false);
+            return 0;
+        }catch (Exception e){
+            iso.setInfos("Server Query Error Before Friend");
+            iso.setStatus(false);
+            return 0;
+        }
+        try{
             int userAid = userA.getId();
             int userBid = userB.getId();
             FriendChat[] friendChats = getFriendChats(userAid, userBid, session);
@@ -36,17 +51,20 @@ public class ChatInfosGetWorker implements ModelGetWorker {
             iso.setObj(messages);
             iso.setStatus(true);
             return 1;
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IndexOutOfBoundsException e) {
+            iso.setInfos("Server Query Friend Error");
+            iso.setStatus(false);
+            return 0;
+        }catch (Exception e){
             iso.setInfos("Server Query Error");
             iso.setStatus(false);
-            iso.setObj(null);
             return 0;
         }
     }
 
     private List<Message> getMessages(FriendChat[] friendChats, int chatIndex, int userAId) {
         List<Message> messages = new ArrayList<>(5);
+        System.out.println("DEBUG 3");
         for (int i = chatIndex; i < friendChats.length; i++) {
             FriendChat fc = friendChats[i];
             Message message = new Message();
@@ -57,11 +75,16 @@ public class ChatInfosGetWorker implements ModelGetWorker {
                 message.setSelf(false);
             messages.add(message);
         }
+        System.out.println("DEBUG 4");
         return messages;
     }
 
     private FriendChat[] getFriendChats(int userAid, int userBid, Session session) {
+        System.out.println("DEBUG 1");
         Friend friend = (Friend) session.createQuery(String.format("FROM Friend WHERE userAid='%s' AND userBid='%s' OR userAid='%s' AND userBid='%s'", userAid, userBid, userBid, userAid)).list().get(0);
-        return (FriendChat[]) friend.getChats().toArray();
+        System.out.println("DEBUG 2");
+        FriendChat[] chats = new FriendChat[friend.getChats().size()];
+        friend.getChats().toArray(chats);
+        return chats;
     }
 }

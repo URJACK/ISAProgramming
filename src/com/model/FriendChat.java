@@ -82,4 +82,16 @@ public class FriendChat {
     public void setSender(User sender) {
         this.sender = sender;
     }
+
+    @Override
+    public String toString() {
+        return "FriendChat{" +
+                "id=" + id +
+                ", rid=" + rid +
+                ", senderid=" + senderid +
+                ", content='" + content + '\'' +
+                ", friend=" + friend +
+                ", sender=" + sender +
+                '}';
+    }
 }
