@@ -4,7 +4,9 @@
 $(function () {
     var needChangePassword = false;
     var needChangeMoreInformation = false;
+    var targetAccount;                  //被当前用户选中要查看或者聊天的目标Account
     var firendslist;
+    var chatIndex = -1;                      //记录当前聊天记录的条数
     //自动登陆如果失败了
     var auto_LoginFailed = function () {
         alert("你的账户信息不符合");
@@ -24,7 +26,7 @@ $(function () {
         var arr = display.childNodes;
         while (arr.length != 0)
             display.removeChild(arr[0]);
-    }
+    };
     //在朋友界面点击查询后 根据传入的Json 设置Friend 界面的右边的内容
     var resetElementInFriendContent = function (obj) {
         clearElement_FriendContent();
@@ -90,7 +92,7 @@ $(function () {
     //在朋友界面点击查询
     var friend_query = function () {
         //目标的Account
-        var targetAccount = this.parentNode.parentNode.parentNode.children[0].innerHTML;
+        targetAccount = this.parentNode.parentNode.parentNode.children[0].innerHTML;
         $.ajax({
             url: "/model/otheruser",
             type: "POST",
@@ -110,9 +112,18 @@ $(function () {
     var friend_delete = function () {
         console.log("delete");
     };
-    //在朋友界面点击聊天
+    //在朋友界面点击聊天:会将chatIndex 的数值进行重置为-1。
     var friend_chat = function () {
-        console.log("chat");
+        targetAccount = this.parentNode.parentNode.parentNode.children[0].innerHTML;
+        $.ajax({
+            url:"/model/chat",
+            type:"POST",
+            data:{
+                account:account,
+                targetaccount:targetAccount,
+            }
+
+        })
     };
     //刷新朋友界面的列表
     var refreshFirendsList = function (friends) {
@@ -131,9 +142,9 @@ $(function () {
             var oDelete = document.createElement('a');
             var oChat = document.createElement('a');
 
-            oQuery.innerHTML = "Query";
-            oDelete.innerHTML = "Delete";
-            oChat.innerHTML = "Chat";
+            oQuery.innerHTML = "<img src='/source/query.svg'>";
+            oDelete.innerHTML = "<img src='/source/delete.svg'>";
+            oChat.innerHTML = "<img src='/source/chat.svg'>";
             oQuery.href = '#';
             oDelete.href = '#';
             oChat.href = '#';
