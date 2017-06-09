@@ -1,5 +1,7 @@
 package com.worker.ModelGetWorker;
 
+import com.DAO.FriendDAO;
+import com.DAO.UserDAO;
 import com.json.Info_Status_Object;
 import com.json.Message;
 import com.model.Friend;
@@ -26,23 +28,25 @@ public class ChatInfosGetWorker implements ModelGetWorker {
         System.out.println(accountA);
         System.out.println(accountB);
         System.out.println(chatIndex);
-        Session session;
+        Session session = null;
         User userA;
         User userB;
         try {
             session = SessionOpenner.getInstance().getSession();
-            userA = (User) session.createQuery(String.format("FROM User WHERE account='%s'", accountA)).list().get(0);
-            userB = (User) session.createQuery(String.format("FROM User WHERE account='%s'", accountB)).list().get(0);
-        }catch (IndexOutOfBoundsException e){
+            userA = UserDAO.getUser(accountA,session);
+            userB = UserDAO.getUser(accountB,session);
+        } catch (IndexOutOfBoundsException e) {
             iso.setInfos("Server Query User Error");
             iso.setStatus(false);
+            session.close();
             return 0;
-        }catch (Exception e){
+        } catch (Exception e) {
             iso.setInfos("Server Query Error Before Friend");
             iso.setStatus(false);
+            session.close();
             return 0;
         }
-        try{
+        try {
             int userAid = userA.getId();
             int userBid = userB.getId();
             FriendChat[] friendChats = getFriendChats(userAid, userBid, session);
@@ -50,14 +54,17 @@ public class ChatInfosGetWorker implements ModelGetWorker {
             iso.setInfos("OK");
             iso.setObj(messages);
             iso.setStatus(true);
+            session.close();
             return 1;
         } catch (IndexOutOfBoundsException e) {
             iso.setInfos("Server Query Friend Error");
             iso.setStatus(false);
+            session.close();
             return 0;
-        }catch (Exception e){
+        } catch (Exception e) {
             iso.setInfos("Server Query Error");
             iso.setStatus(false);
+            session.close();
             return 0;
         }
     }
@@ -78,7 +85,7 @@ public class ChatInfosGetWorker implements ModelGetWorker {
     }
 
     private FriendChat[] getFriendChats(int userAid, int userBid, Session session) {
-        Friend friend = (Friend) session.createQuery(String.format("FROM Friend WHERE userAid='%s' AND userBid='%s' OR userAid='%s' AND userBid='%s'", userAid, userBid, userBid, userAid)).list().get(0);
+        Friend friend = FriendDAO.getFriend(session, userAid, userBid);
         FriendChat[] chats = new FriendChat[friend.getChats().size()];
         friend.getChats().toArray(chats);
         return chats;

@@ -8,6 +8,7 @@ $(function () {
     var firendslist;
     var chatIndex = 0;                      //记录当前聊天记录的条数
     //自动登陆如果失败了
+    var timer;
     var auto_LoginFailed = function () {
         alert("你的账户信息不符合");
         window.location = "/home";
@@ -88,6 +89,8 @@ $(function () {
         oForm.appendChild(oClass);
 
         display.appendChild(oForm);
+
+        clearInterval(timer);
     };
     //在朋友界面点击查询
     var friend_query = function () {
@@ -136,13 +139,36 @@ $(function () {
             chatBox.appendChild(oMessage);
             chatBox.appendChild(oBr);
         }
-        chatIndex += obj.length;
-        for(var i = 0 ; i < obj.length;i++){
-            var arr = chatBox.getElementsByTagName('div');
+        var arr = chatBox.getElementsByTagName('div');
+        for(var i = chatIndex ; i < arr.length;i++){
             $(arr[i]).fadeIn();
         }
+        chatIndex += obj.length;
     };
-    //在朋友界面点击聊天后 直接设置Friend 右边界面 容纳聊天记录的主体
+    //发送消息的方法
+    var sendMessage = function () {
+        var content = $('#main_tab_friend_display_inputbox').val();
+        $.ajax({
+            url:"/model/send",
+            type:"POST",
+            data:{
+                account:account,
+                targetaccount:targetAccount,
+                chatindex:chatIndex,
+                content:content
+            },
+            success:function (json) {
+                json = JSON.parse(json);
+                console.log(json.infos);
+                if (json.status){
+                    clearInterval(timer);
+                    refreshChatRecord(json.obj);
+                    timer = setInterval(getChat,5000);
+                }
+            }
+        })
+    };
+    //在朋友界面点击聊天后 直接设置Friend 右边界面 容纳聊天记录的主体 。
     var resetElementInFriendContent_Chat = function () {
         var oDisplay = $('#main_tab_friend_display').get(0);
         oDisplay.innerHTML = "\
@@ -168,25 +194,12 @@ $(function () {
         }
 
         $("[clk='4']").click(function () {
-            var content = $('#main_tab_friend_display_inputbox').val();
-            $.ajax({
-                url:"/model/send",
-                type:"POST",
-                data:{
-                    content:content
-                },
-                success:function (json) {
-
-                }
-            })
-        })
+            sendMessage();
+        });
+        timer = setInterval(getChat,5000);
     };
-    //在朋友界面点击聊天:会将chatIndex 的数值进行重置为0。
-    var friend_chat = function () {
-        targetAccount = this.parentNode.parentNode.parentNode.children[0].innerHTML;
-        chatIndex = 0;
-        clearElement_FriendContent();
-        resetElementInFriendContent_Chat();
+    //得到自己所需要的聊天的信息
+    var getChat = function() {
         $.ajax({
             url: "/model/chat",
             type: "POST",
@@ -203,6 +216,14 @@ $(function () {
                 }
             }
         })
+    }
+    //在朋友界面点击聊天:会将chatIndex 的数值进行重置为0。
+    var friend_chat = function () {
+        targetAccount = this.parentNode.parentNode.parentNode.children[0].innerHTML;
+        chatIndex = 0;
+        clearElement_FriendContent();
+        resetElementInFriendContent_Chat();
+        getChat();
     };
     //刷新朋友界面的列表
     var refreshFirendsList = function (friends) {

@@ -8,6 +8,10 @@ import org.hibernate.Session;
  */
 public class UserDAO {
     public static User getUser(String account, Session session) {
-        return (User) session.createQuery(String.format("FROM User WHERE account = '%s'",account)).list().get(0);
+        return (User) session.createQuery(String.format("FROM User WHERE account = '%s'", account)).list().get(0);
+    }
+
+    public static User getUserbyId(Session session, int id) {
+        return (User) session.createQuery(String.format("FROM User WHERE id = '%d'", id)).list().get(0);
     }
 }

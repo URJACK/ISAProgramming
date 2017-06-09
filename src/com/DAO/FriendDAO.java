@@ -34,9 +34,14 @@ public class FriendDAO {
         } else
             friendid = friend.getUserBid();
         System.out.println(friendid);
-        User user = (User) session.createQuery(String.format("FROM User WHERE id = '%d'", friendid)).list().get(0);
+        User user = UserDAO.getUserbyId(session, friendid);
         fj.setAccount(user.getAccount());
         fj.setEmail(user.getEmail());
         return fj;
+    }
+
+
+    public static Friend getFriend(Session session, int userAid, int userBid) {
+        return (Friend) session.createQuery(String.format("FROM Friend WHERE userAid='%d' AND userBid='%d' OR userAid='%d' AND userBid='%d'", userAid, userBid, userBid, userAid)).list().get(0);
     }
 }

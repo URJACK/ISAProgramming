@@ -74,7 +74,7 @@
         <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/setting.jsp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="529">
-              <caret line="157" column="0" lean-forward="true" selection-start-line="157" selection-start-column="0" selection-end-line="157" selection-end-column="0" />
+              <caret line="157" column="0" lean-forward="false" selection-start-line="157" selection-start-column="0" selection-end-line="157" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -83,13 +83,62 @@
       <file leaf-file-name="ModelGetController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/controller/ModelGetController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="575">
-              <caret line="120" column="31" lean-forward="false" selection-start-line="120" selection-start-column="31" selection-end-line="120" selection-end-column="31" />
+            <state relative-caret-position="416">
+              <caret line="76" column="33" lean-forward="true" selection-start-line="76" selection-start-column="33" selection-end-line="76" selection-end-column="33" />
               <folding>
                 <element signature="method#user#0;class#ModelGetController#0" expanded="false" />
-                <element signature="method#friend#0;class#ModelGetController#0" expanded="false" />
-                <element signature="method#otheruser#0;class#ModelGetController#0" expanded="false" />
-                <element signature="method#chat#0;class#ModelGetController#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserGetWorker.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/worker/ModelGetWorker/UserGetWorker.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="133">
+              <caret line="26" column="30" lean-forward="false" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FriendGetWorker.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/worker/ModelGetWorker/FriendGetWorker.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="506">
+              <caret line="31" column="28" lean-forward="false" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserOtherGetWorker.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/worker/ModelGetWorker/UserOtherGetWorker.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="759">
+              <caret line="45" column="28" lean-forward="false" selection-start-line="45" selection-start-column="28" selection-end-line="45" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserDAO.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/DAO/UserDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="276">
+              <caret line="13" column="34" lean-forward="false" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ChatInfosGetWorker.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/worker/ModelGetWorker/ChatInfosGetWorker.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="552">
+              <caret line="66" column="28" lean-forward="false" selection-start-line="66" selection-start-column="28" selection-end-line="66" selection-end-column="28" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -98,65 +147,78 @@
       <file leaf-file-name="setting.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/js/setting.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="700">
-              <caret line="176" column="18" lean-forward="false" selection-start-line="176" selection-start-column="18" selection-end-line="176" selection-end-column="18" />
+            <state relative-caret-position="776">
+              <caret line="198" column="38" lean-forward="false" selection-start-line="198" selection-start-column="38" selection-end-line="198" selection-end-column="38" />
               <folding>
                 <element signature="e#0#45#0" expanded="false" />
-                <element signature="e#342#412#0" expanded="false" />
-                <element signature="e#477#544#0" expanded="false" />
-                <element signature="e#613#684#0" expanded="false" />
-                <element signature="e#758#936#0" expanded="false" />
-                <element signature="e#1042#3443#0" expanded="false" />
-                <element signature="e#3496#4027#0" expanded="false" />
-                <element signature="e#4081#4119#0" expanded="false" />
-                <element signature="e#7057#7729#0" expanded="false" />
-                <element signature="e#10051#11317#0" expanded="false" />
-                <element signature="e#10068#10875#0" expanded="false" />
-                <element signature="e#10120#10168#0" expanded="false" />
-                <element signature="e#10207#10865#0" expanded="false" />
-                <element signature="e#10324#10851#0" expanded="false" />
-                <element signature="e#10916#11310#0" expanded="false" />
-                <element signature="e#10970#11018#0" expanded="false" />
-                <element signature="e#11057#11300#0" expanded="false" />
-                <element signature="e#11214#11286#0" expanded="false" />
-                <element signature="e#11395#12241#0" expanded="false" />
-                <element signature="e#11438#11835#0" expanded="false" />
-                <element signature="e#11841#12235#0" expanded="false" />
-                <element signature="e#12314#12929#0" expanded="false" />
-                <element signature="e#12356#12663#0" expanded="false" />
-                <element signature="e#12669#12923#0" expanded="false" />
-                <element signature="e#13054#14340#0" expanded="false" />
-                <element signature="e#13354#13431#0" expanded="false" />
-                <element signature="e#13477#13570#0" expanded="false" />
-                <element signature="e#13613#13690#0" expanded="false" />
-                <element signature="e#13707#14333#0" expanded="false" />
-                <element signature="e#13765#13899#0" expanded="false" />
-                <element signature="e#13938#14323#0" expanded="false" />
-                <element signature="e#14061#14309#0" expanded="false" />
-                <element signature="e#14106#14284#0" expanded="false" />
-                <element signature="e#14396#15155#0" expanded="false" />
-                <element signature="e#14554#14810#0" expanded="false" />
-                <element signature="e#14853#15082#0" expanded="false" />
-                <element signature="e#14992#15064#0" expanded="false" />
-                <element signature="e#15185#15311#0" expanded="false" />
-                <element signature="e#15212#15255#0" expanded="false" />
-                <element signature="e#15261#15305#0" expanded="false" />
-                <marker date="1496966840016" expanded="true" signature="4747:4810" ph="..." />
-                <marker date="1496966840016" expanded="true" signature="4764:4783" ph="..." />
-                <marker date="1496966840016" expanded="true" signature="5749:5751" ph="..." />
-                <marker date="1496966840016" expanded="true" signature="5749:5765" ph="..." />
-                <marker date="1496966840016" expanded="true" signature="5806:5934" ph="..." />
-                <marker date="1496966840016" expanded="true" signature="5806:6154" ph="..." />
-                <marker date="1496966840016" expanded="true" signature="5806:6463" ph="..." />
-                <marker date="1496966840016" expanded="true" signature="5897:5934" ph="..." />
-                <marker date="1496966840016" expanded="true" signature="5934:6154" ph="..." />
-                <marker date="1496966840016" expanded="true" signature="5987:6000" ph="..." />
-                <marker date="1496966840016" expanded="true" signature="6001:6154" ph="..." />
-                <marker date="1496966840016" expanded="true" signature="6059:6105" ph="..." />
-                <marker date="1496966840016" expanded="true" signature="6228:6241" ph="..." />
-                <marker date="1496966840016" expanded="true" signature="6242:6403" ph="..." />
-                <marker date="1496966840016" expanded="true" signature="6311:6324" ph="..." />
-                <marker date="1496966840016" expanded="true" signature="6311:6340" ph="..." />
+                <element signature="e#273#286#0" expanded="false" />
+                <element signature="e#357#427#0" expanded="false" />
+                <element signature="e#492#559#0" expanded="false" />
+                <element signature="e#628#699#0" expanded="false" />
+                <element signature="e#773#951#0" expanded="false" />
+                <element signature="e#3542#4073#0" expanded="false" />
+                <element signature="e#3665#4066#0" expanded="false" />
+                <element signature="e#3748#3802#0" expanded="false" />
+                <element signature="e#3841#4056#0" expanded="false" />
+                <element signature="e#3958#4042#0" expanded="false" />
+                <element signature="e#4127#4165#0" expanded="false" />
+                <element signature="e#4361#5350#0" expanded="false" />
+                <element signature="e#5457#5500#0" expanded="false" />
+                <element signature="e#5749#5911#0" expanded="false" />
+                <element signature="e#7341#7384#0" expanded="false" />
+                <element signature="e#7662#7794#0" expanded="false" />
+                <element signature="e#8123#8339#0" expanded="false" />
+                <element signature="e#8405#10603#0" expanded="false" />
+                <element signature="e#8636#10465#0" expanded="false" />
+                <element signature="e#10661#11927#0" expanded="false" />
+                <element signature="e#10678#11485#0" expanded="false" />
+                <element signature="e#10730#10778#0" expanded="false" />
+                <element signature="e#10817#11475#0" expanded="false" />
+                <element signature="e#10934#11461#0" expanded="false" />
+                <element signature="e#11526#11920#0" expanded="false" />
+                <element signature="e#11580#11628#0" expanded="false" />
+                <element signature="e#11667#11910#0" expanded="false" />
+                <element signature="e#11824#11896#0" expanded="false" />
+                <element signature="e#12005#12851#0" expanded="false" />
+                <element signature="e#12048#12445#0" expanded="false" />
+                <element signature="e#12451#12845#0" expanded="false" />
+                <element signature="e#12924#13539#0" expanded="false" />
+                <element signature="e#12966#13273#0" expanded="false" />
+                <element signature="e#13279#13533#0" expanded="false" />
+                <element signature="e#13664#14950#0" expanded="false" />
+                <element signature="e#13964#14041#0" expanded="false" />
+                <element signature="e#14087#14180#0" expanded="false" />
+                <element signature="e#14223#14300#0" expanded="false" />
+                <element signature="e#14317#14943#0" expanded="false" />
+                <element signature="e#14375#14509#0" expanded="false" />
+                <element signature="e#14548#14933#0" expanded="false" />
+                <element signature="e#14671#14919#0" expanded="false" />
+                <element signature="e#14716#14894#0" expanded="false" />
+                <element signature="e#15006#15765#0" expanded="false" />
+                <element signature="e#15047#15717#0" expanded="false" />
+                <element signature="e#15068#15706#0" expanded="false" />
+                <element signature="e#15164#15420#0" expanded="false" />
+                <element signature="e#15463#15692#0" expanded="false" />
+                <element signature="e#15602#15674#0" expanded="false" />
+                <element signature="e#15795#15921#0" expanded="false" />
+                <element signature="e#15822#15865#0" expanded="false" />
+                <element signature="e#15871#15915#0" expanded="false" />
+                <marker date="1496975484587" expanded="false" signature="4793:4856" ph="..." />
+                <marker date="1496975484587" expanded="false" signature="4810:4829" ph="..." />
+                <marker date="1496975484587" expanded="false" signature="6523:6525" ph="..." />
+                <marker date="1496975484587" expanded="false" signature="6523:6539" ph="..." />
+                <marker date="1496975484587" expanded="false" signature="6580:6708" ph="..." />
+                <marker date="1496975484587" expanded="false" signature="6580:6928" ph="..." />
+                <marker date="1496975484587" expanded="false" signature="6580:7237" ph="..." />
+                <marker date="1496975484587" expanded="false" signature="6671:6708" ph="..." />
+                <marker date="1496975484587" expanded="false" signature="6708:6928" ph="..." />
+                <marker date="1496975484587" expanded="false" signature="6761:6774" ph="..." />
+                <marker date="1496975484587" expanded="false" signature="6775:6928" ph="..." />
+                <marker date="1496975484587" expanded="false" signature="6833:6879" ph="..." />
+                <marker date="1496975484587" expanded="false" signature="7002:7015" ph="..." />
+                <marker date="1496975484587" expanded="false" signature="7016:7177" ph="..." />
+                <marker date="1496975484587" expanded="false" signature="7085:7098" ph="..." />
+                <marker date="1496975484587" expanded="false" signature="7085:7114" ph="..." />
               </folding>
             </state>
           </provider>
@@ -203,6 +265,8 @@
       <find>oAccount</find>
       <find>&quot;</find>
       <find>img</find>
+      <find>send</find>
+      <find>session</find>
     </findStrings>
     <replaceStrings>
       <replace>display</replace>
@@ -224,7 +288,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/com/tool/HTMLSaver.java" />
         <option value="$PROJECT_DIR$/src/isa.properties" />
         <option value="$PROJECT_DIR$/src/com/register/logInRegister/DefaultLoginRegister.java" />
         <option value="$PROJECT_DIR$/src/com/register/logInRegister/LoginRegisterImp1.java" />
@@ -257,23 +320,24 @@
         <option value="$PROJECT_DIR$/src/com/worker/SettingWorker/MoreInfoChangeWorker.java" />
         <option value="$PROJECT_DIR$/src/com/json/Info_Status_Object.java" />
         <option value="$PROJECT_DIR$/src/com/json/Friend_Json.java" />
-        <option value="$PROJECT_DIR$/src/com/worker/ModelGetWorker/UserGetWorker.java" />
-        <option value="$PROJECT_DIR$/src/com/DAO/UserDAO.java" />
-        <option value="$PROJECT_DIR$/src/com/worker/ModelGetWorker/FriendGetWorker.java" />
         <option value="$PROJECT_DIR$/src/hibernate.cfg.xml" />
-        <option value="$PROJECT_DIR$/src/com/DAO/FriendDAO.java" />
         <option value="$PROJECT_DIR$/out/artifacts/ISAProgramming/js/setting.js" />
         <option value="$PROJECT_DIR$/web/topbar.jsp" />
         <option value="$PROJECT_DIR$/src/com/json/User_Other_Json.java" />
-        <option value="$PROJECT_DIR$/src/com/worker/ModelGetWorker/UserOtherGetWorker.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/com/json/Message.java" />
         <option value="$PROJECT_DIR$/src/com/controller/ChatInfosGetWorker.java" />
         <option value="$PROJECT_DIR$/src/com/model/FriendChat.java" />
         <option value="$PROJECT_DIR$/src/Test.java" />
-        <option value="$PROJECT_DIR$/src/com/worker/ModelGetWorker/ChatInfosGetWorker.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/views/setting.jsp" />
+        <option value="$PROJECT_DIR$/src/com/worker/ModelGetWorker/ChatSetWorker.java" />
+        <option value="$PROJECT_DIR$/src/com/DAO/UserDAO.java" />
+        <option value="$PROJECT_DIR$/src/com/DAO/FriendDAO.java" />
         <option value="$PROJECT_DIR$/src/com/controller/ModelGetController.java" />
+        <option value="$PROJECT_DIR$/src/com/worker/ModelGetWorker/ChatInfosGetWorker.java" />
+        <option value="$PROJECT_DIR$/src/com/worker/ModelGetWorker/UserOtherGetWorker.java" />
+        <option value="$PROJECT_DIR$/src/com/worker/ModelGetWorker/FriendGetWorker.java" />
+        <option value="$PROJECT_DIR$/src/com/worker/ModelGetWorker/UserGetWorker.java" />
         <option value="$PROJECT_DIR$/web/js/setting.js" />
       </list>
     </option>
@@ -877,6 +941,54 @@
               <option name="myItemId" value="com" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="worker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ModelGetWorker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ISAProgramming" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ISAProgramming" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tool" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ISAProgramming" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ISAProgramming" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -897,6 +1009,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="json" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ISAProgramming" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ISAProgramming" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DAO" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -956,9 +1090,9 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -977,12 +1111,14 @@
     <property name="extract.method.default.visibility" value="private" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\IDEA_Projects\ISAProgramming\web\source" />
-      <recent name="E:\IDEA_Projects\ISAProgramming\web\css" />
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.tool" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\IDEA_Projects\ISAProgramming\web\js" />
       <recent name="E:\IDEA_Projects\ISAProgramming\web" />
-      <recent name="E:\IDEA_Projects\ISAProgramming\web\WEB-INF\views" />
-      <recent name="E:\IDEA_Projects\ISAProgramming\src\picture\user" />
+      <recent name="E:\IDEA_Projects\ISAProgramming\src" />
+      <recent name="E:\IDEA_Projects\ISAProgramming\src\com\model" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.worker.ModelGetWorker" />
@@ -996,14 +1132,12 @@
       <recent name="com.model" />
       <recent name="com.model.user" />
     </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.tool" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\IDEA_Projects\ISAProgramming\web\js" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\IDEA_Projects\ISAProgramming\web\source" />
+      <recent name="E:\IDEA_Projects\ISAProgramming\web\css" />
       <recent name="E:\IDEA_Projects\ISAProgramming\web" />
-      <recent name="E:\IDEA_Projects\ISAProgramming\src" />
-      <recent name="E:\IDEA_Projects\ISAProgramming\src\com\model" />
+      <recent name="E:\IDEA_Projects\ISAProgramming\web\WEB-INF\views" />
+      <recent name="E:\IDEA_Projects\ISAProgramming\src\picture\user" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Test">
@@ -1550,12 +1684,13 @@
       <workItem from="1496884189360" duration="10000" />
       <workItem from="1496923281183" duration="5932000" />
       <workItem from="1496935117659" duration="3994000" />
-      <workItem from="1496962548188" duration="4278000" />
+      <workItem from="1496962548188" duration="4343000" />
+      <workItem from="1496971884889" duration="3625000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="124644000" />
+    <option name="totallyTimeSpent" value="128334000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="0" width="1924" height="1048" extended-state="0" />
@@ -1583,8 +1718,8 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.250787" sideWeight="0.27442372" order="6" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.250787" sideWeight="0.7255763" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.250787" sideWeight="0.28100988" order="6" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.250787" sideWeight="0.71899015" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -1607,7 +1742,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/out/artifacts/ISAProgramming/js/setting.js</url>
-          <line>307</line>
+          <line>328</line>
         </line-breakpoint>
       </breakpoints>
       <option name="time" value="3" />
@@ -1619,13 +1754,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/model/TopicResponse.hbm.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/model/Topic.hbm.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1733,20 +1861,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/worker/ModelGetWorker/UserGetWorker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="27" column="56" lean-forward="false" selection-start-line="27" selection-start-column="56" selection-end-line="27" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/DAO/UserDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="9" column="64" lean-forward="false" selection-start-line="9" selection-start-column="64" selection-end-line="9" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/json/Friend_Json.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="161">
@@ -1761,13 +1875,6 @@
           <folding>
             <element signature="e#0#45#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/DAO/FriendDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="524">
-          <caret line="34" column="41" lean-forward="false" selection-start-line="34" selection-start-column="41" selection-end-line="34" selection-end-column="41" />
         </state>
       </provider>
     </entry>
@@ -1789,27 +1896,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/worker/ModelGetWorker/FriendGetWorker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/model/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="759">
           <caret line="49" column="16" lean-forward="false" selection-start-line="49" selection-start-column="16" selection-end-line="49" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/worker/ModelGetWorker/UserOtherGetWorker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="28" column="13" lean-forward="false" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1940,11 +2030,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2806">
           <caret line="145" column="13" lean-forward="false" selection-start-line="145" selection-start-column="13" selection-end-line="145" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#17839#0" expanded="false" />
-            <element signature="e#17760#17761#0" expanded="false" />
-            <element signature="e#17835#17836#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2013,13 +2098,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/worker/ModelGetWorker/ChatInfosGetWorker.java">
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/setting.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="47" column="58" lean-forward="false" selection-start-line="47" selection-start-column="58" selection-end-line="47" selection-end-column="58" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="529">
+          <caret line="157" column="0" lean-forward="false" selection-start-line="157" selection-start-column="0" selection-end-line="157" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/worker/ModelGetWorker/ChatSetWorker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="10" column="8" lean-forward="false" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/DAO/FriendDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="36" column="40" lean-forward="false" selection-start-line="36" selection-start-column="40" selection-end-line="36" selection-end-column="40" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2031,88 +2130,132 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/setting.jsp">
+    <entry file="file://$PROJECT_DIR$/src/com/DAO/UserDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="157" column="0" lean-forward="true" selection-start-line="157" selection-start-column="0" selection-end-line="157" selection-end-column="0" />
+        <state relative-caret-position="276">
+          <caret line="13" column="34" lean-forward="false" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/worker/ModelGetWorker/ChatInfosGetWorker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="552">
+          <caret line="66" column="28" lean-forward="false" selection-start-line="66" selection-start-column="28" selection-end-line="66" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/worker/ModelGetWorker/UserOtherGetWorker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="759">
+          <caret line="45" column="28" lean-forward="false" selection-start-line="45" selection-start-column="28" selection-end-line="45" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/worker/ModelGetWorker/FriendGetWorker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="31" column="28" lean-forward="false" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/worker/ModelGetWorker/UserGetWorker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="26" column="30" lean-forward="false" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/controller/ModelGetController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="575">
-          <caret line="120" column="31" lean-forward="false" selection-start-line="120" selection-start-column="31" selection-end-line="120" selection-end-column="31" />
+        <state relative-caret-position="416">
+          <caret line="76" column="33" lean-forward="true" selection-start-line="76" selection-start-column="33" selection-end-line="76" selection-end-column="33" />
           <folding>
             <element signature="method#user#0;class#ModelGetController#0" expanded="false" />
-            <element signature="method#friend#0;class#ModelGetController#0" expanded="false" />
-            <element signature="method#otheruser#0;class#ModelGetController#0" expanded="false" />
-            <element signature="method#chat#0;class#ModelGetController#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/js/setting.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="700">
-          <caret line="176" column="18" lean-forward="false" selection-start-line="176" selection-start-column="18" selection-end-line="176" selection-end-column="18" />
+        <state relative-caret-position="776">
+          <caret line="198" column="38" lean-forward="false" selection-start-line="198" selection-start-column="38" selection-end-line="198" selection-end-column="38" />
           <folding>
             <element signature="e#0#45#0" expanded="false" />
-            <element signature="e#342#412#0" expanded="false" />
-            <element signature="e#477#544#0" expanded="false" />
-            <element signature="e#613#684#0" expanded="false" />
-            <element signature="e#758#936#0" expanded="false" />
-            <element signature="e#1042#3443#0" expanded="false" />
-            <element signature="e#3496#4027#0" expanded="false" />
-            <element signature="e#4081#4119#0" expanded="false" />
-            <element signature="e#7057#7729#0" expanded="false" />
-            <element signature="e#10051#11317#0" expanded="false" />
-            <element signature="e#10068#10875#0" expanded="false" />
-            <element signature="e#10120#10168#0" expanded="false" />
-            <element signature="e#10207#10865#0" expanded="false" />
-            <element signature="e#10324#10851#0" expanded="false" />
-            <element signature="e#10916#11310#0" expanded="false" />
-            <element signature="e#10970#11018#0" expanded="false" />
-            <element signature="e#11057#11300#0" expanded="false" />
-            <element signature="e#11214#11286#0" expanded="false" />
-            <element signature="e#11395#12241#0" expanded="false" />
-            <element signature="e#11438#11835#0" expanded="false" />
-            <element signature="e#11841#12235#0" expanded="false" />
-            <element signature="e#12314#12929#0" expanded="false" />
-            <element signature="e#12356#12663#0" expanded="false" />
-            <element signature="e#12669#12923#0" expanded="false" />
-            <element signature="e#13054#14340#0" expanded="false" />
-            <element signature="e#13354#13431#0" expanded="false" />
-            <element signature="e#13477#13570#0" expanded="false" />
-            <element signature="e#13613#13690#0" expanded="false" />
-            <element signature="e#13707#14333#0" expanded="false" />
-            <element signature="e#13765#13899#0" expanded="false" />
-            <element signature="e#13938#14323#0" expanded="false" />
-            <element signature="e#14061#14309#0" expanded="false" />
-            <element signature="e#14106#14284#0" expanded="false" />
-            <element signature="e#14396#15155#0" expanded="false" />
-            <element signature="e#14554#14810#0" expanded="false" />
-            <element signature="e#14853#15082#0" expanded="false" />
-            <element signature="e#14992#15064#0" expanded="false" />
-            <element signature="e#15185#15311#0" expanded="false" />
-            <element signature="e#15212#15255#0" expanded="false" />
-            <element signature="e#15261#15305#0" expanded="false" />
-            <marker date="1496966840016" expanded="true" signature="4747:4810" ph="..." />
-            <marker date="1496966840016" expanded="true" signature="4764:4783" ph="..." />
-            <marker date="1496966840016" expanded="true" signature="5749:5751" ph="..." />
-            <marker date="1496966840016" expanded="true" signature="5749:5765" ph="..." />
-            <marker date="1496966840016" expanded="true" signature="5806:5934" ph="..." />
-            <marker date="1496966840016" expanded="true" signature="5806:6154" ph="..." />
-            <marker date="1496966840016" expanded="true" signature="5806:6463" ph="..." />
-            <marker date="1496966840016" expanded="true" signature="5897:5934" ph="..." />
-            <marker date="1496966840016" expanded="true" signature="5934:6154" ph="..." />
-            <marker date="1496966840016" expanded="true" signature="5987:6000" ph="..." />
-            <marker date="1496966840016" expanded="true" signature="6001:6154" ph="..." />
-            <marker date="1496966840016" expanded="true" signature="6059:6105" ph="..." />
-            <marker date="1496966840016" expanded="true" signature="6228:6241" ph="..." />
-            <marker date="1496966840016" expanded="true" signature="6242:6403" ph="..." />
-            <marker date="1496966840016" expanded="true" signature="6311:6324" ph="..." />
-            <marker date="1496966840016" expanded="true" signature="6311:6340" ph="..." />
+            <element signature="e#273#286#0" expanded="false" />
+            <element signature="e#357#427#0" expanded="false" />
+            <element signature="e#492#559#0" expanded="false" />
+            <element signature="e#628#699#0" expanded="false" />
+            <element signature="e#773#951#0" expanded="false" />
+            <element signature="e#3542#4073#0" expanded="false" />
+            <element signature="e#3665#4066#0" expanded="false" />
+            <element signature="e#3748#3802#0" expanded="false" />
+            <element signature="e#3841#4056#0" expanded="false" />
+            <element signature="e#3958#4042#0" expanded="false" />
+            <element signature="e#4127#4165#0" expanded="false" />
+            <element signature="e#4361#5350#0" expanded="false" />
+            <element signature="e#5457#5500#0" expanded="false" />
+            <element signature="e#5749#5911#0" expanded="false" />
+            <element signature="e#7341#7384#0" expanded="false" />
+            <element signature="e#7662#7794#0" expanded="false" />
+            <element signature="e#8123#8339#0" expanded="false" />
+            <element signature="e#8405#10603#0" expanded="false" />
+            <element signature="e#8636#10465#0" expanded="false" />
+            <element signature="e#10661#11927#0" expanded="false" />
+            <element signature="e#10678#11485#0" expanded="false" />
+            <element signature="e#10730#10778#0" expanded="false" />
+            <element signature="e#10817#11475#0" expanded="false" />
+            <element signature="e#10934#11461#0" expanded="false" />
+            <element signature="e#11526#11920#0" expanded="false" />
+            <element signature="e#11580#11628#0" expanded="false" />
+            <element signature="e#11667#11910#0" expanded="false" />
+            <element signature="e#11824#11896#0" expanded="false" />
+            <element signature="e#12005#12851#0" expanded="false" />
+            <element signature="e#12048#12445#0" expanded="false" />
+            <element signature="e#12451#12845#0" expanded="false" />
+            <element signature="e#12924#13539#0" expanded="false" />
+            <element signature="e#12966#13273#0" expanded="false" />
+            <element signature="e#13279#13533#0" expanded="false" />
+            <element signature="e#13664#14950#0" expanded="false" />
+            <element signature="e#13964#14041#0" expanded="false" />
+            <element signature="e#14087#14180#0" expanded="false" />
+            <element signature="e#14223#14300#0" expanded="false" />
+            <element signature="e#14317#14943#0" expanded="false" />
+            <element signature="e#14375#14509#0" expanded="false" />
+            <element signature="e#14548#14933#0" expanded="false" />
+            <element signature="e#14671#14919#0" expanded="false" />
+            <element signature="e#14716#14894#0" expanded="false" />
+            <element signature="e#15006#15765#0" expanded="false" />
+            <element signature="e#15047#15717#0" expanded="false" />
+            <element signature="e#15068#15706#0" expanded="false" />
+            <element signature="e#15164#15420#0" expanded="false" />
+            <element signature="e#15463#15692#0" expanded="false" />
+            <element signature="e#15602#15674#0" expanded="false" />
+            <element signature="e#15795#15921#0" expanded="false" />
+            <element signature="e#15822#15865#0" expanded="false" />
+            <element signature="e#15871#15915#0" expanded="false" />
+            <marker date="1496975484587" expanded="false" signature="4793:4856" ph="..." />
+            <marker date="1496975484587" expanded="false" signature="4810:4829" ph="..." />
+            <marker date="1496975484587" expanded="false" signature="6523:6525" ph="..." />
+            <marker date="1496975484587" expanded="false" signature="6523:6539" ph="..." />
+            <marker date="1496975484587" expanded="false" signature="6580:6708" ph="..." />
+            <marker date="1496975484587" expanded="false" signature="6580:6928" ph="..." />
+            <marker date="1496975484587" expanded="false" signature="6580:7237" ph="..." />
+            <marker date="1496975484587" expanded="false" signature="6671:6708" ph="..." />
+            <marker date="1496975484587" expanded="false" signature="6708:6928" ph="..." />
+            <marker date="1496975484587" expanded="false" signature="6761:6774" ph="..." />
+            <marker date="1496975484587" expanded="false" signature="6775:6928" ph="..." />
+            <marker date="1496975484587" expanded="false" signature="6833:6879" ph="..." />
+            <marker date="1496975484587" expanded="false" signature="7002:7015" ph="..." />
+            <marker date="1496975484587" expanded="false" signature="7016:7177" ph="..." />
+            <marker date="1496975484587" expanded="false" signature="7085:7098" ph="..." />
+            <marker date="1496975484587" expanded="false" signature="7085:7114" ph="..." />
           </folding>
         </state>
       </provider>

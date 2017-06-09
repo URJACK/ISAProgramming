@@ -1,10 +1,18 @@
 package com.controller;
 
+import com.DAO.FriendDAO;
+import com.DAO.UserDAO;
 import com.google.gson.Gson;
 import com.json.Info_Status;
 import com.json.Info_Status_Object;
 import com.json.Info_Status_User;
+import com.model.Friend;
+import com.model.FriendChat;
+import com.model.User;
+import com.tool.SessionOpenner;
 import com.worker.ModelGetWorker.*;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -20,7 +28,7 @@ public class ModelGetController {
 
     //查询自己的其他信息
     @RequestMapping("/user")
-    public void user(HttpServletRequest rq, HttpServletResponse rsp){
+    public void user(HttpServletRequest rq, HttpServletResponse rsp) {
         try {
             rq.setCharacterEncoding("UTF-8");
             rsp.setCharacterEncoding("UTF-8");
@@ -28,7 +36,7 @@ public class ModelGetController {
 
             Info_Status_User isu = new Info_Status_User();
             ModelGetWorker mgw = new UserGetWorker();
-            mgw.work(rq,isu);
+            mgw.work(rq, isu);
 
             PrintWriter writer = rsp.getWriter();
             writer.print(new Gson().toJson(isu));
@@ -44,7 +52,7 @@ public class ModelGetController {
 
     //查询自己的好友
     @RequestMapping("/friend")
-    public void friend(HttpServletRequest rq,HttpServletResponse rsp){
+    public void friend(HttpServletRequest rq, HttpServletResponse rsp) {
         try {
             rq.setCharacterEncoding("UTF-8");
             rsp.setCharacterEncoding("UTF-8");
@@ -52,7 +60,7 @@ public class ModelGetController {
 
             Info_Status_Object iso = new Info_Status_Object();
             ModelGetWorker mgw = new FriendGetWorker();
-            mgw.work(rq,iso);
+            mgw.work(rq, iso);
 
             PrintWriter writer = rsp.getWriter();
             writer.print(new Gson().toJson(iso));
@@ -67,7 +75,7 @@ public class ModelGetController {
 
     //查询一个非自己的用户的信息
     @RequestMapping("/otheruser")
-    public void otheruser(HttpServletRequest rq,HttpServletResponse rsp){
+    public void otheruser(HttpServletRequest rq, HttpServletResponse rsp) {
         Info_Status_Object iso = new Info_Status_Object();
         try {
             rq.setCharacterEncoding("UTF-8");
@@ -75,7 +83,7 @@ public class ModelGetController {
             rsp.setContentType("text/html");
 
             ModelGetWorker mgw = new UserOtherGetWorker();
-            mgw.work(rq,iso);
+            mgw.work(rq, iso);
 
             PrintWriter writer = rsp.getWriter();
             writer.print(new Gson().toJson(iso));
@@ -92,21 +100,11 @@ public class ModelGetController {
 
     //'A'发来请求，查看与'B'的聊天记录
     @RequestMapping("/chat")
-    public void chat(HttpServletRequest rq,HttpServletResponse rsp){
+    public void chat(HttpServletRequest rq, HttpServletResponse rsp) {
         Info_Status_Object iso = new Info_Status_Object();
         try {
-            rq.setCharacterEncoding("UTF-8");
-            rsp.setCharacterEncoding("UTF-8");
-            rsp.setContentType("text/html");
-
-            ModelGetWorker mgw = new ChatInfosGetWorker();
-            mgw.work(rq,iso);
-
-            PrintWriter writer = rsp.getWriter();
-            writer.write(new Gson().toJson(iso));
-            writer.flush();
-            writer.close();
-        }catch (Exception e){
+            putChatMessage(rq, rsp, iso);
+        } catch (Exception e) {
             e.printStackTrace();
             iso.setStatus(false);
             iso.setInfos("Server Error");
@@ -116,15 +114,46 @@ public class ModelGetController {
 
     //'A'发来消息，更新数据库的同时，返回与B的聊天记录
     @RequestMapping("/send")
-    public void send(HttpServletRequest rq,HttpServletResponse rsp){
+    public void send(HttpServletRequest rq, HttpServletResponse rsp) {
+        Info_Status_Object iso = new Info_Status_Object();
         try {
-            rq.setCharacterEncoding("UTF-8");
-            rsp.setCharacterEncoding("UTF-8");
-            rsp.setContentType("text/html");
+            String content = rq.getParameter("content");
+            String account = rq.getParameter("account");
+            String targetaccount = rq.getParameter("targetaccount");
+            Session session = SessionOpenner.getInstance().getSession();
+            Transaction transaction = session.beginTransaction();
+            User userA = UserDAO.getUser(account, session);
+            User userB = UserDAO.getUser(targetaccount, session);
+            int userAid = userA.getId();
+            int userBid = userB.getId();
+            Friend friend = FriendDAO.getFriend(session, userAid, userBid);
+            FriendChat fc = new FriendChat();
+            fc.setRid(friend.getId());
+            fc.setContent(content);
+            fc.setSenderid(userAid);
+            session.save(fc);
+            transaction.commit();
+            session.close();
 
-            System.out.println(rq.getParameter("content"));
-        }catch (Exception e){
+            putChatMessage(rq, rsp, iso);
+        } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+
+    //根据ChatIndex 将需要被刷新的信息回传给界面
+    private void putChatMessage(HttpServletRequest rq, HttpServletResponse rsp, Info_Status_Object iso) throws IOException {
+        rq.setCharacterEncoding("UTF-8");
+        rsp.setCharacterEncoding("UTF-8");
+        rsp.setContentType("text/html");
+
+        ModelGetWorker mgw = new ChatInfosGetWorker();
+        mgw.work(rq, iso);
+
+        PrintWriter writer = rsp.getWriter();
+        writer.write(new Gson().toJson(iso));
+        writer.flush();
+        writer.close();
     }
 }

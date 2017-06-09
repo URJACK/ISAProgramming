@@ -22,9 +22,10 @@ public class UserGetWorker implements ModelGetWorker {
     @Override
     public int work(HttpServletRequest rq, Object ob) {
         Info_Status_User is = (Info_Status_User) ob;
+        Session session = null;
         try {
+            session = SessionOpenner.getInstance().getSession();
             String account = rq.getParameter("account");
-            Session session = SessionOpenner.getInstance().getSession();
             User user = UserDAO.getUser(account, session);
             is.setInfos("完成了查询");
             is.setAccount(account);
@@ -44,12 +45,14 @@ public class UserGetWorker implements ModelGetWorker {
             else
                 is.setIntroduce("尚未设置自我介绍");
             is.setStatus(true);
+            session.close();
         } catch (IndexOutOfBoundsException e) {
             is.setInfos("因为其他原因，尚未找到该用户");
             is.setAccount(FAILEDSTR);
             is.setEmail(FAILEDSTR);
             is.setDate(FAILEDSTR);
             is.setStatus(false);
+            session.close();
         }
         return 0;
     }

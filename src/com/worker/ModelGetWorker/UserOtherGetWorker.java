@@ -24,6 +24,7 @@ public class UserOtherGetWorker implements ModelGetWorker {
             e.printStackTrace();
             iso.setInfos("尚未找到该用户");
             iso.setStatus(false);
+            session.close();
             return 0;
         }
         try {
@@ -36,11 +37,13 @@ public class UserOtherGetWorker implements ModelGetWorker {
             iso.setInfos("Return Data Success!");
             iso.setStatus(true);
             iso.setObj(uoj);
+            session.close();
             return 1;
         } catch (Exception e) {
             e.printStackTrace();
             iso.setInfos("Data Base Error");
             iso.setStatus(false);
+            session.close();
             return 0;
         }
     }
