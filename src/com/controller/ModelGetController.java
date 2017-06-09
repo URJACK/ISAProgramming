@@ -113,4 +113,18 @@ public class ModelGetController {
             iso.setObj(null);
         }
     }
+
+    //'A'发来消息，更新数据库的同时，返回与B的聊天记录
+    @RequestMapping("/send")
+    public void send(HttpServletRequest rq,HttpServletResponse rsp){
+        try {
+            rq.setCharacterEncoding("UTF-8");
+            rsp.setCharacterEncoding("UTF-8");
+            rsp.setContentType("text/html");
+
+            System.out.println(rq.getParameter("content"));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }

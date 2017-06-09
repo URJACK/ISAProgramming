@@ -64,7 +64,6 @@ public class ChatInfosGetWorker implements ModelGetWorker {
 
     private List<Message> getMessages(FriendChat[] friendChats, int chatIndex, int userAId) {
         List<Message> messages = new ArrayList<>(5);
-        System.out.println("DEBUG 3");
         for (int i = chatIndex; i < friendChats.length; i++) {
             FriendChat fc = friendChats[i];
             Message message = new Message();
@@ -75,14 +74,11 @@ public class ChatInfosGetWorker implements ModelGetWorker {
                 message.setSelf(false);
             messages.add(message);
         }
-        System.out.println("DEBUG 4");
         return messages;
     }
 
     private FriendChat[] getFriendChats(int userAid, int userBid, Session session) {
-        System.out.println("DEBUG 1");
         Friend friend = (Friend) session.createQuery(String.format("FROM Friend WHERE userAid='%s' AND userBid='%s' OR userAid='%s' AND userBid='%s'", userAid, userBid, userBid, userAid)).list().get(0);
-        System.out.println("DEBUG 2");
         FriendChat[] chats = new FriendChat[friend.getChats().size()];
         friend.getChats().toArray(chats);
         return chats;

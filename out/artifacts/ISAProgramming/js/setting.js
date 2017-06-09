@@ -112,29 +112,74 @@ $(function () {
     var friend_delete = function () {
         console.log("delete");
     };
-    //根据传入的obj设置 聊天的内容
+    //根据传入的obj设置 聊天的内容. 改变chatIndex
     var refreshChatRecord = function (obj) {
+        var chatBox = $('#main_tab_friend_display_chatbox').get(0);
+        for (var i = 0; i < obj.length; i++) {
+            var oMessage = document.createElement('div');
+            oMessage.setAttribute('class', 'row');
+            oMessage.style.display = 'none';
+            var oBr = document.createElement('br');
+            oMessage.innerHTML = "<label class='col-md-offset-1 col-xs-offset-0 col-md-2 col-xs-12' id='chat_sender'></label>\
+        <label class='text-primary bg-primary col-md-offset-2 col-xs-offset-1 col-md-8 col-xs-10'\
+        style='border-radius: 30px' id='chat_content'></label>";
+            var oSender = oMessage.getElementsByTagName('label')[0];
+            var oContent = oMessage.getElementsByTagName('label')[1];
+            if (obj[i].self)
+                oSender.innerHTML = account;
+            else
+                oSender.innerHTML = targetAccount;
+            var str = obj[i].info;
+            str = str.replace('\n', '<br>');
+            oContent.innerHTML = str;
 
+            chatBox.appendChild(oMessage);
+            chatBox.appendChild(oBr);
+        }
+        chatIndex += obj.length;
+        for(var i = 0 ; i < obj.length;i++){
+            var arr = chatBox.getElementsByTagName('div');
+            $(arr[i]).fadeIn();
+        }
     };
     //在朋友界面点击聊天后 直接设置Friend 右边界面 容纳聊天记录的主体
     var resetElementInFriendContent_Chat = function () {
-        $('#main_tab_friend_display').get(0).innerHTML = "\
+        var oDisplay = $('#main_tab_friend_display').get(0);
+        oDisplay.innerHTML = "\
             <div class='row' id='main_tab_friend_display_chatbox'>\
         </div>\
         <br>\
         <div class='row'>\
             <div class='input-group col-md-offset-1 col-md-11 col-xs-offset-0 col-xs-12'>\
             <div class='container'>\
-            <div class='col-md-8 col-xs-8'>\
+            <div class='col-md-8 col-xs-8' style='display:none;'>\
             <textarea class='bg-info text-info' style='width: 100%; height: 100px;border-radius: 10px' id='main_tab_friend_display_inputbox'></textarea>\
             </div>\
-            <div class='col-md-2 col-xs-4'>\
-            <img src='/source/mail.svg' style='height: 100px' id='main_tab_friend_display_send'>\
+            <div class='col-md-2 col-xs-4' style='display:none;'>\
+            <img class='img-circle' src='/source/mail.svg' style='height: 100px;cursor: pointer' id='main_tab_friend_display_send' clk='4'>\
             </div>\
             </div>\
             </div>\
             </div>";
 
+        var arr = oDisplay.getElementsByTagName('div');
+        for(var i = 0 ; i < arr.length;i++){
+            $(arr[i]).fadeIn();
+        }
+
+        $("[clk='4']").click(function () {
+            var content = $('#main_tab_friend_display_inputbox').val();
+            $.ajax({
+                url:"/model/send",
+                type:"POST",
+                data:{
+                    content:content
+                },
+                success:function (json) {
+
+                }
+            })
+        })
     };
     //在朋友界面点击聊天:会将chatIndex 的数值进行重置为0。
     var friend_chat = function () {
