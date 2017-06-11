@@ -82,4 +82,16 @@ public class Friend {
     public void setChats(Set<FriendChat> chats) {
         this.chats = chats;
     }
+
+    @Override
+    public String toString() {
+        return "Friend{" +
+                "id=" + id +
+                ", userAid=" + userAid +
+                ", userBid=" + userBid +
+                ", userA=" + userA +
+                ", userB=" + userB +
+                ", chats=" + chats +
+                '}';
+    }
 }

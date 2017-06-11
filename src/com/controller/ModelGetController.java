@@ -137,6 +137,8 @@ public class ModelGetController {
 
             putChatMessage(rq, rsp, iso);
         } catch (Exception e) {
+            iso.setStatus(false);
+            iso.setInfos("Error");
             e.printStackTrace();
         }
     }

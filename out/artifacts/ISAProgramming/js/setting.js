@@ -140,30 +140,32 @@ $(function () {
             chatBox.appendChild(oBr);
         }
         var arr = chatBox.getElementsByTagName('div');
-        for(var i = chatIndex ; i < arr.length;i++){
+        for (var i = chatIndex; i < arr.length; i++) {
             $(arr[i]).fadeIn();
         }
         chatIndex += obj.length;
     };
     //发送消息的方法
     var sendMessage = function () {
+        var oContent = $('#main_tab_friend_display_inputbox').get(0);
         var content = $('#main_tab_friend_display_inputbox').val();
         $.ajax({
-            url:"/model/send",
-            type:"POST",
-            data:{
-                account:account,
-                targetaccount:targetAccount,
-                chatindex:chatIndex,
-                content:content
+            url: "/model/send",
+            type: "POST",
+            data: {
+                account: account,
+                targetaccount: targetAccount,
+                chatindex: chatIndex,
+                content: content
             },
-            success:function (json) {
+            success: function (json) {
+                oContent.value = "";
                 json = JSON.parse(json);
                 console.log(json.infos);
-                if (json.status){
+                if (json.status) {
                     clearInterval(timer);
                     refreshChatRecord(json.obj);
-                    timer = setInterval(getChat,5000);
+                    timer = setInterval(getChat, 5000);
                 }
             }
         })
@@ -189,17 +191,17 @@ $(function () {
             </div>";
 
         var arr = oDisplay.getElementsByTagName('div');
-        for(var i = 0 ; i < arr.length;i++){
+        for (var i = 0; i < arr.length; i++) {
             $(arr[i]).fadeIn();
         }
 
         $("[clk='4']").click(function () {
             sendMessage();
         });
-        timer = setInterval(getChat,5000);
+        timer = setInterval(getChat, 5000);
     };
     //得到自己所需要的聊天的信息
-    var getChat = function() {
+    var getChat = function () {
         $.ajax({
             url: "/model/chat",
             type: "POST",

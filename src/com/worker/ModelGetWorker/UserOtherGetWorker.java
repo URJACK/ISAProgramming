@@ -1,5 +1,6 @@
 package com.worker.ModelGetWorker;
 
+import com.DAO.UserDAO;
 import com.json.Info_Status_Object;
 import com.json.User_Other_Json;
 import com.model.User;
@@ -19,7 +20,7 @@ public class UserOtherGetWorker implements ModelGetWorker {
         Session session = SessionOpenner.getInstance().getSession();
         User targetUser;
         try {
-            targetUser = (User) session.createQuery(String.format("FROM User WHERE account='%s'", targetAccount)).list().get(0);
+            targetUser = UserDAO.getUser(targetAccount,session);
         } catch (IndexOutOfBoundsException e) {
             e.printStackTrace();
             iso.setInfos("尚未找到该用户");

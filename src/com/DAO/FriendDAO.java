@@ -2,6 +2,7 @@ package com.DAO;
 
 import com.json.Friend_Json;
 import com.model.Friend;
+import com.model.FriendChat;
 import com.model.User;
 import org.hibernate.Session;
 
@@ -43,5 +44,12 @@ public class FriendDAO {
 
     public static Friend getFriend(Session session, int userAid, int userBid) {
         return (Friend) session.createQuery(String.format("FROM Friend WHERE userAid='%d' AND userBid='%d' OR userAid='%d' AND userBid='%d'", userAid, userBid, userBid, userAid)).list().get(0);
+    }
+    public static FriendChat[] getFriendChats(int userAid, int userBid, Session session) {
+        Friend friend = FriendDAO.getFriend(session, userAid, userBid);
+        List<FriendChat> friendChatList = session.createQuery(String.format("FROM FriendChat WHERE rid='%d' ORDER BY id ASC ",friend.getId())).list();
+        FriendChat[] chats = new FriendChat[friendChatList.size()];
+        friendChatList.toArray(chats);
+        return chats;
     }
 }

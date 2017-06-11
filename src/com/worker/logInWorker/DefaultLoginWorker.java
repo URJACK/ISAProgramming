@@ -1,5 +1,6 @@
 package com.worker.logInWorker;
 
+import com.DAO.UserDAO;
 import com.json.Info_Status;
 import com.model.User;
 import com.tool.SessionOpenner;
@@ -23,7 +24,7 @@ public class DefaultLoginWorker implements LoginWorker {
                 return 0;
             } else {
                 Session session = SessionOpenner.getInstance().getSession();
-                User user = (User) session.createQuery(String.format("FROM User WHERE account = '%s'", account)).list().get(0);
+                User user = UserDAO.getUser(account,session);
                 if (password.equals(user.getPassword())) {
                     is.setInfo("登陆成功");
                     is.setStatus(true);

@@ -1,5 +1,6 @@
 package com.worker.logInWorker;
 
+import com.DAO.UserDAO;
 import com.json.Info_Status;
 import com.model.User;
 import com.tool.MailSender;
@@ -20,7 +21,7 @@ public class ForgetWorker implements LoginWorker {
         SessionOpenner so = SessionOpenner.getInstance();
         Session session = so.getSession();
         try {
-            User user = (User) session.createQuery(String.format("FROM User WHERE account='%s'",account)).list().get(0);
+            User user = UserDAO.getUser(account,session);
             String email = user.getEmail();
             String checknumber = MailSender.getCheckNumber(6);
             rq.getSession().setAttribute("checknumber",checknumber);

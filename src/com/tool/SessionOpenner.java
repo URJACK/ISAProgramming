@@ -19,12 +19,6 @@ public class SessionOpenner {
     static SessionOpenner sessionOpenner;
     SessionFactory sf;
 
-    public static String getNowDate(){
-        Date dt = new Date();
-        SimpleDateFormat matter1 = new SimpleDateFormat("yyyy-MM-dd");
-        return matter1.format(dt);
-    }
-
     public static SessionOpenner getInstance() {
         if (sessionOpenner != null)
             return sessionOpenner;
@@ -33,7 +27,8 @@ public class SessionOpenner {
             cfr.configure();
             ServiceRegistry sr = new ServiceRegistryBuilder().applySettings(cfr.getProperties()).buildServiceRegistry();
             SessionFactory sf = cfr.buildSessionFactory(sr);
-            return new SessionOpenner(sf);
+            sessionOpenner = new SessionOpenner(sf);
+            return sessionOpenner;
         }
     }
 
@@ -44,5 +39,10 @@ public class SessionOpenner {
     public Session getSession() {
         Session session = sf.openSession();
         return session;
+    }
+    public static String getNowDate(){
+        Date dt = new Date();
+        SimpleDateFormat matter1 = new SimpleDateFormat("yyyy-MM-dd");
+        return matter1.format(dt);
     }
 }

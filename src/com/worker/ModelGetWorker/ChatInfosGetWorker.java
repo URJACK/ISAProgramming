@@ -49,7 +49,7 @@ public class ChatInfosGetWorker implements ModelGetWorker {
         try {
             int userAid = userA.getId();
             int userBid = userB.getId();
-            FriendChat[] friendChats = getFriendChats(userAid, userBid, session);
+            FriendChat[] friendChats = FriendDAO.getFriendChats(userAid, userBid, session);
             List<Message> messages = getMessages(friendChats, chatIndex, userAid);
             iso.setInfos("OK");
             iso.setObj(messages);
@@ -84,10 +84,4 @@ public class ChatInfosGetWorker implements ModelGetWorker {
         return messages;
     }
 
-    private FriendChat[] getFriendChats(int userAid, int userBid, Session session) {
-        Friend friend = FriendDAO.getFriend(session, userAid, userBid);
-        FriendChat[] chats = new FriendChat[friend.getChats().size()];
-        friend.getChats().toArray(chats);
-        return chats;
-    }
 }

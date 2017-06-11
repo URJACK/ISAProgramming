@@ -1,5 +1,6 @@
 package com.worker.logInWorker;
 
+import com.DAO.UserDAO;
 import com.json.Info_Status;
 import com.model.User;
 import com.tool.SessionOpenner;
@@ -29,7 +30,7 @@ public class ForgetWorker_Confirm implements LoginWorker {
             }else{
                 Session session = SessionOpenner.getInstance().getSession();
                 Transaction tr = session.beginTransaction();
-                User user = (User) session.createQuery(String.format("FROM User WHERE account = '%s'",account)).list().get(0);
+                User user = UserDAO.getUser(account,session);
                 user.setPassword(password);
                 session.saveOrUpdate(user);
                 tr.commit();

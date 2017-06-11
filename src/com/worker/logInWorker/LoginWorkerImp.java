@@ -1,5 +1,6 @@
 package com.worker.logInWorker;
 
+import com.DAO.UserDAO;
 import com.json.Info_Status;
 import com.model.User;
 import com.tool.SessionOpenner;
@@ -18,7 +19,7 @@ public class LoginWorkerImp implements LoginWorker {
             String account = rq.getParameter("account");
             String password = rq.getParameter("password");
             Session session = SessionOpenner.getInstance().getSession();
-            User user = (User) session.createQuery(String.format("FROM User WHERE account = '%s'", account)).list().get(0);
+            User user = UserDAO.getUser(account,session);
             if (user.getPassword().equals(password)) {
                 rq.getSession().setAttribute("account", account);
                 rq.getSession().setAttribute("password", password);
