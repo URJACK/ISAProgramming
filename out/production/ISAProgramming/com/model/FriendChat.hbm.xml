@@ -9,9 +9,9 @@
         <property name="rid" column="rid"/>
         <property name="senderid" column="senderid"/>
         <property name="content" column="content"/>
-        <many-to-one name="friend" class="com.model.Friend" insert="false" update="false">
+        <many-to-one name="friend" class="com.model.Friend" insert="false" update="false" >
             <column name="rid"/>
         </many-to-one>
-        <one-to-one name="sender" class="com.model.User"/>
+        <one-to-one name="sender" class="com.model.User" cascade="none"/>
     </class>
 </hibernate-mapping>

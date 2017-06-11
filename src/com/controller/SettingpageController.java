@@ -2,6 +2,7 @@ package com.controller;
 
 import com.google.gson.Gson;
 import com.json.Info_Status;
+import com.worker.SettingWorker.DeleteWorker;
 import com.worker.SettingWorker.MoreInfoChangeWorker;
 import com.worker.SettingWorker.PasswordChangeWorker;
 import com.worker.SettingWorker.SettingWorker;
@@ -67,6 +68,26 @@ public class SettingpageController {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @RequestMapping("/delete")
+    public void delete(HttpServletRequest rq,HttpServletResponse rsp){
+        try {
+            rq.setCharacterEncoding("UTF-8");
+            rsp.setCharacterEncoding("UTF-8");
+            rsp.setContentType("text/html");
+
+            Info_Status is = new Info_Status();
+            SettingWorker sw= new DeleteWorker();
+            sw.work(rq,is);
+
+            PrintWriter writer = rsp.getWriter();
+            writer.print(new Gson().toJson(is));
+            writer.flush();
+            writer.close();
+        }catch (Exception e){
             e.printStackTrace();
         }
     }

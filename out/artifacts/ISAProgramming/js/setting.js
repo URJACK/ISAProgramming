@@ -41,11 +41,11 @@ $(function () {
         var oMajor = document.createElement('div');
         var oDate = document.createElement('div');
         var oClass = document.createElement('div');
-        oAccount.style.display='none';
-        oEmail.style.display='none';
-        oMajor.style.display='none';
-        oDate.style.display='none';
-        oClass.style.display='none';
+        oAccount.style.display = 'none';
+        oEmail.style.display = 'none';
+        oMajor.style.display = 'none';
+        oDate.style.display = 'none';
+        oClass.style.display = 'none';
 
         var oAccount_label = document.createElement('label');
         var oEmail_label = document.createElement('label');
@@ -95,7 +95,7 @@ $(function () {
         oForm.appendChild(oClass);
 
         var arr = oForm.getElementsByTagName('div');
-        for(var i = 0 ; i < arr.length;i++){
+        for (var i = 0; i < arr.length; i++) {
             $(arr[i]).fadeIn();
         }
         display.appendChild(oForm);
@@ -123,7 +123,23 @@ $(function () {
     };
     //在朋友界面点击删除
     var friend_delete = function () {
-        console.log("delete");
+        //目标的Account
+        targetAccount = this.parentNode.parentNode.parentNode.children[0].innerHTML;
+        $.ajax({
+            url: "/setting/delete",
+            type: "POST",
+            data: {
+                account: account,
+                targetaccount: targetAccount
+            },
+            success: function (json) {
+                json = JSON.parse(json);
+                console.log(json.infos);
+                if (json.status) {
+                    $('#main_tab_friend_tbody').get(0).removeChild(this.parentNode.parentNode.parentNode);
+                }
+            }
+        })
     };
     //根据传入的obj设置 聊天的内容. 改变chatIndex
     var refreshChatRecord = function (obj) {

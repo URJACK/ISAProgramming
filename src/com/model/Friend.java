@@ -91,7 +91,6 @@ public class Friend {
                 ", userBid=" + userBid +
                 ", userA=" + userA +
                 ", userB=" + userB +
-                ", chats=" + chats +
                 '}';
     }
 }

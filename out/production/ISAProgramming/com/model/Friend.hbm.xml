@@ -10,7 +10,7 @@
         <property name="userBid" column="userBid"/>
         <many-to-one name="userA" class="com.model.User" cascade="all" unique="true" column="userAid" insert="false" update="false"/>
         <many-to-one name="userB" class="com.model.User" unique="true" cascade="all" column="userBid" insert="false" update="false"/>
-        <set name="chats" inverse="true">
+        <set name="chats" inverse="true" cascade="delete">
             <key>
                 <column name="rid"/>
             </key>
