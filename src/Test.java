@@ -1,16 +1,7 @@
 import com.DAO.FriendDAO;
-import com.DAO.UserDAO;
-import com.lib.dbconnector.MysqlConnectionFactory;
-import com.model.Friend;
-import com.model.FriendChat;
-import com.model.User;
 import com.tool.SessionOpenner;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
 
 /**
  * Created by FuFangzhou on 2017/5/31.

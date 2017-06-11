@@ -1,11 +1,15 @@
 package com.DAO;
 
 import com.json.Friend_Json;
+import com.lib.dbconnector.MysqlConnectionFactory;
 import com.model.Friend;
 import com.model.FriendChat;
 import com.model.User;
 import org.hibernate.Session;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,5 +55,33 @@ public class FriendDAO {
         FriendChat[] chats = new FriendChat[friendChatList.size()];
         friendChatList.toArray(chats);
         return chats;
+    }
+    public static void deleteFriendShip(Session session, String userAaccount, String userBaccount) {
+        User userA = UserDAO.getUser(userAaccount, session);
+        User userB = UserDAO.getUser(userBaccount, session);
+        Friend friend = FriendDAO.getFriend(session, userA.getId(), userB.getId());
+        Connection connection = MysqlConnectionFactory.getConnection();
+        Statement statement = null;
+        try {
+            connection.setAutoCommit(false);
+            statement = connection.createStatement();
+            statement.execute(String.format("DELETE FROM friend_chat WHERE rid = '%d'", friend.getId()));
+            statement.execute(String.format("DELETE FROM friend WHERE id ='%d'", friend.getId()));
+            connection.commit();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            try {
+                connection.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        } finally {
+            if (connection != null)
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+        }
     }
 }
