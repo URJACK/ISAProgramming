@@ -124,7 +124,8 @@ $(function () {
     //在朋友界面点击删除
     var friend_delete = function () {
         //目标的Account
-        targetAccount = this.parentNode.parentNode.parentNode.children[0].innerHTML;
+        var oObj = this.parentNode.parentNode.parentNode;
+        targetAccount = oObj.children[0].innerHTML;
         $.ajax({
             url: "/setting/delete",
             type: "POST",
@@ -136,7 +137,11 @@ $(function () {
                 json = JSON.parse(json);
                 console.log(json.infos);
                 if (json.status) {
-                    $('#main_tab_friend_tbody').get(0).removeChild(this.parentNode.parentNode.parentNode);
+                    var jqObj = $(oObj);
+                    jqObj.fadeOut();
+                    setTimeout(function () {
+                        $('#main_tab_friend_tbody').get(0).removeChild(oObj);
+                    },1000);
                 }
             }
         })
@@ -375,6 +380,25 @@ $(function () {
             needChangeMoreInformation = false;
         }
     };
+    //添加朋友的按钮
+    var addFriend = function () {
+        var targetaccount = $('#main_tab_friend_add_content').val();
+        $.ajax({
+            url:'/model/add',
+            type:'POST',
+            data:{
+                account:account,
+                targetaccount:targetaccount
+            },
+            success:function (json) {
+                json = JSON.parse(json);
+                console.log(json.infos);
+                if (json.status){
+                    refreshFirendsList(json.obj);
+                }
+            }
+        })
+    };
     $('#main_tab_info_changepassword').click(changeModifyPasswordStatus);
     $('#main_tab_info_commit').click(function () {
         var vnewpassword = $('#main_tab_info_newpassword').val();
@@ -435,6 +459,7 @@ $(function () {
         } else
             changeMoreInformation();
     });
+    $('#main_tab_friend_add').click(addFriend);
     setTimeout(function () {
         if (!auto_login) {
             auto_LoginFailed();

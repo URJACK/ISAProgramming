@@ -141,7 +141,9 @@
             <div class="row">
                 <div class="col-md-5 col-xs-12">
                     <table class="table table-striped">
-                        <caption>你的好友</caption>
+                        <caption>
+                            好友列表
+                        </caption>
                         <thead>
                         <tr>
                             <th>Account</th>
@@ -153,6 +155,12 @@
 
                         </tbody>
                     </table>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="main_tab_friend_add_content">
+                        <div class="input-group-btn" id="main_tab_friend_add">
+                            <a class="btn btn-primary">添加好友</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-7 col-xs-12" id="main_tab_friend_display">
 

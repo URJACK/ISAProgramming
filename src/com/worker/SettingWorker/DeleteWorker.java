@@ -1,15 +1,12 @@
 package com.worker.SettingWorker;
 
 import com.DAO.FriendDAO;
-import com.DAO.UserDAO;
 import com.json.Info_Status;
-import com.model.Friend;
-import com.model.FriendChat;
-import com.model.User;
 import com.tool.SessionOpenner;
 import org.hibernate.Session;
 
 import javax.servlet.http.HttpServletRequest;
+import java.sql.SQLException;
 
 /**
  * Created by FuFangzhou on 2017/6/11.
@@ -21,14 +18,16 @@ public class DeleteWorker implements SettingWorker {
         Session session = SessionOpenner.getInstance().getSession();
         String userAaccount = rq.getParameter("account");
         String userBaccount = rq.getParameter("targetaccount");
-        User userA = UserDAO.getUser(userAaccount,session);
-        User userB = UserDAO.getUser(userBaccount,session);
-        FriendChat[] friendChats = FriendDAO.getFriendChats(userA.getId(),userB.getId(),session);
-        Friend friend = FriendDAO.getFriend(session,userA.getId(),userB.getId());
-        for (int i = 0; i < friendChats.length; i++) {
-            session.delete(friendChats[i]);
+        try {
+            FriendDAO.deleteFriendShip(session,userAaccount,userBaccount);
+            is.setInfo("删除成功");
+            is.setStatus(true);
+            return 1;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            is.setInfo("删除失败");
+            is.setStatus(false);
+            return 0;
         }
-        session.delete(friend);
-        return 1;
     }
 }

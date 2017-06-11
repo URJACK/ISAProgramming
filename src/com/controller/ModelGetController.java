@@ -3,7 +3,6 @@ package com.controller;
 import com.DAO.FriendDAO;
 import com.DAO.UserDAO;
 import com.google.gson.Gson;
-import com.json.Info_Status;
 import com.json.Info_Status_Object;
 import com.json.Info_Status_User;
 import com.model.Friend;
@@ -143,6 +142,26 @@ public class ModelGetController {
         }
     }
 
+    //'A' 向 'B' 发出好友申请
+    @RequestMapping("/add")
+    public void add(HttpServletRequest rq,HttpServletResponse rsp){
+        try {
+            rq.setCharacterEncoding("UTF-8");
+            rsp.setCharacterEncoding("UTF-8");
+            rsp.setContentType("text/html");
+
+            Info_Status_Object iso = new Info_Status_Object();
+            ModelGetWorker mgw = new ModeGetAddWorker();
+            mgw.work(rq,iso);
+
+            PrintWriter writer = rsp.getWriter();
+            writer.write(new Gson().toJson(iso));
+            writer.flush();
+            writer.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     //根据ChatIndex 将需要被刷新的信息回传给界面
     private void putChatMessage(HttpServletRequest rq, HttpServletResponse rsp, Info_Status_Object iso) throws IOException {

@@ -1,4 +1,3 @@
-import com.DAO.FriendDAO;
 import com.tool.SessionOpenner;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -12,7 +11,5 @@ public class Test {
         Transaction transaction = session.beginTransaction();
         String userAaccount = "Debug";
         String userBaccount = "Admin";
-        FriendDAO.deleteFriendShip(session, userAaccount, userBaccount);
     }
-
 }

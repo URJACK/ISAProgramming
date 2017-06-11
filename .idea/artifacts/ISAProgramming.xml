@@ -20,6 +20,7 @@
           <element id="file-copy" path="$PROJECT_DIR$/src/lib/mail/smtp.jar" />
           <element id="file-copy" path="$PROJECT_DIR$/src/lib/mail/gimap.jar" />
           <element id="file-copy" path="$PROJECT_DIR$/src/lib/mail/mailapi.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/src/lib/GerneralWeb.jar" />
         </element>
       </element>
     </root>

@@ -2,10 +2,7 @@ package com.controller;
 
 import com.google.gson.Gson;
 import com.json.Info_Status;
-import com.worker.SettingWorker.DeleteWorker;
-import com.worker.SettingWorker.MoreInfoChangeWorker;
-import com.worker.SettingWorker.PasswordChangeWorker;
-import com.worker.SettingWorker.SettingWorker;
+import com.worker.SettingWorker.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;

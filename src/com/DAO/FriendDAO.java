@@ -49,14 +49,17 @@ public class FriendDAO {
     public static Friend getFriend(Session session, int userAid, int userBid) {
         return (Friend) session.createQuery(String.format("FROM Friend WHERE userAid='%d' AND userBid='%d' OR userAid='%d' AND userBid='%d'", userAid, userBid, userBid, userAid)).list().get(0);
     }
+
     public static FriendChat[] getFriendChats(int userAid, int userBid, Session session) {
         Friend friend = FriendDAO.getFriend(session, userAid, userBid);
-        List<FriendChat> friendChatList = session.createQuery(String.format("FROM FriendChat WHERE rid='%d' ORDER BY id ASC ",friend.getId())).list();
+        List<FriendChat> friendChatList = session.createQuery(String.format("FROM FriendChat WHERE rid='%d' ORDER BY id ASC ", friend.getId())).list();
         FriendChat[] chats = new FriendChat[friendChatList.size()];
         friendChatList.toArray(chats);
         return chats;
     }
-    public static void deleteFriendShip(Session session, String userAaccount, String userBaccount) {
+
+    //使用了MysqlConnectionFactory
+    public static void deleteFriendShip(Session session, String userAaccount, String userBaccount) throws SQLException {
         User userA = UserDAO.getUser(userAaccount, session);
         User userB = UserDAO.getUser(userBaccount, session);
         Friend friend = FriendDAO.getFriend(session, userA.getId(), userB.getId());
@@ -72,6 +75,7 @@ public class FriendDAO {
             e.printStackTrace();
             try {
                 connection.rollback();
+                throw e;
             } catch (SQLException e1) {
                 e1.printStackTrace();
             }
@@ -81,7 +85,13 @@ public class FriendDAO {
                     connection.close();
                 } catch (SQLException e) {
                     e.printStackTrace();
+                    throw e;
                 }
         }
+    }
+
+
+    public static void addFriendShip(Session session, String userAaccount, String userBaccount) {
+
     }
 }
