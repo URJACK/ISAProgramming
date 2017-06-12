@@ -186,16 +186,6 @@
                     </tr>
                     </thead>
                     <tbody id="main_tab_request_tbody">
-                    <tr>
-                        <td>Fackasdf23</td>
-                        <td>42351462@qq.com</td>
-                        <td>
-                            <div class="btn-group btn-group-sm">
-                                <a href="#" class="btn btn-default">Agree</a>
-                                <a href="#" class="btn btn-default">Refuse</a>
-                            </div>
-                        </td>
-                    </tr>
                     </tbody>
                 </table>
             </div>

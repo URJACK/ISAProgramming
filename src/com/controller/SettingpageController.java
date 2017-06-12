@@ -113,4 +113,25 @@ public class SettingpageController {
             e.printStackTrace();
         }
     }
+
+    //'A' 同意 'B'的好友申请
+    @RequestMapping("/agreerefuse")
+    public void agreerefuse(HttpServletRequest rq,HttpServletResponse rsp){
+        try {
+            rq.setCharacterEncoding("UTF-8");
+            rsp.setCharacterEncoding("UTF-8");
+            rsp.setContentType("text/html");
+
+            Info_Status is = new Info_Status();
+            SettingWorker mgw = new SettingAgreeWorker();
+            mgw.work(rq,is);
+
+            PrintWriter writer = rsp.getWriter();
+            writer.write(new Gson().toJson(is));
+            writer.flush();
+            writer.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

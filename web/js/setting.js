@@ -33,6 +33,49 @@ $(function () {
         var oTbody = $('#main_tab_request_tbody').get(0);
         oTbody.innerHTML = '';
     };
+    //同意添加好友
+    var requestFriendAgree = function () {
+        var oTbody = $('#main_tab_request_tbody').get(0);
+        var obj = this.parentNode.parentNode.parentNode;
+        targetAccount = obj.childNodes[0].innerHTML;
+        $.ajax({
+            url:'/setting/agreerefuse',
+            type:'POST',
+            data:{
+                account:account,
+                targetaccount:targetAccount,
+                agree:true
+            },
+            success:function (json) {
+                json = JSON.parse(json);
+            }
+        });
+        $(obj).fadeOut();
+        setTimeout(function () {
+            oTbody.removeChild(obj);
+        },1000);
+    };
+    //拒绝添加好友
+    var requestFriendRefuse = function () {
+        var oTbody = $('#main_tab_request_tbody').get(0);
+        var obj = this.parentNode.parentNode.parentNode;
+        $.ajax({
+            url:'/setting/agreerefuse',
+            type:'POST',
+            data:{
+                account:account,
+                targetaccount:targetAccount,
+                agree:false
+            },
+            success:function (json) {
+                json = JSON.parse(json);
+            }
+        });
+        $(obj).fadeOut();
+        setTimeout(function () {
+            oTbody.removeChild(obj);
+        },1000);
+    };
     //在申请列表界面里，根据传入的json 设置申请列表界面的内容
     var resetElementInRequestContent = function (objs) {
         var oTbody = $('#main_tab_request_tbody').get(0);
@@ -51,6 +94,8 @@ $(function () {
             jq_oDiv.addClass('btn-group btn-group-sm');
             oA_Agree.setAttribute('class', 'btn btn-default');
             oA_Refuse.setAttribute('class', 'btn btn-default');
+            oA_Agree.setAttribute('clk', 'request_tbody_agree');
+            oA_Refuse.setAttribute('clk', 'request_tbody_refuse');
             oA_Agree.innerHTML = 'Agree';
             oA_Refuse.innerHTML = 'Refuse';
             oDiv.appendChild(oA_Agree);
@@ -62,6 +107,8 @@ $(function () {
 
             oTbody.appendChild(oTr);
         }
+        $("[clk='request_tbody_agree']").click(requestFriendAgree);
+        $("[clk='request_tbody_refuse']").click(requestFriendRefuse);
     };
     //在朋友界面点击查询后 根据传入的Json 设置Friend 界面的右边的内容
     var resetElementInFriendContent_Query = function (obj) {
