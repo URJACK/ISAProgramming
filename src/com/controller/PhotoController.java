@@ -11,12 +11,17 @@ import java.util.Properties;
 
 /**
  * Created by FuFangzhou on 2017/6/4.
+ * 配置文件:
+ img_user=E:\\tomcat\\websource\\ISAProgramming\\user\\%d.bmp
+ img_homepage=E:\\tomcat\\websource\\ISAProgramming\\homepage\\%d.jpg
  */
 @Controller
 @RequestMapping("/img")
 public class PhotoController {
 
     private static String LOCATION_USER;
+    private static String LOCATION_HOMEPAGE;
+
 
     static {
         Properties properties = new Properties();
@@ -28,7 +33,7 @@ public class PhotoController {
             e.printStackTrace();
         }
         LOCATION_USER = properties.getProperty("img_user");
-        System.out.println(LOCATION_USER);
+        LOCATION_HOMEPAGE = properties.getProperty("img_homepage");
     }
 
     @RequestMapping("/user")
@@ -43,6 +48,34 @@ public class PhotoController {
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
+        }
+    }
+
+    @RequestMapping("/home1")
+    public void getHomeImg1(HttpServletRequest rq,HttpServletResponse rsp){
+        try {
+            rsp.setContentType("image/img");
+            writeUserBitmap(rsp,String.format(LOCATION_HOMEPAGE,1));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @RequestMapping("/home2")
+    public void getHomeImg2(HttpServletRequest rq,HttpServletResponse rsp){
+        try {
+            rsp.setContentType("image/img");
+            writeUserBitmap(rsp,String.format(LOCATION_HOMEPAGE,2));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @RequestMapping("/home3")
+    public void getHomeImg3(HttpServletRequest rq,HttpServletResponse rsp){
+        try {
+            rsp.setContentType("image/img");
+            writeUserBitmap(rsp,String.format(LOCATION_HOMEPAGE,3));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

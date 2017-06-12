@@ -1,4 +1,4 @@
-var account = "Null";
+var account = "";
 var auto_login = false;        //是否登陆成功
 $(function () {
     var receivemail_up = false;
@@ -188,6 +188,15 @@ $(function () {
     });
     $('#navright_hidden_name_setting').click(function () {
        window.location ="/setting";
+    });
+    $('#navbar_brand').click(function () {
+        window.location="/";
+    });
+    $('#navleft_isa').click(function () {
+        window.location="/home";
+    });
+    $('#navleft_program').click(function () {
+        window.location="/program";
     });
     $.ajax({
         url: "/home/defaultlogin",
