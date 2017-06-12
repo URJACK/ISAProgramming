@@ -49,6 +49,10 @@
                     <li><a href="#main_tab_friend" data-toggle="tab">
                         我的好友</a>
                     </li>
+                    <li class="divider"></li>
+                    <li><a href="#main_tab_request" data-toggle="tab">
+                        好友申请</a>
+                    </li>
                 </ul>
             </li>
         </ul>
@@ -168,6 +172,32 @@
                 <div class="col-md-7 col-xs-12" id="main_tab_friend_display">
 
                 </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="main_tab_request">
+            <div class="col-md-offset-2 col-md-8 col-xs-12">
+                <table class="table table-striped">
+                    <caption><label class="text-primary">Friend Notice</label></caption>
+                    <thead>
+                    <tr>
+                        <th>Account</th>
+                        <th>Email</th>
+                        <th>Operation</th>
+                    </tr>
+                    </thead>
+                    <tbody id="main_tab_request_tbody">
+                    <tr>
+                        <td>Fackasdf23</td>
+                        <td>42351462@qq.com</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <a href="#" class="btn btn-default">Agree</a>
+                                <a href="#" class="btn btn-default">Refuse</a>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

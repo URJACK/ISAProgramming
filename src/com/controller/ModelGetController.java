@@ -143,6 +143,27 @@ public class ModelGetController {
         }
     }
 
+    //查询申请自己的好友申请列表
+    @RequestMapping("/requestfriend")
+    public void requestFriend(HttpServletRequest rq, HttpServletResponse rsp) {
+        try {
+            rq.setCharacterEncoding("UTF-8");
+            rsp.setCharacterEncoding("UTF-8");
+            rsp.setContentType("text/html");
+
+            Info_Status_Object iso = new Info_Status_Object();
+            ModelGetWorker mgw = new RequestGetWorker();
+            mgw.work(rq, iso);
+
+            PrintWriter writer = rsp.getWriter();
+            writer.print(new Gson().toJson(iso));
+            writer.flush();
+            writer.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     //根据ChatIndex 将需要被刷新的信息回传给界面
     private void putChatMessage(HttpServletRequest rq, HttpServletResponse rsp, Info_Status_Object iso) throws IOException {
         rq.setCharacterEncoding("UTF-8");

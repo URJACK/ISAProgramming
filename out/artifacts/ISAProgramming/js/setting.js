@@ -28,6 +28,41 @@ $(function () {
         while (arr.length != 0)
             display.removeChild(arr[0]);
     };
+    //清除申请列表界面里表格的所有的内容
+    var clearElement_FriendRequest = function () {
+        var oTbody = $('#main_tab_request_tbody').get(0);
+        oTbody.innerHTML = '';
+    };
+    //在申请列表界面里，根据传入的json 设置申请列表界面的内容
+    var resetElementInRequestContent = function (objs) {
+        var oTbody = $('#main_tab_request_tbody').get(0);
+        for (var i = 0; i < objs.length; i++) {
+            var oTr = document.createElement('tr');
+            var oTd_Account = document.createElement('td');
+            var oTd_Email = document.createElement('td');
+            var oTd_Operate = document.createElement('td');
+            var oDiv = document.createElement('div');
+            var oA_Agree = document.createElement('a');
+            var oA_Refuse = document.createElement('a');
+
+            oTd_Account.innerHTML = objs[i].account;
+            oTd_Email.innerHTML = objs[i].email;
+            var jq_oDiv = $(oDiv);
+            jq_oDiv.addClass('btn-group btn-group-sm');
+            oA_Agree.setAttribute('class', 'btn btn-default');
+            oA_Refuse.setAttribute('class', 'btn btn-default');
+            oA_Agree.innerHTML = 'Agree';
+            oA_Refuse.innerHTML = 'Refuse';
+            oDiv.appendChild(oA_Agree);
+            oDiv.appendChild(oA_Refuse);
+            oTd_Operate.appendChild(oDiv);
+            oTr.appendChild(oTd_Account);
+            oTr.appendChild(oTd_Email);
+            oTr.appendChild(oTd_Operate);
+
+            oTbody.appendChild(oTr);
+        }
+    };
     //在朋友界面点击查询后 根据传入的Json 设置Friend 界面的右边的内容
     var resetElementInFriendContent_Query = function (obj) {
         clearElement_FriendContent();
@@ -313,8 +348,43 @@ $(function () {
         $("[clk='2']").click(friend_chat);
         $("[clk='3']").click(friend_delete);
     };
-    //自动登陆成功成功了
-    var auto_LoginSuccess = function () {
+
+    var postGetRequestFriend = function () {
+        $.ajax({
+            url: '/model/requestfriend',
+            type: 'POST',
+            data: {
+                account: account
+            },
+            success: function (json) {
+                json = JSON.parse(json);
+                console.log(json.infos);
+                if (json.status) {
+                    clearElement_FriendRequest();
+                    resetElementInRequestContent(json.obj);
+                }
+            }
+        });
+    };
+
+    var postGetFriend = function () {
+        $.ajax({
+            url: '/model/friend',
+            data: {
+                account: account
+            },
+            success: function (json) {
+                json = JSON.parse(json);
+                console.log(json.infos);
+                firendslist = json.obj;
+                if (json.status) {
+                    refreshFirendsList(firendslist);
+                }
+            }
+        });
+    };
+
+    var postGetUser = function () {
         $.ajax({
             url: '/model/user',
             data: {
@@ -333,21 +403,14 @@ $(function () {
                     $('#main_tab_moreinfo_major').get(0).value = json.major;
                 }
             }
-        });         //得到User 的个人信息
-        $.ajax({
-            url: '/model/friend',
-            data: {
-                account: account
-            },
-            success: function (json) {
-                json = JSON.parse(json);
-                console.log(json.infos);
-                firendslist = json.obj;
-                if (json.status) {
-                    refreshFirendsList(firendslist);
-                }
-            }
-        })
+        });
+    };
+
+    //自动登陆成功成功了
+    var auto_LoginSuccess = function () {
+        postGetUser();         //得到User 的个人信息
+        postGetFriend();         //得到User 的朋友信息
+        postGetRequestFriend();            //得到User 的申请列表的信息
     };
     //通过点击修改按钮，改变基本信息界面的状态
     var changeModifyPasswordStatus = function () {
