@@ -21,7 +21,6 @@ public class SettingAgreeWorker implements SettingWorker {
         try {
             FriendDAO.deleteFriendShipRequest(session, targetaccount, account);
             if (isAgree) {
-                System.out.println(String.format("DEBUG + 正在添加朋友关系 %s %s",account,targetaccount));
                 FriendDAO.addFriendShip(session, targetaccount, account);
             }
             is.setInfo("操作完成");

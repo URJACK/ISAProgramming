@@ -17,6 +17,7 @@ import java.util.Properties;
 public class PhotoController {
 
     private static String LOCATION_USER;
+
     static {
         Properties properties = new Properties();
         try {
@@ -31,22 +32,29 @@ public class PhotoController {
     }
 
     @RequestMapping("/user")
-    public void getUserImg(HttpServletRequest rq, HttpServletResponse rsp){
+    public void getUserImg(HttpServletRequest rq, HttpServletResponse rsp) {
         try {
             rsp.setContentType("image/img");
             int id = (int) rq.getSession().getAttribute("id");
-            File file = new File(String.format(LOCATION_USER,id));
-            InputStream inputStream = new FileInputStream(file);
-            byte[] img = new byte[inputStream.available()];
-            inputStream.read(img);
-            ServletOutputStream outputStream = rsp.getOutputStream();
-            outputStream.write(img);
-            outputStream.flush();
-            outputStream.close();
-            inputStream.close();
-
+            writeUserBitmap(rsp, String.format(LOCATION_USER, id));
         } catch (IOException e) {
-            e.printStackTrace();
+            try {
+                writeUserBitmap(rsp, String.format(LOCATION_USER, 0));
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
         }
+    }
+
+    private void writeUserBitmap(HttpServletResponse rsp, String format) throws IOException {
+        File file = new File(format);
+        InputStream inputStream = new FileInputStream(file);
+        byte[] img = new byte[inputStream.available()];
+        inputStream.read(img);
+        ServletOutputStream outputStream = rsp.getOutputStream();
+        outputStream.write(img);
+        outputStream.flush();
+        outputStream.close();
+        inputStream.close();
     }
 }

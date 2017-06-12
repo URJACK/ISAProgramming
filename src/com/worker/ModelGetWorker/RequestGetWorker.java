@@ -24,11 +24,9 @@ public class RequestGetWorker implements ModelGetWorker {
         try {
             session = SessionOpenner.getInstance().getSession();
             String account = rq.getParameter("account");
-            System.out.println(String.format("RequestGetWorker + ACCOUNT:%s",account));
             User user = UserDAO.getUser(account, session);
             List<FriendRequest> friendShipRequest = FriendDAO.getFriendShipRequest(session, user.getAccount());
             List<Friend_Json> friend_jsons = getFriendJsonList(friendShipRequest);
-            System.out.println(String.format("RequestGetWorker + SIZE:%s",friend_jsons.size()));
             iso.setInfos("查询申请列表成功");
             iso.setObj(friend_jsons);
             iso.setStatus(true);
