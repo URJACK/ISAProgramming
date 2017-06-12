@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.model.FriendRequest" table="friend_request" schema="isaprogramdb">
+        <id name="id">
+            <column name="id" sql-type="int(11)"/>
+        </id>
+        <property name="requestId">
+            <column name="requestId" sql-type="int(11)"/>
+        </property>
+        <property name="responseId">
+            <column name="responseId" sql-type="int(11)"/>
+        </property>
+        <many-to-one name="userA" class="com.model.User" cascade="all" unique="true" column="requestId" insert="false" update="false"/>
+        <many-to-one name="userB" class="com.model.User" cascade="all" unique="true" column="responseId" insert="false" update="false"/>
+    </class>
+</hibernate-mapping>

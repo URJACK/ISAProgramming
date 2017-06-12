@@ -1,6 +1,7 @@
+import com.model.Friend;
+import com.model.FriendRequest;
 import com.tool.SessionOpenner;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 
 /**
  * Created by FuFangzhou on 2017/5/31.
@@ -8,8 +9,11 @@ import org.hibernate.Transaction;
 public class Test {
     public static void main(String[] args) {
         Session session = SessionOpenner.getInstance().getSession();
-        Transaction transaction = session.beginTransaction();
-        String userAaccount = "Debug";
-        String userBaccount = "Admin";
+        FriendRequest friendRequest = (FriendRequest) session.get(FriendRequest.class,1);
+        System.out.println(friendRequest.getUserA());
+        System.out.println(friendRequest.getUserB());
+        Friend friend = (Friend) session.get(Friend.class,1);
+        System.out.println(friend.getUserA());
+        System.out.println(friend.getUserB());
     }
 }

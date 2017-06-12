@@ -4,7 +4,6 @@ import com.DAO.FriendDAO;
 import com.DAO.UserDAO;
 import com.json.Friend_Json;
 import com.json.Info_Status_Object;
-import com.model.Friend;
 import com.model.User;
 import com.tool.SessionOpenner;
 import org.hibernate.Session;
