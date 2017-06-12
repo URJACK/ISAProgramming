@@ -28,6 +28,8 @@ public class DeleteWorker implements SettingWorker {
             is.setInfo("删除失败");
             is.setStatus(false);
             return 0;
+        }finally {
+            session.close();
         }
     }
 }

@@ -14,11 +14,12 @@ import javax.servlet.http.HttpServletRequest;
 public class PasswordChangeWorker implements SettingWorker{
     @Override
     public int work(HttpServletRequest rq, Info_Status is) {
+        Session session = null;
         try {
             String account = rq.getParameter("account");
             String newpassword = rq.getParameter("newpassword");
             String oldpassword = rq.getParameter("oldpassword");
-            Session session = SessionOpenner.getInstance().getSession();
+            session = SessionOpenner.getInstance().getSession();
             Transaction transaction = session.beginTransaction();
             User user = (User) session.createQuery(String.format("FROM User WHERE account='%s'", account)).list().get(0);
             if(user.getPassword().equals(oldpassword)) {
@@ -35,6 +36,9 @@ public class PasswordChangeWorker implements SettingWorker{
             is.setInfo("因为未知的原因，服务器出现了错误");
             is.setStatus(false);
             return 0;
+        }finally {
+            if (session==null)
+                session.close();
         }
         return 1;
     }

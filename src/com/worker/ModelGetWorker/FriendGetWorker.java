@@ -26,11 +26,12 @@ public class FriendGetWorker implements ModelGetWorker {
             iso.setInfos("Return Data Successs");
             iso.setObj(friend_jsons);
             iso.setStatus(true);
-            session.close();
             return 1;
         }catch (IndexOutOfBoundsException e){
             session.close();
             return 0;
+        }finally {
+            session.close();
         }
     }
 

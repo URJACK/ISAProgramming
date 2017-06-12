@@ -22,10 +22,13 @@ public class SettingAddRequestWorker implements SettingWorker {
             FriendDAO.addFriendShipRequest(session, account, targetaccount);
             is.setInfo("发送请求成功");
             is.setStatus(true);
+            return 1;
         }catch (Exception e){
             is.setInfo(e.getMessage());
             is.setStatus(false);
+            return 0;
+        }finally {
+            session.close();
         }
-        return 0;
     }
 }

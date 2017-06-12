@@ -30,8 +30,9 @@ public class MoreInfoChangeWorker implements SettingWorker {
             is.setInfo("Class设置只能为整数");
             return 3;
         }
+        Session session = null;
         try {
-            Session session = SessionOpenner.getInstance().getSession();
+            session = SessionOpenner.getInstance().getSession();
             Transaction tr = session.beginTransaction();
             User user = (User) session.createQuery(String.format("FROM User WHERE account='%s'", account)).list().get(0);
             user.setIntroduce(introduce);
@@ -46,6 +47,9 @@ public class MoreInfoChangeWorker implements SettingWorker {
             is.setInfo("修改信息失败，可能是输入有误或者是服务器出错");
             is.setStatus(false);
             return 2;
+        } finally {
+            if (session != null)
+                session.close();
         }
     }
 }

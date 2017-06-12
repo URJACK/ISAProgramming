@@ -19,13 +19,16 @@ import java.util.List;
 public class RequestGetWorker implements ModelGetWorker {
     @Override
     public int work(HttpServletRequest rq, Object ob) {
+        Session session = null;
         Info_Status_Object iso = (Info_Status_Object) ob;
         try {
-            Session session = SessionOpenner.getInstance().getSession();
+            session = SessionOpenner.getInstance().getSession();
             String account = rq.getParameter("account");
+            System.out.println(String.format("RequestGetWorker + ACCOUNT:%s",account));
             User user = UserDAO.getUser(account, session);
             List<FriendRequest> friendShipRequest = FriendDAO.getFriendShipRequest(session, user.getAccount());
             List<Friend_Json> friend_jsons = getFriendJsonList(friendShipRequest);
+            System.out.println(String.format("RequestGetWorker + SIZE:%s",friend_jsons.size()));
             iso.setInfos("查询申请列表成功");
             iso.setObj(friend_jsons);
             iso.setStatus(true);
@@ -34,6 +37,9 @@ public class RequestGetWorker implements ModelGetWorker {
             iso.setInfos("查询失败");
             iso.setStatus(false);
             return 0;
+        } finally {
+            if (session != null)
+                session.close();
         }
     }
 

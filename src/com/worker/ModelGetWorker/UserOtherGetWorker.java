@@ -20,7 +20,7 @@ public class UserOtherGetWorker implements ModelGetWorker {
         Session session = SessionOpenner.getInstance().getSession();
         User targetUser;
         try {
-            targetUser = UserDAO.getUser(targetAccount,session);
+            targetUser = UserDAO.getUser(targetAccount, session);
         } catch (IndexOutOfBoundsException e) {
             e.printStackTrace();
             iso.setInfos("尚未找到该用户");
@@ -38,7 +38,6 @@ public class UserOtherGetWorker implements ModelGetWorker {
             iso.setInfos("Return Data Success!");
             iso.setStatus(true);
             iso.setObj(uoj);
-            session.close();
             return 1;
         } catch (Exception e) {
             e.printStackTrace();
@@ -46,6 +45,8 @@ public class UserOtherGetWorker implements ModelGetWorker {
             iso.setStatus(false);
             session.close();
             return 0;
+        } finally {
+            session.close();
         }
     }
 }

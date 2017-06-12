@@ -45,13 +45,14 @@ public class UserGetWorker implements ModelGetWorker {
             else
                 is.setIntroduce("尚未设置自我介绍");
             is.setStatus(true);
-            session.close();
         } catch (IndexOutOfBoundsException e) {
             is.setInfos("因为其他原因，尚未找到该用户");
             is.setAccount(FAILEDSTR);
             is.setEmail(FAILEDSTR);
             is.setDate(FAILEDSTR);
             is.setStatus(false);
+            session.close();
+        } finally {
             session.close();
         }
         return 0;

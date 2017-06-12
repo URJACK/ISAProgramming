@@ -39,42 +39,49 @@ $(function () {
         var obj = this.parentNode.parentNode.parentNode;
         targetAccount = obj.childNodes[0].innerHTML;
         $.ajax({
-            url:'/setting/agreerefuse',
-            type:'POST',
-            data:{
-                account:account,
-                targetaccount:targetAccount,
-                agree:true
+            url: '/setting/agreerefuse',
+            type: 'POST',
+            data: {
+                account: account,
+                targetaccount: targetAccount,
+                agree: true
             },
-            success:function (json) {
+            success: function (json) {
                 json = JSON.parse(json);
+                console.log(json.infos);
+                if (json.status) {
+                    postGetFriend();
+                    $(obj).fadeOut();
+                    setTimeout(function () {
+                        oTbody.removeChild(obj);
+                    }, 1000);
+                }
             }
         });
-        $(obj).fadeOut();
-        setTimeout(function () {
-            oTbody.removeChild(obj);
-        },1000);
     };
     //拒绝添加好友
     var requestFriendRefuse = function () {
         var oTbody = $('#main_tab_request_tbody').get(0);
         var obj = this.parentNode.parentNode.parentNode;
         $.ajax({
-            url:'/setting/agreerefuse',
-            type:'POST',
-            data:{
-                account:account,
-                targetaccount:targetAccount,
-                agree:false
+            url: '/setting/agreerefuse',
+            type: 'POST',
+            data: {
+                account: account,
+                targetaccount: targetAccount,
+                agree: false
             },
-            success:function (json) {
+            success: function (json) {
                 json = JSON.parse(json);
+                console.log(json.infos);
+                if (json.status) {
+                    $(obj).fadeOut();
+                    setTimeout(function () {
+                        oTbody.removeChild(obj);
+                    }, 1000);
+                }
             }
         });
-        $(obj).fadeOut();
-        setTimeout(function () {
-            oTbody.removeChild(obj);
-        },1000);
     };
     //在申请列表界面里，根据传入的json 设置申请列表界面的内容
     var resetElementInRequestContent = function (objs) {
