@@ -1,19 +1,19 @@
-import com.model.Friend;
-import com.model.FriendRequest;
-import com.tool.SessionOpenner;
-import org.hibernate.Session;
-
 /**
  * Created by FuFangzhou on 2017/5/31.
  */
 public class Test {
     public static void main(String[] args) {
-        Session session = SessionOpenner.getInstance().getSession();
-        FriendRequest friendRequest = (FriendRequest) session.get(FriendRequest.class,1);
-        System.out.println(friendRequest.getUserA());
-        System.out.println(friendRequest.getUserB());
-        Friend friend = (Friend) session.get(Friend.class,1);
-        System.out.println(friend.getUserA());
-        System.out.println(friend.getUserB());
+//        Session session = SessionOpenner.getInstance().getSession();
+//        FriendDAO.addFriendShipRequest(session,"Admin","Debug");
+//        try {
+//            FriendDAO.deleteFriendShipRequest(session,"Fufangzhou","Debu");
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//            System.out.println("删除失败");
+//        }
+//        List<FriendRequest> debug = FriendDAO.getFriendShipRequest(session, "Debug");
+//        System.out.println(debug);
+        Exception e = new Exception("NIhao");
+        System.out.println(e.getMessage());
     }
 }

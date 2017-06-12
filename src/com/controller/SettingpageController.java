@@ -2,6 +2,7 @@ package com.controller;
 
 import com.google.gson.Gson;
 import com.json.Info_Status;
+import com.worker.ModelGetWorker.SettingAddRequestWorker;
 import com.worker.SettingWorker.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +26,7 @@ public class SettingpageController {
         return mv;
     }
 
+    //A请求更改密码
     @RequestMapping("/password")
     public void password(HttpServletRequest rq, HttpServletResponse rsp) {
         try {
@@ -47,6 +49,7 @@ public class SettingpageController {
         }
     }
 
+    //A请求更多的信息
     @RequestMapping("/moreinfo")
     public void moreinfo(HttpServletRequest rq, HttpServletResponse rsp) {
         try {
@@ -69,6 +72,7 @@ public class SettingpageController {
         }
     }
 
+    //A需要删除B
     @RequestMapping("/delete")
     public void delete(HttpServletRequest rq,HttpServletResponse rsp){
         try {
@@ -85,6 +89,27 @@ public class SettingpageController {
             writer.flush();
             writer.close();
         }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    //'A' 向 'B' 发出好友申请
+    @RequestMapping("/add")
+    public void add(HttpServletRequest rq,HttpServletResponse rsp){
+        try {
+            rq.setCharacterEncoding("UTF-8");
+            rsp.setCharacterEncoding("UTF-8");
+            rsp.setContentType("text/html");
+
+            Info_Status is = new Info_Status();
+            SettingWorker mgw = new SettingAddRequestWorker();
+            mgw.work(rq,is);
+
+            PrintWriter writer = rsp.getWriter();
+            writer.write(new Gson().toJson(is));
+            writer.flush();
+            writer.close();
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

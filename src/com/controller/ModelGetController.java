@@ -3,6 +3,7 @@ package com.controller;
 import com.DAO.FriendDAO;
 import com.DAO.UserDAO;
 import com.google.gson.Gson;
+import com.json.Info_Status;
 import com.json.Info_Status_Object;
 import com.json.Info_Status_User;
 import com.model.Friend;
@@ -10,6 +11,7 @@ import com.model.FriendChat;
 import com.model.User;
 import com.tool.SessionOpenner;
 import com.worker.ModelGetWorker.*;
+import com.worker.SettingWorker.SettingWorker;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Controller;
@@ -133,32 +135,10 @@ public class ModelGetController {
             session.save(fc);
             transaction.commit();
             session.close();
-
             putChatMessage(rq, rsp, iso);
         } catch (Exception e) {
             iso.setStatus(false);
             iso.setInfos("Error");
-            e.printStackTrace();
-        }
-    }
-
-    //'A' 向 'B' 发出好友申请
-    @RequestMapping("/add")
-    public void add(HttpServletRequest rq,HttpServletResponse rsp){
-        try {
-            rq.setCharacterEncoding("UTF-8");
-            rsp.setCharacterEncoding("UTF-8");
-            rsp.setContentType("text/html");
-
-            Info_Status_Object iso = new Info_Status_Object();
-            ModelGetWorker mgw = new ModeGetAddWorker();
-            mgw.work(rq,iso);
-
-            PrintWriter writer = rsp.getWriter();
-            writer.write(new Gson().toJson(iso));
-            writer.flush();
-            writer.close();
-        } catch (Exception e) {
             e.printStackTrace();
         }
     }

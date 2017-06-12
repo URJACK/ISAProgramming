@@ -141,7 +141,7 @@ $(function () {
                     jqObj.fadeOut();
                     setTimeout(function () {
                         $('#main_tab_friend_tbody').get(0).removeChild(oObj);
-                    },1000);
+                    }, 1000);
                 }
             }
         })
@@ -380,22 +380,23 @@ $(function () {
             needChangeMoreInformation = false;
         }
     };
+    //设置朋友界面的提示信息
+    var setTabFriendContent = function (infos) {
+        $('#main_tab_friend_add_warning').get(0).innerHTML = infos;
+    };
     //添加朋友的按钮
     var addFriend = function () {
         var targetaccount = $('#main_tab_friend_add_content').val();
         $.ajax({
-            url:'/model/add',
-            type:'POST',
-            data:{
-                account:account,
-                targetaccount:targetaccount
+            url: '/setting/add',
+            type: 'POST',
+            data: {
+                account: account,
+                targetaccount: targetaccount
             },
-            success:function (json) {
+            success: function (json) {
                 json = JSON.parse(json);
-                console.log(json.infos);
-                if (json.status){
-                    refreshFirendsList(json.obj);
-                }
+                setTabFriendContent(json.infos);
             }
         })
     };

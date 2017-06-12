@@ -14,7 +14,7 @@
         <property name="responseId">
             <column name="responseId" sql-type="int(11)"/>
         </property>
-        <many-to-one name="userA" class="com.model.User" cascade="all" unique="true" column="requestId" insert="false" update="false"/>
-        <many-to-one name="userB" class="com.model.User" cascade="all" unique="true" column="responseId" insert="false" update="false"/>
+        <many-to-one name="userA" class="com.model.User"  unique="true" column="requestId" insert="false" update="false"/>
+        <many-to-one name="userB" class="com.model.User"  unique="true" column="responseId" insert="false" update="false"/>
     </class>
 </hibernate-mapping>

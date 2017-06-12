@@ -74,4 +74,15 @@ public class FriendRequest {
         result = 31 * result + id;
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "FriendRequest{" +
+                "requestId=" + requestId +
+                ", responseId=" + responseId +
+                ", id=" + id +
+                ", userA=" + userA +
+                ", userB=" + userB +
+                '}';
+    }
 }

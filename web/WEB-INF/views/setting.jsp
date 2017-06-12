@@ -161,6 +161,9 @@
                             <a class="btn btn-primary">添加好友</a>
                         </div>
                     </div>
+                    <div class="alert alert-warning">
+                        <strong id="main_tab_friend_add_warning"></strong>
+                    </div>
                 </div>
                 <div class="col-md-7 col-xs-12" id="main_tab_friend_display">
 
