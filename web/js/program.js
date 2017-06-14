@@ -6,6 +6,7 @@ $(function () {
     var questionList = null;
     //当前问题集的名字
     var questionsetname = null;
+    var questionsetIndex = 0;
     //问题列表的集合的框架
     var content_questionset = "\
         <div class='panel panel-primary'>\
@@ -42,7 +43,7 @@ $(function () {
     </div>\
     </div>";
     //问题列表的框架
-    var content_question = "<table class='table table-bordered'>\
+    var content_question = "<table class='table table-bordered table-hover'>\
     <caption><label class='text-info' id='questionset_name'>初级测试题</label></caption>\
         <thead>\
         <tr>\
@@ -56,6 +57,14 @@ $(function () {
         <tbody id='question_content'>\
         </tbody>\
         </table>";
+    //根据传入的questionIndex 和 全局变量questionsetIndex 从而发送请求进入下一个答题的页面
+    var gotoNext = function (questionIndex) {
+        var temp = document.createElement("form");
+        temp.action = "/program/question?index=" + questionIndex + "&level=" + questionsetIndex;
+        temp.method = "post";
+        temp.style.display = "none";
+        temp.submit();
+    };
     //根据QuestionList 给实际的容器设置内容
     var putElementByQuestionList = function () {
         var oSetName = $('#questionset_name').get(0);
@@ -83,11 +92,16 @@ $(function () {
                 oTr.appendChild(oTd_Pass);
                 oTr.appendChild(oTd_Submit);
                 oTr.appendChild(oTd_PassRate);
+
+                oTr.onclick = function () {
+                    gotoNext(oTr.children[0].innerHTML);
+                };
+
                 oContent.appendChild(oTr);
             }
         }
     };
-    //在改变内容后，给内容重新设置监听等动作
+    //在改变内容后，给内容重新设置监听等动作:包含getList 方法。调用了ChangeContent
     var setClickListener = function (index) {
         if (index == 0) {
             function getList(target) {
@@ -107,15 +121,24 @@ $(function () {
                 })
             };
             $('#select_questionset_1').click(function () {
-                getList(1);
+                if (questionsetIndex != 1) {
+                    questionsetIndex = 1;
+                    getList(1);
+                }
                 changeContent(1);
             });
             $('#select_questionset_2').click(function () {
-                getList(2);
+                if (questionsetIndex != 2) {
+                    questionsetIndex = 2;
+                    getList(2);
+                }
                 changeContent(1);
             });
             $('#select_questionset_3').click(function () {
-                getList(3);
+                if (questionsetIndex != 3) {
+                    questionsetIndex = 3;
+                    getList(3);
+                }
                 changeContent(1);
             });
         }

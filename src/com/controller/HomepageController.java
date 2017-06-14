@@ -3,6 +3,7 @@ package com.controller;
 import com.google.gson.Gson;
 import com.json.Info_Status;
 import com.model.User;
+import com.tool.SessionOpenner;
 import com.worker.logInWorker.*;
 import com.worker.logUpWorker.CheckNumberWorker;
 import com.worker.logUpWorker.LogUpWorker;
@@ -24,8 +25,14 @@ import java.io.UnsupportedEncodingException;
 @Controller
 @RequestMapping("/home")
 public class HomepageController {
+
+    static {
+        SessionOpenner.getInstance();
+        System.out.println("HomePage Initiallized");
+    }
+
     @RequestMapping("")
-    public ModelAndView homepage(HttpSession httpSession) {
+    public ModelAndView homepage() {
         ModelAndView mv = new ModelAndView("homepage");
         return mv;
     }

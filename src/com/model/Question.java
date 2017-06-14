@@ -13,6 +13,7 @@ public class Question {
     private int number;
     private String title;
     private String content;
+    private String tip;
     private Set<QuestionRecord> records;
 
     public int getId() {
@@ -62,6 +63,17 @@ public class Question {
 
     public void setRecords(Set<QuestionRecord> records) {
         this.records = records;
+    }
+
+    public String getTip() {
+        if (tip == null)
+            return "";
+        else
+            return tip;
+    }
+
+    public void setTip(String tip) {
+        this.tip = tip;
     }
 
     @Override

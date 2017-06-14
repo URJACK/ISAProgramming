@@ -73,4 +73,9 @@ public class QuestionDAO {
         return list;
     }
 
+    public static Question getQuestion(int index, int level) {
+        Session session = SessionOpenner.getInstance().getSession();
+        Question question = (Question) session.createQuery(String.format("FROM Question WHERE number='%d' AND lv='%d'",index,level)).list().get(0);
+        return question;
+    }
 }

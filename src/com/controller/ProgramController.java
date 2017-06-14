@@ -3,18 +3,19 @@ package com.controller;
 import com.DAO.QuestionDAO;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.json.Info_Status;
 import com.json.Info_Status_Object;
+import com.json.QuestionContent_Json;
 import com.json.Question_Json;
 import com.model.Question;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
-import java.lang.reflect.Array;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -23,9 +24,48 @@ import java.util.List;
 @Controller
 @RequestMapping("/program")
 public class ProgramController {
+
     @RequestMapping("")
     public ModelAndView program() {
         ModelAndView mv = new ModelAndView("program");
+        return mv;
+    }
+
+    /**
+     * 在program主页选择了任意一道题之后，发送题号(index,原名questionIndex)与题目集的编号(level,questionsetIndex)进入该页面
+     *
+     * @return 返还第二个页面:附带题目的内容的Json:
+     * QuestionContent_Json{
+     * String title;            //题目的名字
+     * int number;              //题目的编号
+     * String tip;              //一些额外的提示信息 <HTML/>
+     * String content;          //题目的主要信息 <HTML/>
+     * }
+     */
+    @RequestMapping(value = "/question", method = RequestMethod.POST)
+    public ModelAndView question(HttpServletRequest rq, HttpServletResponse rsp) {
+        ModelAndView mv = new ModelAndView("question");
+        int index = Integer.parseInt(rq.getParameter("index"));
+        int level = Integer.parseInt(rq.getParameter("level"));
+
+        Info_Status_Object iso = new Info_Status_Object();
+        QuestionContent_Json qcj = new QuestionContent_Json();
+        try {
+            Question question = QuestionDAO.getQuestion(index, level);
+            qcj.setNumber(question.getNumber());
+            qcj.setContent(question.getContent());
+            qcj.setTitle(question.getTitle());
+            qcj.setTip(question.getTip());
+            iso.setInfos("Success");
+            iso.setStatus(true);
+            iso.setObj(qcj);
+        } catch (IndexOutOfBoundsException e) {
+            iso.setStatus(false);
+            iso.setInfos("Failed");
+            iso.setObj(null);
+        }
+
+        mv.getModel().put("questioncontent", new Gson().toJson(iso));
         return mv;
     }
 
@@ -69,15 +109,16 @@ public class ProgramController {
 
     /**
      * 根据传入的target 返回正确的 问题集的名字
+     *
      * @param target
      * @return
      */
     private String getQuestionSetName(int target) {
-        if (target==1)
+        if (target == 1)
             return "初级测试题集";
-        else if (target==2)
+        else if (target == 2)
             return "中级测试题集";
-        else if (target==3)
+        else if (target == 3)
             return "高级测试题集";
         else
             return null;

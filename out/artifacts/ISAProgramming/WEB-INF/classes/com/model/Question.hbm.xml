@@ -10,6 +10,7 @@
         <property name="number" column="number"/>
         <property name="title" column="title"/>
         <property name="content" column="content"/>
+        <property name="tip" column="tip"/>
         <set name="records" inverse="true" cascade="delete">
             <key>
                 <column name="qid"/>
