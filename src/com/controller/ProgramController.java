@@ -2,8 +2,10 @@ package com.controller;
 
 import com.DAO.QuestionDAO;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.json.Info_Status_Object;
 import com.json.Question_Json;
+import com.model.Question;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -11,6 +13,8 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -45,17 +49,37 @@ public class ProgramController {
                 iso.setInfos(e.getMessage());
                 iso.setStatus(false);
             }
-            iso.setInfos("成功查询");
+            String questionSetName = getQuestionSetName(target);
+            iso.setInfos(questionSetName);
             iso.setStatus(true);
             iso.setObj(questionList);
 
             PrintWriter writer = rsp.getWriter();
-            writer.write(new Gson().toJson(iso));
+            GsonBuilder gsonBuilder = new GsonBuilder();
+            gsonBuilder.serializeSpecialFloatingPointValues();
+            Gson gson = gsonBuilder.create();
+            writer.write(gson.toJson(iso));
             writer.flush();
             writer.close();
         } catch (Exception e) {
             e.printStackTrace();
 
         }
+    }
+
+    /**
+     * 根据传入的target 返回正确的 问题集的名字
+     * @param target
+     * @return
+     */
+    private String getQuestionSetName(int target) {
+        if (target==1)
+            return "初级测试题集";
+        else if (target==2)
+            return "中级测试题集";
+        else if (target==3)
+            return "高级测试题集";
+        else
+            return null;
     }
 }

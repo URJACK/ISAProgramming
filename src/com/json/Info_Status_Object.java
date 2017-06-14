@@ -31,4 +31,13 @@ public class Info_Status_Object {
     public void setObj(Object obj) {
         this.obj = obj;
     }
+
+    @Override
+    public String toString() {
+        return "Info_Status_Object{" +
+                "infos='" + infos + '\'' +
+                ", status=" + status +
+                ", obj=" + obj +
+                '}';
+    }
 }

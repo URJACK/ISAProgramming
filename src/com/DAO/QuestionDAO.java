@@ -7,7 +7,6 @@ import com.tool.SessionOpenner;
 import org.hibernate.Session;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
@@ -16,6 +15,9 @@ import java.util.Set;
  */
 public class QuestionDAO {
 
+    /**
+     * 由外部调用，返还一个可以前端使用的Question List
+     */
     public static List<Question_Json> getQuestion_JsonList(int target) throws Exception {
         Session session = SessionOpenner.getInstance().getSession();
         List<Question_Json> question_jsons = new ArrayList<>();
@@ -37,13 +39,21 @@ public class QuestionDAO {
             }
             qj.setPass(passTimes);
             qj.setSubmit(submitTimes);
-            qj.setPassrate((float) passTimes / submitTimes);
+            if (submitTimes != 0)
+                qj.setPassrate((float) passTimes / submitTimes);
+            else
+                qj.setPassrate(0);
             question_jsons.add(qj);
         }
         session.close();
         return question_jsons;
     }
 
+    /**
+     * 由内部的单个Question调用
+     *
+     * @return QuestionRecord 的数组
+     */
     public static QuestionRecord[] getQuestionRecordArray(Question question) {
         QuestionRecord[] qrs = new QuestionRecord[question.getRecords().size()];
         Set<QuestionRecord> records = question.getRecords();
@@ -51,14 +61,16 @@ public class QuestionDAO {
         return qrs;
     }
 
+    /**
+     * 由内部 getQuestion_JsonList() 调用，用来查询符合target 的所有Question
+     *
+     * @param target  Question的lv
+     * @param session 查询使用的session
+     * @return
+     */
     public static List<Question> getQuestionList(int target, Session session) {
         List<Question> list = session.createQuery(String.format("FROM Question WHERE lv = '%d'", target)).list();
         return list;
     }
 
-
-    public static List<QuestionRecord> getQuestionRecordList(int questionId, Session session) {
-        List<QuestionRecord> list = session.createQuery(String.format("FROM QuestionRecord WHERE qid = '%d'", questionId)).list();
-        return list;
-    }
 }

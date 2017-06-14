@@ -19,12 +19,6 @@ public class Test {
             List<Question> question_jsonList = QuestionDAO.getQuestionList(1, session);
             Question question = question_jsonList.get(0);
             System.out.println(Arrays.toString(QuestionDAO.getQuestionRecordArray(question)));
-//            int questionId = question.getId();
-//            List<QuestionRecord> recordList = QuestionDAO.getQuestionRecordList(questionId,session);
-//            for (int i = 0; i < recordList.size(); i++) {
-//                QuestionRecord qr = recordList.get(i);
-//                System.out.println(qr);
-//            }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

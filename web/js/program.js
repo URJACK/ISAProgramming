@@ -4,6 +4,8 @@
 $(function () {
     //当前问题的集合
     var questionList = null;
+    //当前问题集的名字
+    var questionsetname = null;
     //问题列表的集合的框架
     var content_questionset = "\
         <div class='panel panel-primary'>\
@@ -55,8 +57,35 @@ $(function () {
         </tbody>\
         </table>";
     //根据QuestionList 给实际的容器设置内容
-    var putElementByQuestionList = function (questionListJson) {
+    var putElementByQuestionList = function () {
+        var oSetName = $('#questionset_name').get(0);
+        if (oSetName == null)
+            return;
+        oSetName.innerHTML = questionsetname;
+        var oContent = $('#question_content').get(0);
+        if (questionList != null) {
+            for (var i = 0; i < questionList.length; i++) {
+                var oTr = document.createElement('tr');
+                var oTd_Number = document.createElement('td');
+                var oTd_Title = document.createElement('td');
+                var oTd_Pass = document.createElement('td');
+                var oTd_Submit = document.createElement('td');
+                var oTd_PassRate = document.createElement('td');
 
+                oTd_Number.innerHTML = questionList[i].number;
+                oTd_Title.innerHTML = questionList[i].title;
+                oTd_Pass.innerHTML = questionList[i].pass;
+                oTd_Submit.innerHTML = questionList[i].submit;
+                oTd_PassRate.innerHTML = questionList[i].passrate;
+
+                oTr.appendChild(oTd_Number);
+                oTr.appendChild(oTd_Title);
+                oTr.appendChild(oTd_Pass);
+                oTr.appendChild(oTd_Submit);
+                oTr.appendChild(oTd_PassRate);
+                oContent.appendChild(oTr);
+            }
+        }
     };
     //在改变内容后，给内容重新设置监听等动作
     var setClickListener = function (index) {
@@ -70,21 +99,24 @@ $(function () {
                     },
                     success: function (json) {
                         json = JSON.parse(json);
-                        console.log(json.infos);
                         if (json.status) {
                             questionList = json.obj;
+                            questionsetname = json.infos;
                         }
                     }
                 })
             };
             $('#select_questionset_1').click(function () {
                 getList(1);
+                changeContent(1);
             });
             $('#select_questionset_2').click(function () {
                 getList(2);
+                changeContent(1);
             });
             $('#select_questionset_3').click(function () {
                 getList(3);
+                changeContent(1);
             });
         }
     };
@@ -99,7 +131,7 @@ $(function () {
                     $('#select_content').get(0).innerHTML = content_questionset;
                 } else if (index == 1) {
                     $('#select_content').get(0).innerHTML = content_question;
-                    putElementByQuestionList(questionList);
+                    putElementByQuestionList();
                 }
                 $('#select_content').fadeIn(500);
                 setClickListener(index);
