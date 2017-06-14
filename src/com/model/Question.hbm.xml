@@ -10,5 +10,11 @@
         <property name="number" column="number"/>
         <property name="title" column="title"/>
         <property name="content" column="content"/>
+        <set name="records" inverse="true" cascade="delete">
+            <key>
+                <column name="qid"/>
+            </key>
+            <one-to-many not-found="ignore" class="com.model.QuestionRecord"/>
+        </set>
     </class>
 </hibernate-mapping>

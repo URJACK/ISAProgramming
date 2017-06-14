@@ -1,5 +1,7 @@
 package com.model;
 
+import java.util.Set;
+
 /**
  * Created by FuFangzhou on 2017/6/6.
  */
@@ -9,6 +11,7 @@ public class Question {
     private int number;
     private String title;
     private String content;
+    private Set<QuestionRecord> records;
 
     public int getId() {
         return id;
@@ -50,6 +53,15 @@ public class Question {
         this.content = content;
     }
 
+
+    public Set<QuestionRecord> getRecords() {
+        return records;
+    }
+
+    public void setRecords(Set<QuestionRecord> records) {
+        this.records = records;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -74,5 +86,16 @@ public class Question {
         result = 31 * result + (title != null ? title.hashCode() : 0);
         result = 31 * result + (content != null ? content.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Question{" +
+                "id=" + id +
+                ", lv=" + lv +
+                ", number=" + number +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                '}';
     }
 }

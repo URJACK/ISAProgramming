@@ -10,7 +10,9 @@
         <property name="qid" column="qid"/>
         <property name="date" column="date"/>
         <property name="result" column="result"/>
-        <one-to-one name="question" class="com.model.Question"/>
         <one-to-one name="user" class="com.model.User"/>
+        <many-to-one name="question" class="com.model.Question" insert="false" update="false">
+            <column name="qid"/>
+        </many-to-one>
     </class>
 </hibernate-mapping>

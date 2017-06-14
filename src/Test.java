@@ -1,15 +1,10 @@
-import com.DAO.FriendDAO;
-import com.DAO.UserDAO;
-import com.json.Friend_Json;
-import com.json.Info_Status;
-import com.json.Info_Status_Object;
-import com.model.FriendRequest;
-import com.model.User;
+import com.DAO.QuestionDAO;
+import com.model.Question;
+import com.model.QuestionRecord;
 import com.tool.SessionOpenner;
 import org.hibernate.Session;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,34 +13,22 @@ import java.util.List;
 public class Test {
     public static void main(String[] args) throws SQLException {
         Session session = null;
-        Info_Status_Object iso = new Info_Status_Object();
+        session = SessionOpenner.getInstance().getSession();
         try {
-            session = SessionOpenner.getInstance().getSession();
-            String account = "Fanshuai";
-            User user = UserDAO.getUser(account, session);
-            List<FriendRequest> friendShipRequest = FriendDAO.getFriendShipRequest(session, user.getAccount());
-            List<Friend_Json> friend_jsons = getFriendJsonList(friendShipRequest);
-            iso.setInfos("查询申请列表成功");
-            iso.setObj(friend_jsons);
-            iso.setStatus(true);
+            List<Question> question_jsonList = QuestionDAO.getQuestionList(1,session);
+            Question question = question_jsonList.get(0);
+            System.out.println(question.getRecords());
+//            int questionId = question.getId();
+//            List<QuestionRecord> recordList = QuestionDAO.getQuestionRecordList(questionId,session);
+//            for (int i = 0; i < recordList.size(); i++) {
+//                QuestionRecord qr = recordList.get(i);
+//                System.out.println(qr);
+//            }
         } catch (Exception e) {
-            iso.setInfos("查询失败");
-            iso.setStatus(false);
-        } finally {
-            if (session != null)
-                session.close();
+            e.printStackTrace();
+        }finally {
+            session.close();
         }
     }
-    private static List<Friend_Json> getFriendJsonList(List<FriendRequest> friendShipRequest) {
-        List<Friend_Json> friend_jsons = new ArrayList<>();
-        for (int i = 0; i < friendShipRequest.size(); i++) {
-            Friend_Json fj = new Friend_Json();
-            FriendRequest fr = friendShipRequest.get(i);
-            User sender = fr.getUserA();
-            fj.setAccount(sender.getAccount());
-            fj.setEmail(sender.getEmail());
-            friend_jsons.add(fj);
-        }
-        return friend_jsons;
-    }
+
 }

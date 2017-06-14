@@ -39,10 +39,10 @@ public class ProgramController {
             int target = Integer.parseInt(rq.getParameter("target"));
             List<Question_Json> questionList = null;
             try {
-                questionList = QuestionDAO.getQuestionList(target);
+                questionList = QuestionDAO.getQuestion_JsonList(target);
             } catch (Exception e) {
                 e.printStackTrace();
-                iso.setInfos("查询失败");
+                iso.setInfos(e.getMessage());
                 iso.setStatus(false);
             }
             iso.setInfos("成功查询");

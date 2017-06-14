@@ -95,4 +95,17 @@ public class QuestionRecord {
     public void setUser(User user) {
         this.user = user;
     }
+
+    @Override
+    public String toString() {
+        return "QuestionRecord{" +
+                "id=" + id +
+                ", uid=" + uid +
+                ", qid=" + qid +
+                ", date=" + date +
+                ", result=" + result +
+                ", question=" + question +
+                ", user=" + user +
+                '}';
+    }
 }
