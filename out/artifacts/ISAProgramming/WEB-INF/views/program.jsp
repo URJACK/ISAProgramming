@@ -14,9 +14,32 @@
     <title>在线编程</title>
     <link rel="stylesheet" type="text/css"
           href="/css/bootstrap.min.css">
+    <style>
+        .panel-body img{
+            height: 100px;
+        }
+    </style>
 </head>
 <body>
-    <jsp:include page="/topbar.jsp"></jsp:include>
-    <label class="text-primary">这是Program页面</label>
+<jsp:include page="/topbar.jsp"></jsp:include>
+<div class="container">
+    <div class="row">
+        <label class="text-primary" style="font-size: 25px">ISA Online Program</label>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <ul class="list-group">
+                <li class="list-group-item" id="select_questionset"><a href="#" class="text-primary">题目集</a></li>
+                <li class="list-group-item" id="select_question"><a href="#" class="text-primary">题目列表</a></li>
+                <li class="list-group-item" id="select_submit"><a href="#" class="text-primary">提交列表</a></li>
+                <li class="list-group-item" id="select_rank"><a href="#" class="text-primary">Rank</a></li>
+            </ul>
+        </div>
+        <div class="col-md-10" id="select_content">
+
+        </div>
+    </div>
+</div>
+<script src="/js/program.js"></script>
 </body>
 </html>

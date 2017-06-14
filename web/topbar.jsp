@@ -3,7 +3,7 @@
         <div class="navbar navbar-inverse navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
-                    <a href="#" class="navbar-brand" id="navbar_brand">Homepage</a>
+                    <a href="#" class="navbar-brand" id="navbar_brand">SICNU</a>
                     <button class="navbar-toggle" data-toggle="collapse" data-target="#navcallapse">
                         <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
                     </button>
@@ -12,7 +12,7 @@
                     <ul class="nav navbar-nav" id="navleft">
                         <li id="navleft_isa"><a href="#">ISA</a></li>
                         <li id="navleft_program"><a href="#">Program</a></li>
-                        <li id="navleft_menber"><a href="#">Menber</a></li>
+                        <li id="navleft_eda"><a href="#">EDA</a></li>
                         <li id="navleft_information"><a href="#">Information</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right" id="navright">
