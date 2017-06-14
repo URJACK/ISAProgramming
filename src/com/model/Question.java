@@ -6,6 +6,8 @@ import java.util.Set;
  * Created by FuFangzhou on 2017/6/6.
  */
 public class Question {
+    public static final int PASS = 1000;
+    public static final int FAIL = 0;
     private int id;
     private int lv;
     private int number;

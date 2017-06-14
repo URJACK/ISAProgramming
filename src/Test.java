@@ -5,6 +5,7 @@ import com.tool.SessionOpenner;
 import org.hibernate.Session;
 
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -15,9 +16,9 @@ public class Test {
         Session session = null;
         session = SessionOpenner.getInstance().getSession();
         try {
-            List<Question> question_jsonList = QuestionDAO.getQuestionList(1,session);
+            List<Question> question_jsonList = QuestionDAO.getQuestionList(1, session);
             Question question = question_jsonList.get(0);
-            System.out.println(question.getRecords());
+            System.out.println(Arrays.toString(QuestionDAO.getQuestionRecordArray(question)));
 //            int questionId = question.getId();
 //            List<QuestionRecord> recordList = QuestionDAO.getQuestionRecordList(questionId,session);
 //            for (int i = 0; i < recordList.size(); i++) {
@@ -26,7 +27,7 @@ public class Test {
 //            }
         } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             session.close();
         }
     }

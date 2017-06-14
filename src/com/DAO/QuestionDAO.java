@@ -6,7 +6,10 @@ import com.model.QuestionRecord;
 import com.tool.SessionOpenner;
 import org.hibernate.Session;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by FuFangzhou on 2017/6/14.
@@ -15,12 +18,37 @@ public class QuestionDAO {
 
     public static List<Question_Json> getQuestion_JsonList(int target) throws Exception {
         Session session = SessionOpenner.getInstance().getSession();
+        List<Question_Json> question_jsons = new ArrayList<>();
         List<Question> questions = getQuestionList(target, session);
-        if (questions==null)
+        if (questions == null)
             throw new Exception("查询不到合适等级的题目");
-
+        for (int i = 0; i < questions.size(); i++) {
+            Question question = questions.get(i);
+            Question_Json qj = new Question_Json();
+            qj.setNumber(question.getNumber());
+            qj.setTitle(question.getTitle());
+            int submitTimes = 0;
+            int passTimes = 0;
+            QuestionRecord[] questionRecordArray = getQuestionRecordArray(question);
+            for (int j = 0; j < questionRecordArray.length; j++) {
+                submitTimes++;
+                if (questionRecordArray[j].getResult() == Question.PASS)
+                    passTimes++;
+            }
+            qj.setPass(passTimes);
+            qj.setSubmit(submitTimes);
+            qj.setPassrate((float) passTimes / submitTimes);
+            question_jsons.add(qj);
+        }
         session.close();
-        return null;
+        return question_jsons;
+    }
+
+    public static QuestionRecord[] getQuestionRecordArray(Question question) {
+        QuestionRecord[] qrs = new QuestionRecord[question.getRecords().size()];
+        Set<QuestionRecord> records = question.getRecords();
+        records.toArray(qrs);
+        return qrs;
     }
 
     public static List<Question> getQuestionList(int target, Session session) {
@@ -30,7 +58,7 @@ public class QuestionDAO {
 
 
     public static List<QuestionRecord> getQuestionRecordList(int questionId, Session session) {
-        List<QuestionRecord> list = session.createQuery(String.format("FROM QuestionRecord WHERE qid = '%d'",questionId)).list();
+        List<QuestionRecord> list = session.createQuery(String.format("FROM QuestionRecord WHERE qid = '%d'", questionId)).list();
         return list;
     }
 }
