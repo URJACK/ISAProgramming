@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div class="container" id="topbar" style="width: 100%">
     <div class="row">
         <div class="navbar navbar-inverse navbar-static-top">
