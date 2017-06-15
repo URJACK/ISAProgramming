@@ -3,6 +3,7 @@
     <caption><label class="text-primary">比赛列表</label></caption>
     <thead>
     <tr>
+        <th>Id</th>
         <th>Owner</th>
         <th>Name</th>
         <th>Progress</th>
@@ -11,6 +12,7 @@
     </thead>
     <tbody id="manage_match_tbody">
     <tr>
+        <td>1</td>
         <td>Fufangzhou</td>
         <td>开学第一次Java比赛</td>
         <td>65%</td>

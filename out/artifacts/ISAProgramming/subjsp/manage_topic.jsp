@@ -3,6 +3,7 @@
     <caption><label class="text-primary">帖子列表</label></caption>
     <thead>
     <tr>
+        <th>Id</th>
         <th>Title</th>
         <th>Owner</th>
         <th>Operate</th>
@@ -10,6 +11,7 @@
     </thead>
     <tbody id="manage_topic_tbody">
     <tr>
+        <td>1</td>
         <td>Android入门</td>
         <td>Debug</td>
         <td>

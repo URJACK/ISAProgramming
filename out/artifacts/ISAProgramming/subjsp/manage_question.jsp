@@ -3,6 +3,7 @@
     <caption><label class="text-primary">题目列表</label></caption>
     <thead>
     <tr>
+        <th>Id</th>
         <th>Level</th>
         <th>Number</th>
         <th>Title</th>
@@ -11,6 +12,7 @@
     </thead>
     <tbody id="manage_question_tbody">
     <tr>
+        <td>1</td>
         <td>1</td>
         <td>1000</td>
         <td>A+B Program</td>
