@@ -23,4 +23,7 @@ public class Info_Status {
         this.status = status;
     }
 
+    public boolean getStatus() {
+        return status;
+    }
 }

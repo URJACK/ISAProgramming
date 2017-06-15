@@ -73,8 +73,18 @@ public class QuestionDAO {
         return list;
     }
 
-    public static Question getQuestion(int index, int level,Session session) {
-        Question question = (Question) session.createQuery(String.format("FROM Question WHERE number='%d' AND lv='%d'",index,level)).list().get(0);
+    public static Question getQuestion(int index, int level, Session session) {
+        Question question = (Question) session.createQuery(String.format("FROM Question WHERE number='%d' AND lv='%d'", index, level)).list().get(0);
         return question;
+    }
+
+    //查找该用户是否对于该题已经有了一次正确的提交记录
+    public static boolean hasFinished(int userId, int questionId, Session session) {
+        try {
+            session.createQuery(String.format("FROM QuestionRecord WHERE uid='%d' AND qid='%d' AND result='%d'", userId, questionId, Question.PASS)).list().get(0);
+            return true;
+        } catch (IndexOutOfBoundsException e) {
+            return false;
+        }
     }
 }
