@@ -37,7 +37,7 @@ public class Info_Status_Object {
         return "Info_Status_Object{" +
                 "infos='" + infos + '\'' +
                 ", status=" + status +
-                ", obj=" + obj +
+                ", com.obj=" + obj +
                 '}';
     }
 }

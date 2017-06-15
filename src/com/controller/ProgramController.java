@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
@@ -105,6 +106,47 @@ public class ProgramController {
             e.printStackTrace();
 
         }
+    }
+
+    @RequestMapping("/submit")
+    public void submit(HttpServletRequest rq, HttpServletResponse rsp) {
+        try {
+            rq.setCharacterEncoding("UTF-8");
+            rsp.setCharacterEncoding("UTF-8");
+            rsp.setContentType("text/html");
+
+            String content = rq.getParameter("content");
+            doCompile(content,rsp);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 该方法是一个同步方法
+     *
+     * @param sourceCode User发过来的源代码
+     * @param rsp        当前请求的对应的回复
+     */
+    private synchronized static void doCompile(String sourceCode, HttpServletResponse rsp) {
+        try {
+            Info_Status is = new Info_Status();
+            javaCompile(sourceCode, is);
+            PrintWriter writer = rsp.getWriter();
+            writer.write(new Gson().toJson(is));
+            writer.flush();
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 根据源代码，调用JavaConsole进行编译和运行，得到结果，并将结果放入Info_Status 中
+     * @param sourceCode
+     */
+    private static void javaCompile(String sourceCode, Info_Status is) {
+
     }
 
     /**
