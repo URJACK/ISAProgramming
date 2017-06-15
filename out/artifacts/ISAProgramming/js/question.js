@@ -12,6 +12,8 @@ $(function () {
         $('#question_info').get(0).innerHTML = str;
     };
     $('#question_submit').click(function () {
+        $('#question_info').css("display","none");
+        setInfo("正在提交...");
         $.ajax({
             url: "/program/submit",
             type: "POST",

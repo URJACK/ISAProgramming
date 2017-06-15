@@ -72,7 +72,7 @@
         </div>
         <div class="row">
             <div class="alert alert-warning" style="display: none" id="question_info">
-
+                Waiting For Submit!
             </div>
         </div>
         <br>
