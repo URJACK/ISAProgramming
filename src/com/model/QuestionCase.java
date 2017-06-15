@@ -73,4 +73,14 @@ public class QuestionCase {
     public void setQuestion(Question question) {
         this.question = question;
     }
+
+    @Override
+    public String toString() {
+        return "QuestionCase{" +
+                "id=" + id +
+                ", qid=" + qid +
+                ", input='" + input + '\'' +
+                ", output='" + output + '\'' +
+                '}';
+    }
 }

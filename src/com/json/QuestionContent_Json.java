@@ -4,10 +4,11 @@ package com.json;
  * Created by FuFangzhou on 2017/6/14.
  */
 public class QuestionContent_Json {
-    String title;
-    int number;
-    String tip;
-    String content;
+    private String title;
+    private int number;
+    private String tip;
+    private String content;
+    private int level;
 
     public String getTitle() {
         return title;
@@ -39,5 +40,13 @@ public class QuestionContent_Json {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public int getLevel() {
+        return level;
     }
 }

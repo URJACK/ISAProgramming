@@ -1,5 +1,6 @@
 package com.model;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -15,6 +16,7 @@ public class Question {
     private String content;
     private String tip;
     private Set<QuestionRecord> records;
+    private Set<QuestionCase> cases;
 
     public int getId() {
         return id;
@@ -65,6 +67,7 @@ public class Question {
         this.records = records;
     }
 
+
     public String getTip() {
         if (tip == null)
             return "";
@@ -74,6 +77,14 @@ public class Question {
 
     public void setTip(String tip) {
         this.tip = tip;
+    }
+
+    public Set<QuestionCase> getCases() {
+        return cases;
+    }
+
+    public void setCases(Set<QuestionCase> cases) {
+        this.cases = cases;
     }
 
     @Override

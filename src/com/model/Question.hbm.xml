@@ -17,5 +17,12 @@
             </key>
             <one-to-many not-found="ignore" class="com.model.QuestionRecord"/>
         </set>
+
+        <set name="cases" inverse="true" cascade="delete">
+            <key>
+                <column name="qid"/>
+            </key>
+            <one-to-many not-found="ignore" class="com.model.QuestionCase"/>
+        </set>
     </class>
 </hibernate-mapping>
