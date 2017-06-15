@@ -16,12 +16,10 @@
         <td>316585692@qq.com</td>
         <td>
             <div class="btn-group">
-                <a class="btn btn-default" data-toggle="popover" data-trigger='hover' data-placement='bottom'
-                   data-content="删除">
+                <a class="btn btn-default">
                     <img src="/source/delete.svg">
                 </a>
-                <a class="btn btn-default" data-toggle="popover" data-trigger='hover' data-placement='bottom'
-                   data-content="修改">
+                <a class="btn btn-default">
                     <img src="/source/query.svg">
                 </a>
             </div>
