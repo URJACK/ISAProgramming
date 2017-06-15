@@ -1,4 +1,5 @@
 import com.DAO.QuestionDAO;
+import com.model.QuestionRecord;
 import com.tool.SessionOpenner;
 import org.hibernate.Session;
 
@@ -8,10 +9,7 @@ import org.hibernate.Session;
 public class Test {
     public static void main(String[] args) {
         Session session = SessionOpenner.getInstance().getSession();
-
-        if(QuestionDAO.hasFinished(1,1,session))
-            System.out.println("OK");
-        else
-            System.out.println("NO");
+        QuestionRecord qr = (QuestionRecord) session.get(QuestionRecord.class,1);
+        System.out.println(qr.getQuestion());
     }
 }

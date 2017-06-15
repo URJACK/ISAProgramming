@@ -3,15 +3,15 @@ package com.controller;
 import com.DAO.FriendDAO;
 import com.DAO.UserDAO;
 import com.google.gson.Gson;
-import com.json.Info_Status;
+import com.json.HaveSolve_Json;
 import com.json.Info_Status_Object;
 import com.json.Info_Status_User;
 import com.model.Friend;
 import com.model.FriendChat;
+import com.model.QuestionRecord;
 import com.model.User;
 import com.tool.SessionOpenner;
 import com.worker.ModelGetWorker.*;
-import com.worker.SettingWorker.SettingWorker;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Controller;
@@ -22,6 +22,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping("/model")
@@ -161,6 +163,51 @@ public class ModelGetController {
             writer.close();
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    //查询自己的好友申请列表
+    @RequestMapping("/solvelist")
+    public void solvelist(HttpServletRequest rq, HttpServletResponse rsp) {
+        Info_Status_Object iso = null;
+        try {
+            rq.setCharacterEncoding("UTF-8");
+            rsp.setCharacterEncoding("UTF-8");
+            rsp.setContentType("text/html");
+            iso = new Info_Status_Object();
+            List<HaveSolve_Json> haveSolves = new ArrayList<>(5);
+            Session session = SessionOpenner.getInstance().getSession();
+            //得到当前的用户对象
+            User user = UserDAO.getUser(String.valueOf(rq.getSession().getAttribute("account")), session);
+            //根据当前的用户对象放入UserDAO中进行查询
+            List<QuestionRecord> recordList = UserDAO.getRecordList(user, session);
+            //将查询到的QuestionRecord 转换为 SolvedList
+            for (int i = 0; i < recordList.size(); i++) {
+                HaveSolve_Json hsj = new HaveSolve_Json();
+                QuestionRecord qr = recordList.get(i);
+                hsj.setDate(qr.getDate());
+                hsj.setNumber(qr.getQuestion().getNumber());
+                hsj.setTitle(qr.getQuestion().getTitle());
+                hsj.setLevel(qr.getQuestion().getLv());
+                haveSolves.add(hsj);
+            }
+            iso.setStatus(true);
+            iso.setObj(haveSolves);
+            iso.setInfos("查询完成");
+        } catch (Exception e) {
+            e.printStackTrace();
+            iso.setStatus(false);
+            iso.setInfos("数据出现了错误");
+            iso.setObj(null);
+        } finally {
+            try {
+                PrintWriter writer = rsp.getWriter();
+                writer.write(new Gson().toJson(iso));
+                writer.flush();
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 

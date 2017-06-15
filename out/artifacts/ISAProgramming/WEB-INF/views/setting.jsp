@@ -134,11 +134,21 @@
         </div>
         <div class="tab-pane fade" id="main_tab_question">
             <div class="col-md-8 col-xs-12 col-md-offset-2">
-                <p>Enterprise Java Beans (EJB) is a development architecture
-                    for building highly scalable and robust enterprise level
-                    applications to be deployed on J2EE compliant
-                    Application Server such as JBOSS, Web Logic etc.
-                </p>
+                <table class="table table-bordered table-hover">
+                    <caption><label class="text-primary" style="font-size: 20px;font-family: 微软雅黑">你已经完成的题目</label>
+                    </caption>
+                    <thead>
+                    <tr>
+                        <th>难度</th>
+                        <th>题号</th>
+                        <th>题目名</th>
+                        <th>完成时间</th>
+                    </tr>
+                    </thead>
+                    <tbody id="main_tab_question_tbody">
+
+                    </tbody>
+                </table>
             </div>
         </div>
         <div class="tab-pane fade" id="main_tab_friend">

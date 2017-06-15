@@ -7,19 +7,94 @@ $(function () {
     var targetAccount;                  //被当前用户选中要查看或者聊天的目标Account
     var firendslist;
     var chatIndex = 0;                      //记录当前聊天记录的条数
-    //自动登陆如果失败了
+    var haveSolvedList;                     //已经解决的问题的
+
     var timer;
+
+    //自动登陆如果失败了
     var auto_LoginFailed = function () {
         alert("你的账户信息不符合");
         window.location = "/home";
     };
-    //在基本信息界面的信息提示框
-    var setTabInfoContent = function (str) {
-        $('#main_tab_info_content').get(0).innerHTML = str;
+    //自动登陆成功成功了
+    var auto_LoginSuccess = function () {
+        postGetUser();         //得到User 的个人信息
+        postGetFriend();         //得到User 的朋友信息
+        postGetRequestFriend();            //得到User 的申请列表的信息
+        postGetHaveSolvedList();            //得到User 已经解决的列表的信息
     };
-    //在详细信息界面的信息提示框
-    var setTabMoreInfoContent = function (str) {
-        $('#main_tab_moreinfo_content').get(0).innerHTML = str;
+    //得到自己的信息
+    var postGetUser = function () {
+        $.ajax({
+            url: '/model/user',
+            data: {
+                account: account
+            },
+            success: function (json) {
+                json = JSON.parse(json);
+                console.log(json.infos);
+                if (json.status) {
+                    $('#main_tab_info_account').get(0).innerHTML = json.account;
+                    $('#main_tab_info_email').get(0).innerHTML = json.email;
+                    $('#main_tab_info_date').get(0).innerHTML = json.date;
+                    //More info
+                    $('#main_tab_moreinfo_introduce').get(0).innerHTML = json.introduce;
+                    $('#main_tab_moreinfo_class').get(0).value = json.clazz;
+                    $('#main_tab_moreinfo_major').get(0).value = json.major;
+                }
+            }
+        });
+    };
+    //得到自己的朋友列表
+    var postGetFriend = function () {
+        $.ajax({
+            url: '/model/friend',
+            data: {
+                account: account
+            },
+            success: function (json) {
+                json = JSON.parse(json);
+                console.log(json.infos);
+                firendslist = json.obj;
+                if (json.status) {
+                    refreshFirendsList(firendslist);
+                }
+            }
+        });
+    };
+    //得到请求自己朋友的列表
+    var postGetRequestFriend = function () {
+        $.ajax({
+            url: '/model/requestfriend',
+            type: 'POST',
+            data: {
+                account: account
+            },
+            success: function (json) {
+                json = JSON.parse(json);
+                console.log(json.infos);
+                if (json.status) {
+                    clearElement_FriendRequest();
+                    resetElementInRequestContent(json.obj);
+                }
+            }
+        });
+    };
+    //得到自己已经解决的问题的列表
+    var postGetHaveSolvedList = function () {
+        $.ajax({
+            url: '/model/solvelist',
+            type: 'POST',
+            success: function (json) {
+                json = JSON.parse(json);
+                console.log(json.infos);
+                if (json.status) {
+                    haveSolvedList = json.obj;
+                    clearElement_SolvedList();
+                    resetElementInSolvedList();
+                }
+            }
+        })
     };
     //清除Friend 界面右边的内容
     var clearElement_FriendContent = function () {
@@ -33,55 +108,10 @@ $(function () {
         var oTbody = $('#main_tab_request_tbody').get(0);
         oTbody.innerHTML = '';
     };
-    //同意添加好友
-    var requestFriendAgree = function () {
-        var oTbody = $('#main_tab_request_tbody').get(0);
-        var obj = this.parentNode.parentNode.parentNode;
-        targetAccount = obj.childNodes[0].innerHTML;
-        $.ajax({
-            url: '/setting/agreerefuse',
-            type: 'POST',
-            data: {
-                account: account,
-                targetaccount: targetAccount,
-                agree: true
-            },
-            success: function (json) {
-                json = JSON.parse(json);
-                console.log(json.infos);
-                if (json.status) {
-                    postGetFriend();
-                    $(obj).fadeOut();
-                    setTimeout(function () {
-                        oTbody.removeChild(obj);
-                    }, 1000);
-                }
-            }
-        });
-    };
-    //拒绝添加好友
-    var requestFriendRefuse = function () {
-        var oTbody = $('#main_tab_request_tbody').get(0);
-        var obj = this.parentNode.parentNode.parentNode;
-        $.ajax({
-            url: '/setting/agreerefuse',
-            type: 'POST',
-            data: {
-                account: account,
-                targetaccount: targetAccount,
-                agree: false
-            },
-            success: function (json) {
-                json = JSON.parse(json);
-                console.log(json.infos);
-                if (json.status) {
-                    $(obj).fadeOut();
-                    setTimeout(function () {
-                        oTbody.removeChild(obj);
-                    }, 1000);
-                }
-            }
-        });
+    //清楚已经解决的问题列表的所有内容
+    var clearElement_SolvedList = function () {
+        var oTbody = $('#main_tab_question_tbody').get(0);
+        oTbody.innerHTML = "";
     };
     //在申请列表界面里，根据传入的json 设置申请列表界面的内容
     var resetElementInRequestContent = function (objs) {
@@ -190,6 +220,95 @@ $(function () {
         display.appendChild(oForm);
 
         clearInterval(timer);
+    };
+    //已经解决的问题列表 重新依据haveSolvedList设置元素
+    var resetElementInSolvedList = function () {
+        var oTbody = $('#main_tab_question_tbody').get(0);
+        for (var i = 0; i < haveSolvedList.length; i++) {
+            var oTr = document.createElement('tr');
+            var oTd_Level = document.createElement('td');
+            var oTd_Number = document.createElement('td');
+            var oTd_Title = document.createElement('td');
+            var oTd_Date = document.createElement('td');
+            oTd_Level.innerHTML = haveSolvedList[i].level;
+            oTd_Number.innerHTML = haveSolvedList[i].number;
+            oTd_Title.innerHTML = haveSolvedList[i].title;
+            oTd_Date.innerHTML = haveSolvedList[i].date;
+            oTr.appendChild(oTd_Level);
+            oTr.appendChild(oTd_Number);
+            oTr.appendChild(oTd_Title);
+            oTr.appendChild(oTd_Date);
+            oTr.onclick = function () {
+                gotoQuestion(this.children[0].innerHTML, this.children[1].innerHTML);
+            };
+            oTbody.appendChild(oTr);
+        }
+    };
+    //根据点击的问题的进入编码的界面 传入的分别为题的等级与编号
+    var gotoQuestion = function (level, number) {
+        var temp = document.createElement("form");
+        temp.action = "/program/question?index=" + number + "&level=" + level;
+        temp.method = "post";
+        temp.style.display = "none";
+        temp.submit();
+    };
+    //在基本信息界面的信息提示框
+    var setTabInfoContent = function (str) {
+        $('#main_tab_info_content').get(0).innerHTML = str;
+    };
+    //在详细信息界面的信息提示框
+    var setTabMoreInfoContent = function (str) {
+        $('#main_tab_moreinfo_content').get(0).innerHTML = str;
+    };
+    //同意添加好友
+    var requestFriendAgree = function () {
+        var oTbody = $('#main_tab_request_tbody').get(0);
+        var obj = this.parentNode.parentNode.parentNode;
+        targetAccount = obj.childNodes[0].innerHTML;
+        $.ajax({
+            url: '/setting/agreerefuse',
+            type: 'POST',
+            data: {
+                account: account,
+                targetaccount: targetAccount,
+                agree: true
+            },
+            success: function (json) {
+                json = JSON.parse(json);
+                console.log(json.infos);
+                if (json.status) {
+                    postGetFriend();
+                    $(obj).fadeOut();
+                    setTimeout(function () {
+                        oTbody.removeChild(obj);
+                    }, 1000);
+                }
+            }
+        });
+    };
+    //拒绝添加好友
+    var requestFriendRefuse = function () {
+        var oTbody = $('#main_tab_request_tbody').get(0);
+        var obj = this.parentNode.parentNode.parentNode;
+        $.ajax({
+            url: '/setting/agreerefuse',
+            type: 'POST',
+            data: {
+                account: account,
+                targetaccount: targetAccount,
+                agree: false
+            },
+            success: function (json) {
+                json = JSON.parse(json);
+                console.log(json.infos);
+                if (json.status) {
+                    $(obj).fadeOut();
+                    setTimeout(function () {
+                        oTbody.removeChild(obj);
+                    }, 1000);
+                }
+            }
+        });
     };
     //在朋友界面点击查询
     var friend_query = function () {
@@ -401,70 +520,6 @@ $(function () {
         $("[clk='1']").click(friend_query);
         $("[clk='2']").click(friend_chat);
         $("[clk='3']").click(friend_delete);
-    };
-
-    var postGetRequestFriend = function () {
-        $.ajax({
-            url: '/model/requestfriend',
-            type: 'POST',
-            data: {
-                account: account
-            },
-            success: function (json) {
-                json = JSON.parse(json);
-                console.log(json.infos);
-                if (json.status) {
-                    clearElement_FriendRequest();
-                    resetElementInRequestContent(json.obj);
-                }
-            }
-        });
-    };
-
-    var postGetFriend = function () {
-        $.ajax({
-            url: '/model/friend',
-            data: {
-                account: account
-            },
-            success: function (json) {
-                json = JSON.parse(json);
-                console.log(json.infos);
-                firendslist = json.obj;
-                if (json.status) {
-                    refreshFirendsList(firendslist);
-                }
-            }
-        });
-    };
-
-    var postGetUser = function () {
-        $.ajax({
-            url: '/model/user',
-            data: {
-                account: account
-            },
-            success: function (json) {
-                json = JSON.parse(json);
-                console.log(json.infos);
-                if (json.status) {
-                    $('#main_tab_info_account').get(0).innerHTML = json.account;
-                    $('#main_tab_info_email').get(0).innerHTML = json.email;
-                    $('#main_tab_info_date').get(0).innerHTML = json.date;
-                    //More info
-                    $('#main_tab_moreinfo_introduce').get(0).innerHTML = json.introduce;
-                    $('#main_tab_moreinfo_class').get(0).value = json.clazz;
-                    $('#main_tab_moreinfo_major').get(0).value = json.major;
-                }
-            }
-        });
-    };
-
-    //自动登陆成功成功了
-    var auto_LoginSuccess = function () {
-        postGetUser();         //得到User 的个人信息
-        postGetFriend();         //得到User 的朋友信息
-        postGetRequestFriend();            //得到User 的申请列表的信息
     };
     //通过点击修改按钮，改变基本信息界面的状态
     var changeModifyPasswordStatus = function () {
