@@ -87,4 +87,9 @@ public class QuestionDAO {
             return false;
         }
     }
+
+    public static List<Question> getAllQuestion(Session session) {
+        List list = session.createQuery("FROM Question ").list();
+        return list;
+    }
 }

@@ -29,4 +29,9 @@ public class UserDAO {
         List<QuestionRecord> questionRecords = (List<QuestionRecord>) session.createQuery(String.format("FROM QuestionRecord WHERE uid='%d' AND result='%d'", user.getId(), Question.PASS)).list();
         return questionRecords;
     }
+
+    public static List<User> getAllUser(Session session) {
+        List users = session.createQuery("FROM User").list();
+        return users;
+    }
 }
