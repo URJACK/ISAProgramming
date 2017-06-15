@@ -58,7 +58,8 @@ $(function () {
         </tbody>\
         </table>";
     //根据传入的questionIndex 和 全局变量questionsetIndex 从而发送请求进入下一个答题的页面
-    var gotoNext = function (questionIndex) {
+    var gotoNext = function (oTr) {
+        var questionIndex = oTr.children[0].innerHTML;
         var temp = document.createElement("form");
         temp.action = "/program/question?index=" + questionIndex + "&level=" + questionsetIndex;
         temp.method = "post";
@@ -94,7 +95,7 @@ $(function () {
                 oTr.appendChild(oTd_PassRate);
 
                 oTr.onclick = function () {
-                    gotoNext(oTr.children[0].innerHTML);
+                    gotoNext(this);
                 };
 
                 oContent.appendChild(oTr);

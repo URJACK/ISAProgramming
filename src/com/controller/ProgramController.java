@@ -140,6 +140,8 @@ public class ProgramController {
             String content = rq.getParameter("content");
             int level = Integer.parseInt(rq.getParameter("level"));
             int number = Integer.parseInt(rq.getParameter("number"));
+            System.out.println("DEBUG LEVEL:"+level);
+            System.out.println("DEBUG NUMBER:"+number);
             doCompile(content, rsp, level, number);
         } catch (Exception e) {
             e.printStackTrace();
@@ -180,15 +182,35 @@ public class ProgramController {
      */
     private static void javaCompile(String sourceCode, Info_Status is, Set<QuestionCase> cases) {
         writeJavaFile(sourceCode);
+        System.out.println("DEBUG SOURCE:"+sourceCode);
+        System.out.println("DEBUG CASES:"+cases.toString());
         QuestionCase[] caseArray = new QuestionCase[cases.size()];
         cases.toArray(caseArray);
+        int successCounter = 0;
         for (int i = 0; i < caseArray.length; i++) {
             try {
-                JavaConsole.getAnswer(COMPILE_DIRECTORY, COMPILE_ROOT, caseArray[i].getInput());
+                String answer = JavaConsole.getAnswer(COMPILE_DIRECTORY, COMPILE_ROOT, caseArray[i].getInput());
+                String output = caseArray[i].getOutput();
+                System.out.println("DEBUG ANSWER:"+ answer);
+                System.out.println("DEBUG OUTPUT:"+ output);
+                if (output.equals(answer)) {
+                    successCounter++;
+                    System.out.println("DEBUG SUCCESS");
+                } else {
+                    System.out.println("DEBUG FAILED");
+                }
             } catch (Exception e) {
-                e.printStackTrace();
+                is.setStatus(false);
+                is.setInfo(e.getMessage());
+                return;
             }
-
+        }
+        if (successCounter == caseArray.length){
+            is.setStatus(true);
+            is.setInfo("满分");
+        }else{
+            is.setStatus(false);
+            is.setInfo(String.format("正确了%d处",successCounter));
         }
     }
 
@@ -237,14 +259,4 @@ public class ProgramController {
             return null;
     }
 
-    public static void main(String[] args) {
-//        String answer;
-//        try {
-//            answer = JavaConsole.getAnswer(COMPILE_DIRECTORY, COMPILE_ROOT, "25 24");
-//            System.out.println(answer);
-//        } catch (Exception e) {
-//            System.out.println(e.getMessage());
-//        }
-        writeJavaFile("This is a test FFZ");
-    }
 }

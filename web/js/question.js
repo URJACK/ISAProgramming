@@ -8,6 +8,7 @@ $(function () {
     $('#question_content').get(0).innerHTML = questionContent.content;
     $('#question_tip').get(0).innerHTML = questionContent.tip;
     var setInfo = function (str) {
+        $('#question_info').fadeIn();
         $('#question_info').get(0).innerHTML = str;
     };
     $('#question_submit').click(function () {
@@ -15,9 +16,12 @@ $(function () {
             url: "/program/submit",
             type: "POST",
             data: {
+                level:questionContent.level,
+                number:questionContent.number,
                 content: $('#question_submit_content').val()
             },
             success: function (json) {
+                json = JSON.parse(json);
                 setInfo(json.infos);
             }
         })
