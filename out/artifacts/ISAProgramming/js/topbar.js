@@ -187,16 +187,39 @@ $(function () {
         }
     });
     $('#navright_hidden_name_setting').click(function () {
-       window.location ="/setting";
+        window.location = "/setting";
     });
     $('#navbar_brand').click(function () {
-        window.location="/";
+        window.location = "/";
     });
     $('#navleft_isa').click(function () {
-        window.location="/home";
+        window.location = "/home";
     });
     $('#navleft_program').click(function () {
-        window.location="/program";
+        window.location = "/program";
+    });
+    $('#admin_btn').click(function () {
+        $.ajax({
+            url: "/manage/login",
+            type: "POST",
+            data: {
+                admin: $('#admin_password').val(),
+                account:account
+            },
+            success: function (json) {
+                json = JSON.parse(json);
+                if (json.status) {
+                    var temp = document.createElement("form");
+                    temp.action = "/manage";
+                    temp.method = "post";
+                    temp.style.display = "none";
+                    temp.submit();
+                } else {
+                    alert("管理员密码错误");
+                    $('#navright_admin').modal('hide');
+                }
+            }
+        })
     });
     $.ajax({
         url: "/home/defaultlogin",

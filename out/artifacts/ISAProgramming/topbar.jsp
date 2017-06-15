@@ -13,7 +13,8 @@
                         <li id="navleft_isa"><a href="#">ISA</a></li>
                         <li id="navleft_program"><a href="#">Program</a></li>
                         <li id="navleft_eda"><a href="#">EDA</a></li>
-                        <li id="navleft_information"><a href="#">Information</a></li>
+                        <li id="navleft_manage"><a href="#"
+                        data-toggle="modal" data-target="#navright_admin">Manage</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right" id="navright">
                         <a id="navright_signin" class="btn btn-primary navbar-btn" data-toggle='modal'
@@ -125,6 +126,27 @@
             </div>
             <div class="modal-footer">
                 <button class="btn btn-success" id="signup_btn">Sign up</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="navright_admin" tabindex="-1" role='dialog'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">ADMIN CHECK</h4></div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" placeholder="Please Input Your Password" class="form-control" id="admin_password">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success" id="admin_btn">CHECK NOW</button>
             </div>
         </div>
     </div>
