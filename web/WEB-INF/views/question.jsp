@@ -40,7 +40,7 @@
 </head>
 <body>
 <jsp:include page="/topbar.jsp"></jsp:include>
-<div class="container" id="question_background">
+<div class="container" id="question_background" style="display: none">
     <div class="row">
         <img src="/source/Question_Lv3.svg" style="display: inline;width: 100px;height: 100px;">
         <label id="top_label">ISA Online Programing</label>

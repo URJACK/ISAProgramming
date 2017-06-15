@@ -171,4 +171,5 @@ $(function () {
     $('#select_question').click(function () {
         changeContent(1);
     });
+    changeContent(0);
 });

@@ -28,4 +28,5 @@ $(function () {
             }
         })
     });
+    $('#question_background').fadeIn();
 });
