@@ -1,5 +1,5 @@
-import com.DAO.UserDAO;
-import com.model.User;
+import com.DAO.TopicDAO;
+import com.model.Topic;
 import com.tool.SessionOpenner;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -11,9 +11,10 @@ public class Test {
     public static void main(String[] args) {
         Session session = SessionOpenner.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
-        User user = UserDAO.getUserbyId(session, 2);
-        user.setAccount("FFZ");
-        session.saveOrUpdate(user);
+        Topic topic = TopicDAO.getTopicById(session, 1);
+        topic.setUid(3);
         transaction.commit();
+        topic = TopicDAO.getTopicById(session,1);
+        System.out.println(topic.getUser().getAccount());
     }
 }

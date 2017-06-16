@@ -5,6 +5,7 @@ import com.DAO.TopicDAO;
 import com.DAO.UserDAO;
 import com.google.gson.Gson;
 import com.json.Info_Status;
+import com.json.Info_Status_Object;
 import com.json.admin.Question_Modify_Json;
 import com.json.admin.Topic_Modify_Json;
 import com.model.Question;
@@ -205,6 +206,58 @@ public class ManageModifyController {
         }
     }
 
+    @RequestMapping("/changetopic")
+    public void changetopic(HttpServletRequest rq, HttpServletResponse rsp) {
+        Session session = null;
+        Info_Status_Object iso = new Info_Status_Object();
+        try {
+            rq.setCharacterEncoding("UTF-8");
+            rsp.setCharacterEncoding("UTF-8");
+            rsp.setContentType("text/html");
+
+            Topic_Modify_Json tmj = new Topic_Modify_Json();
+            //得到传过来的参数
+            tmj.setId(Integer.parseInt(rq.getParameter("id")));
+            tmj.setUid(Integer.parseInt(rq.getParameter("uid")));
+            tmj.setTitle(rq.getParameter("title"));
+            tmj.setContent(rq.getParameter("content"));
+            tmj.setOwner(rq.getParameter("owner"));
+
+            //更新数据
+            session = SessionOpenner.getInstance().getSession();
+            Transaction transaction = session.beginTransaction();
+            Topic topic = TopicDAO.getTopicById(session, tmj.getId());
+            topic.setTitle(tmj.getTitle());
+            topic.setContent(tmj.getContent());
+            topic.setUid(tmj.getUid());
+            //先把可能改变的uid 先设置一次
+            session.saveOrUpdate(topic);
+            transaction.commit();
+            //提交之后，重新获取它，以查找正确的Owner
+            topic = TopicDAO.getTopicById(session, tmj.getId());
+            tmj.setOwner(topic.getUser().getAccount());
+
+            iso.setStatus(true);
+            iso.setInfos("改变成功");
+            iso.setObj(new Gson().toJson(tmj));
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            iso.setStatus(false);
+            iso.setInfos("改变失败");
+        } finally {
+            if (session!=null)
+                session.close();
+            try {
+                PrintWriter writer = rsp.getWriter();
+                writer.print(new Gson().toJson(iso));
+                writer.flush();
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     private void giveResponse(HttpServletResponse rsp, Session session, Info_Status is) {
         if (session != null)
             session.close();
@@ -217,4 +270,5 @@ public class ManageModifyController {
             e.printStackTrace();
         }
     }
+
 }
