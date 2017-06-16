@@ -1,15 +1,14 @@
 package com.controller;
 
 import com.DAO.FriendDAO;
+import com.DAO.TopicDAO;
 import com.DAO.UserDAO;
 import com.google.gson.Gson;
 import com.json.HaveSolve_Json;
 import com.json.Info_Status_Object;
 import com.json.Info_Status_User;
-import com.model.Friend;
-import com.model.FriendChat;
-import com.model.QuestionRecord;
-import com.model.User;
+import com.json.Topic.TopicMyself;
+import com.model.*;
 import com.tool.SessionOpenner;
 import com.worker.ModelGetWorker.*;
 import org.hibernate.Session;
@@ -203,6 +202,46 @@ public class ModelGetController {
             try {
                 PrintWriter writer = rsp.getWriter();
                 writer.write(new Gson().toJson(iso));
+                writer.flush();
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    //得到跟自己有关的Topic 的信息
+    @RequestMapping("/topicmyself")
+    public void topicinfo(HttpServletRequest rq, HttpServletResponse rsp) {
+        Session session = null;
+        Info_Status_Object iso = new Info_Status_Object();
+        TopicMyself tm = new TopicMyself();
+        try {
+            session = SessionOpenner.getInstance().getSession();
+            rq.setCharacterEncoding("UTF-8");
+            rsp.setCharacterEncoding("UTF-8");
+            rsp.setContentType("text/html");
+            String account = (String) rq.getSession().getAttribute("account");
+            User user = UserDAO.getUser(account, session);
+            System.out.println("DEBUG "+user.toString());
+            List<Topic> topicList = TopicDAO.getTopicList(user.getId(), session);
+            tm.setAccount(account);
+            tm.setCreate(topicList.size());
+            tm.setFollow(0);
+            System.out.println("DEBUG "+tm.toString());
+            iso.setInfos("Success");
+            iso.setStatus(true);
+            iso.setObj(tm);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            iso.setInfos("Failed");
+            iso.setStatus(false);
+        }finally {
+            if (session!=null)
+            session.close();
+            try {
+                PrintWriter writer = rsp.getWriter();
+                writer.print(new Gson().toJson(iso));
                 writer.flush();
                 writer.close();
             } catch (IOException e) {

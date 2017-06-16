@@ -15,6 +15,11 @@ public class TopicDAO {
     }
 
     public static Topic getTopicById(Session session, int id) {
-        return (Topic) session.get(Topic.class,id);
+        return (Topic) session.get(Topic.class, id);
+    }
+
+    public static List<Topic> getTopicList(int userId, Session session) {
+        List<Topic> topics = session.createQuery(String.format("FROM Topic WHERE uid='%d'", userId)).list();
+        return topics;
     }
 }

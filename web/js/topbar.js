@@ -198,6 +198,9 @@ $(function () {
     $('#navleft_program').click(function () {
         window.location = "/program";
     });
+    $('#navleft_topic').click(function () {
+        window.location="/topic";
+    });
     $('#admin_btn').click(function () {
         $.ajax({
             url: "/manage/login",
