@@ -1,12 +1,15 @@
 package com.controller;
 
 import com.DAO.QuestionDAO;
+import com.DAO.TopicDAO;
 import com.DAO.UserDAO;
 import com.google.gson.Gson;
 import com.json.Info_Status;
 import com.json.admin.Question_Admin_Json;
+import com.json.admin.Topic_Admin_Json;
 import com.json.admin.User_Admin_Json;
 import com.model.Question;
+import com.model.Topic;
 import com.model.User;
 import com.tool.SessionOpenner;
 import org.hibernate.Session;
@@ -101,7 +104,8 @@ public class ManageController {
             session = SessionOpenner.getInstance().getSession();
             List<User> users = UserDAO.getAllUser(session);
             userJsons = new ArrayList<>(7);
-            for (int i = 0; i < users.size(); i++) {
+            //i = 0 时，返还的id = 1 的是管理员Admin ，此时不返还他
+            for (int i = 1; i < users.size(); i++) {
                 User_Admin_Json uaj = new User_Admin_Json();
                 User user = users.get(i);
                 uaj.setId(user.getId());
@@ -148,6 +152,40 @@ public class ManageController {
         }
     }
 
+    @RequestMapping("/topic")
+    public void topic(HttpServletRequest rq, HttpServletResponse rsp) {
+        Session session = null;
+        List<Topic_Admin_Json> topicAdminJsons = null;
+        try {
+            rq.setCharacterEncoding("UTF-8");
+            rsp.setCharacterEncoding("UTF-8");
+            rsp.setContentType("text/html");
+
+            session = SessionOpenner.getInstance().getSession();
+            List<Topic> topics = TopicDAO.getAllTopic(session);
+            topicAdminJsons = new ArrayList<>(7);
+            for (int i = 0; i < topics.size(); i++) {
+                Topic_Admin_Json taj = new Topic_Admin_Json();
+                Topic topic = topics.get(i);
+                taj.setId(topic.getId());
+                taj.setTitle(topic.getTitle());
+                taj.setOwner(topic.getUser().getAccount());
+                topicAdminJsons.add(taj);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (session != null)
+                session.close();
+            writeResponse(rsp, new Gson().toJson(topicAdminJsons));
+        }
+    }
+
+    @RequestMapping("/match")
+    public void match(HttpServletRequest rq, HttpServletResponse rsp) {
+
+    }
+
     private void writeResponse(HttpServletResponse rsp, String s) {
         try {
             PrintWriter writer = rsp.getWriter();
@@ -157,15 +195,5 @@ public class ManageController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    @RequestMapping("/topic")
-    public void topic(HttpServletRequest rq, HttpServletResponse rsp) {
-
-    }
-
-    @RequestMapping("/match")
-    public void match(HttpServletRequest rq, HttpServletResponse rsp) {
-
     }
 }

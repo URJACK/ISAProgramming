@@ -129,7 +129,28 @@ $(function () {
         }
     };
     var refreshData_Topic = function () {
+        var oTbody = $('#manage_topic_tbody').get(0);
+        oTbody.innerHTML = "";
+        for (var i = 0; i < topicList.length; i++) {
+            var oTr = document.createElement('tr');
 
+            var oTd_Id = document.createElement('td');
+            var oTd_Title = document.createElement('td');
+            var oTd_Owner = document.createElement('td');
+            var oTd_Operate = getOperate();
+
+
+            oTd_Id.innerHTML = topicList[i].id;
+            oTd_Title.innerHTML = topicList[i].title;
+            oTd_Owner.innerHTML = topicList[i].owner;
+
+            oTr.appendChild(oTd_Id);
+            oTr.appendChild(oTd_Title);
+            oTr.appendChild(oTd_Owner);
+            oTr.appendChild(oTd_Operate);
+
+            oTbody.appendChild(oTr);
+        }
     };
     var refreshData_Match = function () {
 
@@ -137,7 +158,7 @@ $(function () {
     var Initilization = function () {
         readData_User();
         readData_Question();
-        // readData_Topic();
+        readData_Topic();
         // readData_Match();
     };
     //初始化调用

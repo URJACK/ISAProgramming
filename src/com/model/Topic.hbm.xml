@@ -9,6 +9,6 @@
         <property name="uid" column="uid"/>
         <property name="title" column="title"/>
         <property name="content" column="content"/>
-        <one-to-one name="user" class="com.model.User"/>
+        <many-to-one name="user" class="com.model.User" cascade="all" unique="true" insert="false" update="false" column="uid"/>
     </class>
 </hibernate-mapping>

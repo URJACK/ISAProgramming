@@ -14,6 +14,8 @@
                         <li id="navleft_isa"><a href="#">ISA</a></li>
                         <li id="navleft_program"><a href="#">Program</a></li>
                         <li id="navleft_eda"><a href="#">EDA</a></li>
+                        <li id="navleft_topic"><a href="#">Topic</a></li>
+                        <li id="navleft_match"><a href="#">Match</a></li>
                         <li id="navleft_manage"><a href="#"
                         data-toggle="modal" data-target="#navright_admin">Manage</a></li>
                     </ul>
