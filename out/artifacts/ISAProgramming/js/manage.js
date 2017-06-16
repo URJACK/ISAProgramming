@@ -11,6 +11,23 @@ $(function () {
     var matchList;
 
     /**
+     * 每一个列表的页码:会因为搜索等操作而遭到重置
+     */
+    var userPosition = 0;
+    var questionPosition = 0;
+    var topicPosition = 0;
+    var matchPosition = 0;
+
+    /**
+     * 每一个列表的搜索值:会因为一次点击事件而缓存在这里，并且会进行一次回显
+     */
+    var userSearchBuffer;
+    var questionSearchBuffer;
+    var topicSearchBuffer;
+    var matchSearchBuffer;
+
+    /**
+     * tabCursor:的数值对应列表
      * tabCursor:0 user
      * tabCursor:1 question
      * tabCursor:2 topic
@@ -261,10 +278,12 @@ $(function () {
      */
     var setTurnPageListener = function () {
         var turnUpPageUser = function () {
-            console.log("User 上");
+            userPosition--;
+            readData_User(userPosition);
         };
         var turnDownPageUser = function () {
-            console.log("User 下");
+            userPosition++;
+            readData_User(userPosition);
         };
         var turnUpPageQuestion = function () {
             console.log("Question 上");
