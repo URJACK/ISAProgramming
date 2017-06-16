@@ -154,8 +154,52 @@ public class ManageModifyController {
             session.saveOrUpdate(user);
             transaction.commit();
 
+            is.setStatus(true);
+            is.setInfo("改变成功");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
+            is.setStatus(false);
+            is.setInfo("改变失败");
+        } finally {
+            giveResponse(rsp, session, is);
+        }
+    }
+
+    @RequestMapping("/changequestion")
+    public void changequestion(HttpServletRequest rq, HttpServletResponse rsp) {
+        Session session = null;
+        Info_Status is = new Info_Status();
+        try {
+            rq.setCharacterEncoding("UTF-8");
+            rsp.setCharacterEncoding("UTF-8");
+            rsp.setContentType("text/html");
+
+            //得到传过来的参数
+            int id = Integer.parseInt(rq.getParameter("id"));
+            int lv = Integer.parseInt(rq.getParameter("lv"));
+            int number = Integer.parseInt(rq.getParameter("number"));
+            String title = rq.getParameter("title");
+            String content = rq.getParameter("content");
+            String tip = rq.getParameter("tip");
+
+            //更新数据
+            session = SessionOpenner.getInstance().getSession();
+            Transaction transaction = session.beginTransaction();
+            Question question = QuestionDAO.getQuestionById(session, id);
+            question.setLv(lv);
+            question.setNumber(number);
+            question.setTitle(title);
+            question.setContent(content);
+            question.setTip(tip);
+            session.saveOrUpdate(question);
+            transaction.commit();
+
+            is.setStatus(true);
+            is.setInfo("改变成功");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            is.setStatus(false);
+            is.setInfo("改变失败");
         } finally {
             giveResponse(rsp, session, is);
         }

@@ -46,8 +46,8 @@
             <input type="text" class="form-control" id="modify_user_date" value="正在获取日期" readonly>
         </div>
         <div class="form-group">
-            <a href="#" id="modify_user_reset" class="btn btn-primary">还原次新进度</a>
-            <a href="#" id="modify_user_commit" class="btn btn-success">同步最新进度</a>
+            <a href="#" id="modify_reset" class="btn btn-primary">还原次新进度</a>
+            <a href="#" id="modify_commit" class="btn btn-success">同步最新进度</a>
         </div>
         <div class="form-group">
             <div class="alert alert-warning" id="modify_warning">

@@ -46,7 +46,7 @@ $(function () {
             obj.innerHTML = str;
             $('#modify_warning').fadeIn();
         }
-    }
+    };
 
     var reset = function () {
         syncView();
@@ -62,12 +62,12 @@ $(function () {
                 setInfo(json.infos);
             }
         })
-    }
+    };
 
     var Initialization = function () {
         syncView();
-        $('#modify_user_commit').click(commit);
-        $('#modify_user_reset').click(reset);
+        $('#modify_commit').click(commit);
+        $('#modify_reset').click(reset);
     };
     Initialization();
 });
