@@ -144,8 +144,16 @@ $(function () {
             },
             success: function (json) {
                 json = JSON.parse(json);
-                userList = json;
-                refreshData_User();
+                if (json.status) {
+                    userList = json.obj;
+                    refreshData_User();
+                } else {
+                    setTips(json.infos);
+                    if (userPosition < 0)
+                        userPosition++;
+                    else
+                        userPosition--;
+                }
             }
         })
     };
@@ -158,8 +166,16 @@ $(function () {
             },
             success: function (json) {
                 json = JSON.parse(json);
-                questionList = json;
-                refreshData_Question();
+                if (json.status) {
+                    questionList = json.obj;
+                    refreshData_Question();
+                } else {
+                    setTips(json.infos);
+                    if (questionPosition < 0)
+                        questionPosition++;
+                    else
+                        questionPosition--;
+                }
             }
         })
     };
@@ -172,8 +188,16 @@ $(function () {
             },
             success: function (json) {
                 json = JSON.parse(json);
-                topicList = json;
-                refreshData_Topic();
+                if (json.status) {
+                    topicList = json.obj;
+                    refreshData_Topic();
+                } else {
+                    setTips(json.infos);
+                    if (topicPosition < 0)
+                        topicPosition++;
+                    else
+                        topicPosition--;
+                }
             }
         })
     };
@@ -278,24 +302,34 @@ $(function () {
      */
     var setTurnPageListener = function () {
         var turnUpPageUser = function () {
+            setTips("");
             userPosition--;
             readData_User(userPosition);
         };
         var turnDownPageUser = function () {
+            setTips("");
             userPosition++;
             readData_User(userPosition);
         };
         var turnUpPageQuestion = function () {
-            console.log("Question 上");
+            setTips("");
+            questionPosition--;
+            readData_Question(questionPosition);
         };
         var turnDownPageQuestion = function () {
-            console.log("Question 下");
+            setTips("");
+            questionPosition++;
+            readData_Question(questionPosition);
         };
         var turnUpPageTopic = function () {
-            console.log("Topic 上");
+            setTips("");
+            topicPosition--;
+            readData_Topic(topicPosition);
         };
         var turnDownPageTopic = function () {
-            console.log("Topic 下");
+            setTips("");
+            topicPosition++;
+            readData_Topic(topicPosition);
         };
         var turnUpPageMatch = function () {
             console.log("Match 上");
@@ -303,6 +337,7 @@ $(function () {
         var turnDownPageMatch = function () {
             console.log("Match 下");
         };
+
         $('#manage_user_uppage').click(turnUpPageUser);
         $('#manage_user_downpage').click(turnDownPageUser);
         $('#manage_question_uppage').click(turnUpPageQuestion);
@@ -314,24 +349,41 @@ $(function () {
 
     };
 
-    //初始化调用
+    /**
+     * 在提示框里设置信息
+     */
+    var setTips = function (infos) {
+        $('#manage_warning').css('display', 'none');
+        if (infos != "") {
+            $('#manage_warning').get(0).innerHTML = infos;
+            $('#manage_warning').fadeIn();
+        }
+    };
+
+    /**
+     * 初始化调用
+     */
     var Initilization = function () {
         $('#manage_to_user').click(function () {
+            setTips("");
             tabCursor = 0;
         });
         $('#manage_to_question').click(function () {
+            setTips("");
             tabCursor = 1;
         });
         $('#manage_to_topic').click(function () {
+            setTips("");
             tabCursor = 2;
         });
         $('#manage_to_match').click(function () {
+            setTips("");
             tabCursor = 3;
         });
 
         setTurnPageListener();
 
-        readData_User(1);
+        readData_User(0);
         readData_Question(0);
         readData_Topic(0);
         // readData_Match();

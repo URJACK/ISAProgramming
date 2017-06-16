@@ -5,6 +5,7 @@ import com.DAO.TopicDAO;
 import com.DAO.UserDAO;
 import com.google.gson.Gson;
 import com.json.Info_Status;
+import com.json.Info_Status_Object;
 import com.json.admin.Question_Admin_Json;
 import com.json.admin.Topic_Admin_Json;
 import com.json.admin.User_Admin_Json;
@@ -103,23 +104,104 @@ public class ManageController {
     public void user(HttpServletRequest rq, HttpServletResponse rsp) {
         Session session = null;
         List<User_Admin_Json> userJsons = null;
+        Info_Status_Object iso = new Info_Status_Object();
         try {
             rq.setCharacterEncoding("UTF-8");
             rsp.setCharacterEncoding("UTF-8");
             rsp.setContentType("text/html");
 
             int position = Integer.parseInt(rq.getParameter("position"));
+            //如果是第一页就进行返回
+            if (errorWork_First(iso, position)) return;
             session = SessionOpenner.getInstance().getSession();
             List<User> users = UserDAO.getAllUser(session);
             userJsons = new ArrayList<>(8);
             putUserJsons(userJsons, users, position);
+            //自动根据需要返回的userJsons进行处理
+            errorWork_Second(userJsons, iso);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             if (session != null)
                 session.close();
-            writeResponse(rsp, new Gson().toJson(userJsons));
+            writeResponse(rsp, new Gson().toJson(iso));
         }
+    }
+
+    @RequestMapping("/question")
+    public void question(HttpServletRequest rq, HttpServletResponse rsp) {
+        Session session = null;
+        List<Question_Admin_Json> questionJsons = null;
+        Info_Status_Object iso = new Info_Status_Object();
+        try {
+            rq.setCharacterEncoding("UTF-8");
+            rsp.setCharacterEncoding("UTF-8");
+            rsp.setContentType("text/html");
+
+            int position = Integer.parseInt(rq.getParameter("position"));
+            //如果是第一页就进行返回
+            if (errorWork_First(iso, position)) return;
+            session = SessionOpenner.getInstance().getSession();
+            List<Question> questions = QuestionDAO.getAllQuestion(session);
+            questionJsons = new ArrayList<>(8);
+            putQuestionJsons(questionJsons, questions, position);
+            //自动根据需要返回的questionJsons进行处理
+            errorWork_Second(questionJsons, iso);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (session != null)
+                session.close();
+            writeResponse(rsp, new Gson().toJson(iso));
+        }
+    }
+
+    @RequestMapping("/topic")
+    public void topic(HttpServletRequest rq, HttpServletResponse rsp) {
+        Session session = null;
+        List<Topic_Admin_Json> topicAdminJsons = null;
+        Info_Status_Object iso = new Info_Status_Object();
+        try {
+            rq.setCharacterEncoding("UTF-8");
+            rsp.setCharacterEncoding("UTF-8");
+            rsp.setContentType("text/html");
+
+            int position = Integer.parseInt(rq.getParameter("position"));
+            if (errorWork_First(iso, position)) return;
+            session = SessionOpenner.getInstance().getSession();
+            List<Topic> topics = TopicDAO.getAllTopic(session);
+            topicAdminJsons = new ArrayList<>(7);
+            putTopicJsons(topicAdminJsons, topics, position);
+            errorWork_Second(topicAdminJsons, iso);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (session != null)
+                session.close();
+            writeResponse(rsp, new Gson().toJson(iso));
+        }
+    }
+
+    private void errorWork_Second(List list, Info_Status_Object iso) {
+        if (list.size() == 0) {
+            iso.setInfos("已经是最后一页了");
+            iso.setStatus(false);
+            iso.setObj(null);
+        } else {
+            iso.setInfos("OK");
+            iso.setObj(list);
+            iso.setStatus(true);
+        }
+    }
+
+    private boolean errorWork_First(Info_Status_Object iso, int position) {
+        if (position < 0) {
+            iso.setInfos("已经是第一页了");
+            iso.setStatus(false);
+            iso.setObj(null);
+            return true;
+        }
+        return false;
     }
 
     private void putUserJsons(List<User_Admin_Json> userJsons, List<User> users, int position) {
@@ -134,67 +216,41 @@ public class ManageController {
                 uaj.setEmail(user.getEmail());
                 userJsons.add(uaj);
             }
-        }catch (IndexOutOfBoundsException e){
+        } catch (IndexOutOfBoundsException e) {
             //结束对UserJson 的生成
         }
     }
 
-    @RequestMapping("/question")
-    public void question(HttpServletRequest rq, HttpServletResponse rsp) {
-        Session session = null;
-        List<Question_Admin_Json> questionJsons = null;
+    private void putQuestionJsons(List<Question_Admin_Json> questionJsons, List<Question> questions, int position) {
+        int offset = position * PAGECAPACITY;
         try {
-            rq.setCharacterEncoding("UTF-8");
-            rsp.setCharacterEncoding("UTF-8");
-            rsp.setContentType("text/html");
-
-            session = SessionOpenner.getInstance().getSession();
-            List<Question> questions = QuestionDAO.getAllQuestion(session);
-            questionJsons = new ArrayList<>(7);
-            for (int i = 0; i < questions.size(); i++) {
+            for (int i = 0; i < PAGECAPACITY; i++) {
                 Question_Admin_Json qaj = new Question_Admin_Json();
-                Question question = questions.get(i);
+                Question question = questions.get(i + offset);
                 qaj.setId(question.getId());
                 qaj.setLevel(question.getLv());
                 qaj.setNumber(question.getNumber());
                 qaj.setTitle(question.getTitle());
                 questionJsons.add(qaj);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (session != null)
-                session.close();
-            writeResponse(rsp, new Gson().toJson(questionJsons));
+        } catch (IndexOutOfBoundsException e) {
+            //结束对QuestionJson 的生成
         }
     }
 
-    @RequestMapping("/topic")
-    public void topic(HttpServletRequest rq, HttpServletResponse rsp) {
-        Session session = null;
-        List<Topic_Admin_Json> topicAdminJsons = null;
+    private void putTopicJsons(List<Topic_Admin_Json> topicAdminJsons, List<Topic> topics, int position) {
+        int offset = position * PAGECAPACITY;
         try {
-            rq.setCharacterEncoding("UTF-8");
-            rsp.setCharacterEncoding("UTF-8");
-            rsp.setContentType("text/html");
-
-            session = SessionOpenner.getInstance().getSession();
-            List<Topic> topics = TopicDAO.getAllTopic(session);
-            topicAdminJsons = new ArrayList<>(7);
-            for (int i = 0; i < topics.size(); i++) {
+            for (int i = 0; i < PAGECAPACITY; i++) {
                 Topic_Admin_Json taj = new Topic_Admin_Json();
-                Topic topic = topics.get(i);
+                Topic topic = topics.get(i + offset);
                 taj.setId(topic.getId());
-                taj.setTitle(topic.getTitle());
                 taj.setOwner(topic.getUser().getAccount());
+                taj.setTitle(topic.getTitle());
                 topicAdminJsons.add(taj);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (session != null)
-                session.close();
-            writeResponse(rsp, new Gson().toJson(topicAdminJsons));
+        } catch (IndexOutOfBoundsException e) {
+            //结束对TopicJson 的继续生成
         }
     }
 

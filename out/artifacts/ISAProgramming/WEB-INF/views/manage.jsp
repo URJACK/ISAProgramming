@@ -47,6 +47,11 @@
         </div>
     </div>
 </div>
+<div class="container">
+    <div class="alert alert-warning" id="manage_warning" style="display: none">
+
+    </div>
+</div>
 <script src="/js/manage.js"></script>
 </body>
 </html>
