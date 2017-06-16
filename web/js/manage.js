@@ -78,13 +78,25 @@ $(function () {
      * @param id 该项数据的id
      */
     var modifyUser = function (id) {
-        console.log("modify User " + id);
+        var temp = document.createElement("form");
+        temp.action = "/managecontroll/user?id=" + id;
+        temp.method = "post";
+        temp.style.display = "none";
+        temp.submit();
     };
     var modifyQuestion = function (id) {
-        console.log("modify Question " + id);
+        var temp = document.createElement("form");
+        temp.action = "/managecontroll/question?id=" + id;
+        temp.method = "post";
+        temp.style.display = "none";
+        temp.submit();
     };
     var modifyTopic = function (id) {
-        console.log("modify Topic " + id);
+        var temp = document.createElement("form");
+        temp.action = "/managecontroll/topic?id=" + id;
+        temp.method = "post";
+        temp.style.display = "none";
+        temp.submit();
     };
     var modifyMatch = function (id) {
 

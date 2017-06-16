@@ -35,7 +35,7 @@ import java.util.Properties;
 @Controller
 @RequestMapping(value = "/manage", method = RequestMethod.POST)
 public class ManageController {
-    private static final int PAGECAPACITY = 3;     //每页的容量
+    private static final int PAGECAPACITY = 5;     //每页的容量
     private static String ADMIN;
 
     static {
