@@ -25,6 +25,7 @@ public class SettingAgreeWorker implements SettingWorker {
             }
             is.setInfo("操作完成");
         } catch (Exception e) {
+            e.printStackTrace();
             is.setInfo(e.getMessage());
         } finally {
             is.setStatus(true);

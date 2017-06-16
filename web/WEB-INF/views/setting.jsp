@@ -46,11 +46,11 @@
                         完成的题目</a>
                     </li>
                     <li class="divider"></li>
-                    <li><a href="#main_tab_friend" data-toggle="tab">
+                    <li><a href="#main_tab_friend" data-toggle="tab" id="dropdown_friend">
                         我的好友</a>
                     </li>
                     <li class="divider"></li>
-                    <li><a href="#main_tab_request" data-toggle="tab">
+                    <li><a href="#main_tab_request" data-toggle="tab" id="dropdown_request_friend">
                         好友申请</a>
                     </li>
                 </ul>

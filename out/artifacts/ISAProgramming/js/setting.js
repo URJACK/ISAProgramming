@@ -290,6 +290,7 @@ $(function () {
     var requestFriendRefuse = function () {
         var oTbody = $('#main_tab_request_tbody').get(0);
         var obj = this.parentNode.parentNode.parentNode;
+        targetAccount = obj.childNodes[0].innerHTML;
         $.ajax({
             url: '/setting/agreerefuse',
             type: 'POST',
@@ -633,6 +634,8 @@ $(function () {
             changeMoreInformation();
     });
     $('#main_tab_friend_add').click(addFriend);
+    $('#dropdown_friend').click(postGetFriend);
+    $('#dropdown_request_friend').click(postGetRequestFriend);
     setTimeout(function () {
         if (!auto_login) {
             auto_LoginFailed();
