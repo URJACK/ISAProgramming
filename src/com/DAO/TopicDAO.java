@@ -13,4 +13,8 @@ public class TopicDAO {
         List list = session.createQuery("FROM Topic ").list();
         return list;
     }
+
+    public static Topic getTopicById(Session session, int id) {
+        return (Topic) session.get(Topic.class,id);
+    }
 }

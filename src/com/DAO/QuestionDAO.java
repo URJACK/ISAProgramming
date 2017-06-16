@@ -3,6 +3,7 @@ package com.DAO;
 import com.json.Question_Json;
 import com.model.Question;
 import com.model.QuestionRecord;
+import com.model.User;
 import com.tool.SessionOpenner;
 import org.hibernate.Session;
 
@@ -91,5 +92,9 @@ public class QuestionDAO {
     public static List<Question> getAllQuestion(Session session) {
         List list = session.createQuery("FROM Question ").list();
         return list;
+    }
+
+    public static Question getQuestionById(Session session, int id) {
+        return (Question) session.get(Question.class,id);
     }
 }
