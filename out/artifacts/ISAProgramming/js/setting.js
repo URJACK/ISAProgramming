@@ -8,6 +8,7 @@ $(function () {
     var firendslist;
     var chatIndex = 0;                      //记录当前聊天记录的条数
     var haveSolvedList;                     //已经解决的问题的
+    var haveCreateTopicList;                //已经发表的帖子列表
 
     var timer;
 
@@ -92,6 +93,20 @@ $(function () {
                     haveSolvedList = json.obj;
                     clearElement_SolvedList();
                     resetElementInSolvedList();
+                }
+            }
+        })
+    };
+    //得到自己已经发表的帖子
+    var postGetTopic = function () {
+        $.ajax({
+            url: "/model/topicone",
+            type: "POST",
+            success: function (json) {
+                json = JSON.parse(json);
+                if (json.status) {
+                    haveCreateTopicList = json.obj;
+                    syncTopicList();
                 }
             }
         })
@@ -243,6 +258,40 @@ $(function () {
             };
             oTbody.appendChild(oTr);
         }
+    };
+    //同步Topic 列表
+
+    var syncTopicList = function () {
+        var tbody = $('#main_tab_topic_tbody').get(0);
+        for (var i = 0; i < haveCreateTopicList.length; i++) {
+            var oTr = document.createElement('tr');
+            var oTd_Id = document.createElement('td');
+            var oTd_Title = document.createElement('td');
+            var oTd_Owner = document.createElement('td');
+
+            oTd_Id.style.display = 'none';
+            oTd_Id.innerHTML = haveCreateTopicList[i].id;
+            oTd_Title.innerHTML = haveCreateTopicList[i].title;
+            oTd_Owner.innerHTML = haveCreateTopicList[i].owner;
+
+            oTr.appendChild(oTd_Id);
+            oTr.appendChild(oTd_Title);
+            oTr.appendChild(oTd_Owner);
+
+            oTr.onclick = function () {
+                var index = this.children[0].innerHTML;
+                gotoTopic(index);
+            };
+            tbody.appendChild(oTr);
+        }
+    };
+    //根据点击的帖子进入帖子的界面
+    var gotoTopic = function (index) {
+        var temp = document.createElement("form");
+        temp.action = "/topic/content?id=" + index;
+        temp.method = "post";
+        temp.style.display = "none";
+        temp.submit();
     };
     //根据点击的问题的进入编码的界面 传入的分别为题的等级与编号
     var gotoQuestion = function (level, number) {
@@ -635,6 +684,7 @@ $(function () {
     });
     $('#main_tab_friend_add').click(addFriend);
     $('#dropdown_friend').click(postGetFriend);
+    $('#dropdown_topic').click(postGetTopic);
     $('#dropdown_request_friend').click(postGetRequestFriend);
     setTimeout(function () {
         if (!auto_login) {

@@ -34,6 +34,14 @@
             </p>
         </div>
     </div>
+    <div class="row">
+        <form>
+            <div class="form-group">
+                <label>回复</label>
+                <input type="text" placeholder="该帖子暂不允许回复" class="form-control" readonly>
+            </div>
+        </form>
+    </div>
 </div>
 <script src="/js/topic_content.js"></script>
 </body>

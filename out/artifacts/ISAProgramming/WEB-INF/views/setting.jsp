@@ -38,7 +38,7 @@
                    data-toggle="dropdown">More<b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu" role="menu">
-                    <li><a href="#main_tab_topic" data-toggle="tab">
+                    <li><a href="#main_tab_topic" data-toggle="tab" id="dropdown_topic">
                         发表的帖子</a>
                     </li>
                     <li class="divider"></li>
@@ -128,8 +128,19 @@
         </div>
         <div class="tab-pane fade " id="main_tab_topic">
             <div class="col-md-8 col-xs-12 col-md-offset-2">
-                <p>jMeter is an Open Source testing software. It is 100% pure
-                    Java application for load and performance testing.</p>
+                <table class="table table-bordered table-hover">
+                    <caption>你发表过的帖子</caption>
+                    <thead>
+                    <tr>
+                        <th style="display: none;">id</th>
+                        <th>Title</th>
+                        <th>Owner</th>
+                    </tr>
+                    </thead>
+                    <tbody id="main_tab_topic_tbody">
+
+                    </tbody>
+                </table>
             </div>
         </div>
         <div class="tab-pane fade" id="main_tab_question">

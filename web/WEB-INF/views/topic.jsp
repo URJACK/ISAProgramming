@@ -19,7 +19,7 @@
 <jsp:include page="/topbar.jsp"></jsp:include>
 <div class="container" id="background" style="display: none">
     <div class="row">
-        <label class="text-primary" style="font-size: 26px" >ISA 论坛</label>
+        <label class="text-primary" style="font-size: 26px">ISA 论坛</label>
     </div>
     <div class="row">
         <div class="col-md-8">
@@ -42,22 +42,30 @@
             </table>
         </div>
         <div class="col-md-4">
-            <table class="table table-bordered">
-                <caption>你的信息</caption>
-                <thead>
-                <tr>
-                    <th id="topic_account">Debug</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>已经发贴:<a href="#" class="text-primary" id="topic_create">26</a></td>
-                </tr>
-                <tr>
-                    <td>跟帖数:<a href="#" class="text-primary" id="topic_follow">0</a></td>
-                </tr>
-                </tbody>
-            </table>
+            <div class="row">
+                <table class="table table-bordered">
+                    <caption>你的信息</caption>
+                    <thead>
+                    <tr>
+                        <th id="topic_account">Debug</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>已经发贴:<a href="#" class="text-primary" id="topic_create">26</a></td>
+                    </tr>
+                    <tr>
+                        <td>跟帖数:<a href="#" class="text-primary" id="topic_follow">0</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row">
+                <div class="btn-group col-md-offset-8 col-md-4 col-xs-12">
+                    <a class="btn btn-primary">发帖</a>
+                    <a class="btn btn-success">删帖</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>

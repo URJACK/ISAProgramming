@@ -249,7 +249,7 @@ public class ModelGetController {
         }
     }
 
-    //得到跟自己有关的Topic的信息
+    //得到跟所有的Topic的信息
     @RequestMapping("/topiclist")
     public void topiclist(HttpServletRequest rq, HttpServletResponse rsp) {
         Session session = null;
@@ -262,6 +262,43 @@ public class ModelGetController {
 
             session = SessionOpenner.getInstance().getSession();
             List<Topic> topics = TopicDAO.getAllTopic(session);
+            list = makeTopicJsons(topics);
+
+            iso.setInfos("Success");
+            iso.setStatus(true);
+            iso.setObj(list);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            iso.setInfos("Failed");
+            iso.setStatus(false);
+        } finally {
+            if (session != null)
+                session.close();
+            try {
+                PrintWriter writer = rsp.getWriter();
+                writer.print(new Gson().toJson(iso));
+                writer.flush();
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    //得到跟自己的Topic的信息
+    @RequestMapping("/topicone")
+    public void topicone(HttpServletRequest rq, HttpServletResponse rsp) {
+        Session session = null;
+        Info_Status_Object iso = new Info_Status_Object();
+        List<Topic_Admin_Json> list = null;
+        try {
+            rq.setCharacterEncoding("UTF-8");
+            rsp.setCharacterEncoding("UTF-8");
+            rsp.setContentType("text/html");
+
+            session = SessionOpenner.getInstance().getSession();
+            String userAccount = String.valueOf(rq.getSession().getAttribute("account"));
+            User user = UserDAO.getUser(userAccount,session);
+            List<Topic> topics = TopicDAO.getTopicList(user.getId(),session);
             list = makeTopicJsons(topics);
 
             iso.setInfos("Success");
