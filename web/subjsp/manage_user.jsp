@@ -29,10 +29,10 @@
 </table>
 
 <div class="row">
-    <div class="col-md-1 col-xs-2">
+    <div class="col-md-offset-10 col-md-1 col-xs-offset-8 col-xs-2">
         <a class="btn btn-default" id="manage_user_uppage">上页</a>
     </div>
-    <div class="col-md-offset-10 col-md-1 col-xs-offset-8 col-xs-2">
+    <div class="col-md-1 col-xs-2">
         <a class="btn btn-default" id="manage_user_downpage">下页</a>
     </div>
 </div>

@@ -34,6 +34,7 @@ import java.util.Properties;
 @Controller
 @RequestMapping(value = "/manage", method = RequestMethod.POST)
 public class ManageController {
+    private static final int PAGECAPACITY = 3;     //每页的容量
     private static String ADMIN;
 
     static {
@@ -92,6 +93,12 @@ public class ManageController {
         }
     }
 
+    /**
+     * 根据传入的参数:position 来进行分页发放数据
+     *
+     * @param rq
+     * @param rsp
+     */
     @RequestMapping("/user")
     public void user(HttpServletRequest rq, HttpServletResponse rsp) {
         Session session = null;
@@ -101,24 +108,34 @@ public class ManageController {
             rsp.setCharacterEncoding("UTF-8");
             rsp.setContentType("text/html");
 
+            int position = Integer.parseInt(rq.getParameter("position"));
             session = SessionOpenner.getInstance().getSession();
             List<User> users = UserDAO.getAllUser(session);
-            userJsons = new ArrayList<>(7);
-            //i = 0 时，返还的id = 1 的是管理员Admin ，此时不返还他
-            for (int i = 1; i < users.size(); i++) {
-                User_Admin_Json uaj = new User_Admin_Json();
-                User user = users.get(i);
-                uaj.setId(user.getId());
-                uaj.setAccount(user.getAccount());
-                uaj.setEmail(user.getEmail());
-                userJsons.add(uaj);
-            }
+            userJsons = new ArrayList<>(8);
+            putUserJsons(userJsons, users, position);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             if (session != null)
                 session.close();
             writeResponse(rsp, new Gson().toJson(userJsons));
+        }
+    }
+
+    private void putUserJsons(List<User_Admin_Json> userJsons, List<User> users, int position) {
+        //i = 0 时，返还的id = 1 的是管理员Admin ，此时不返还他
+        int offset = position * PAGECAPACITY;
+        try {
+            for (int i = 1; i <= PAGECAPACITY; i++) {
+                User_Admin_Json uaj = new User_Admin_Json();
+                User user = users.get(i + offset);
+                uaj.setId(user.getId());
+                uaj.setAccount(user.getAccount());
+                uaj.setEmail(user.getEmail());
+                userJsons.add(uaj);
+            }
+        }catch (IndexOutOfBoundsException e){
+            //结束对UserJson 的生成
         }
     }
 

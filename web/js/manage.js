@@ -11,6 +11,23 @@ $(function () {
     var matchList;
 
     /**
+     * 每一个列表的页码:会因为搜索等操作而遭到重置
+     */
+    var userPosition;
+    var questionPosition;
+    var topicPosition;
+    var matchPosition;
+
+    /**
+     * 每一个列表的搜索值:会因为一次点击事件而缓存在这里，并且会进行一次回显
+     */
+    var userSearchBuffer;
+    var questionSearchBuffer;
+    var topicSearchBuffer;
+    var matchSearchBuffer;
+
+    /**
+     * tabCursor:的数值对应列表
      * tabCursor:0 user
      * tabCursor:1 question
      * tabCursor:2 topic
@@ -118,10 +135,13 @@ $(function () {
     /**
      * 从服务器读取数据，并调用RefreshData 方法
      */
-    var readData_User = function () {
+    var readData_User = function (position) {
         $.ajax({
             url: "/manage/user",
             type: "POST",
+            data: {
+                position: position
+            },
             success: function (json) {
                 json = JSON.parse(json);
                 userList = json;
@@ -129,10 +149,13 @@ $(function () {
             }
         })
     };
-    var readData_Question = function () {
+    var readData_Question = function (position) {
         $.ajax({
             url: "/manage/question",
             type: "POST",
+            data: {
+                position: position
+            },
             success: function (json) {
                 json = JSON.parse(json);
                 questionList = json;
@@ -140,10 +163,13 @@ $(function () {
             }
         })
     };
-    var readData_Topic = function () {
+    var readData_Topic = function (position) {
         $.ajax({
             url: "/manage/topic",
             type: "POST",
+            data: {
+                position: position
+            },
             success: function (json) {
                 json = JSON.parse(json);
                 topicList = json;
@@ -151,10 +177,13 @@ $(function () {
             }
         })
     };
-    var readData_Match = function () {
+    var readData_Match = function (position) {
         $.ajax({
             url: "/manage/match",
             type: "POST",
+            data: {
+                position: position
+            },
             success: function (json) {
                 json = JSON.parse(json);
                 matchList = json;
@@ -243,6 +272,47 @@ $(function () {
     var refreshData_Match = function () {
 
     };
+
+    /**
+     * 给上下页码设置翻页监听
+     */
+    var setTurnPageListener = function () {
+        var turnUpPageUser = function () {
+            console.log("User 上");
+        };
+        var turnDownPageUser = function () {
+            console.log("User 下");
+        };
+        var turnUpPageQuestion = function () {
+            console.log("Question 上");
+        };
+        var turnDownPageQuestion = function () {
+            console.log("Question 下");
+        };
+        var turnUpPageTopic = function () {
+            console.log("Topic 上");
+        };
+        var turnDownPageTopic = function () {
+            console.log("Topic 下");
+        };
+        var turnUpPageMatch = function () {
+            console.log("Match 上");
+        };
+        var turnDownPageMatch = function () {
+            console.log("Match 下");
+        };
+        $('#manage_user_uppage').click(turnUpPageUser);
+        $('#manage_user_downpage').click(turnDownPageUser);
+        $('#manage_question_uppage').click(turnUpPageQuestion);
+        $('#manage_question_downpage').click(turnDownPageQuestion);
+        $('#manage_topic_uppage').click(turnUpPageTopic);
+        $('#manage_topic_downpage').click(turnDownPageTopic);
+        $('#manage_match_uppage').click(turnUpPageMatch);
+        $('#manage_match_downpage').click(turnDownPageMatch);
+
+    };
+
+    //初始化调用
     var Initilization = function () {
         $('#manage_to_user').click(function () {
             tabCursor = 0;
@@ -257,12 +327,12 @@ $(function () {
             tabCursor = 3;
         });
 
-        readData_User();
-        readData_Question();
-        readData_Topic();
+        setTurnPageListener();
+
+        readData_User(1);
+        readData_Question(0);
+        readData_Topic(0);
         // readData_Match();
     };
-    
-    //初始化调用
     Initilization();
 });
