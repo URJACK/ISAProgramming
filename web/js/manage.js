@@ -1,9 +1,82 @@
 $(function () {
+    //当前选择的列表的游标 0 ~ 3
+    var tabCursor = 0;
+    //用户的列表
     var userList;
+    //题库的列表
     var questionList;
+    //帖子的列表
     var topicList;
+    //比赛的列表
     var matchList;
 
+    /**
+     * tabCursor:0 user
+     * tabCursor:1 question
+     * tabCursor:2 topic
+     * tabCursor:3 match
+     */
+    var deleteOperate = function (id) {
+        if (tabCursor == 0) {
+            deleteUser(id);
+        } else if (tabCursor == 1) {
+            deleteQuestion(id);
+        } else if (tabCursor == 2) {
+            deleteTopic(id);
+        } else if (tabCursor == 3) {
+            deleteMatch(id);
+        }
+    };
+    var modifyOperate = function (id) {
+        if (tabCursor == 0) {
+            modifyUser(id);
+        } else if (tabCursor == 1) {
+            modifyQuestion(id);
+        } else if (tabCursor == 2) {
+            modifyTopic(id);
+        } else if (tabCursor == 3) {
+            modifyMatch(id);
+        }
+    };
+
+    /**
+     * 删除某一项数据
+     * @param id 该项数据的id
+     */
+    var deleteUser = function (id) {
+        console.log("delete User " + id);
+    };
+    var deleteQuestion = function (id) {
+        console.log("delete Question " + id);
+    };
+    var deleteTopic = function (id) {
+        console.log("delete Topic " + id);
+    };
+    var deleteMatch = function (id) {
+
+    };
+
+    /**
+     * 修改某一项数据
+     * @param id 该项数据的id
+     */
+    var modifyUser = function (id) {
+        console.log("modify User " + id);
+    };
+    var modifyQuestion = function (id) {
+        console.log("modify Question " + id);
+    };
+    var modifyTopic = function (id) {
+        console.log("modify Topic " + id);
+    };
+    var modifyMatch = function (id) {
+
+    };
+
+    /**
+     * 得到Operate元素
+     * @returns {Element}
+     */
     function getOperate() {
         var oTd_Operate = document.createElement('td');
 
@@ -24,6 +97,15 @@ $(function () {
         oA_delete.setAttribute('class', 'btn btn-default');
         oA_modify.setAttribute('class', 'btn btn-default');
 
+        oA_delete.onclick = function () {
+            var id = this.parentNode.parentNode.parentNode.children[0].innerHTML;
+            deleteOperate(id);
+        };
+        oA_modify.onclick = function () {
+            var id = this.parentNode.parentNode.parentNode.children[0].innerHTML;
+            modifyOperate(id);
+        };
+
         oOperate_Div.appendChild(oA_delete);
         oOperate_Div.appendChild(oA_modify);
 
@@ -33,6 +115,9 @@ $(function () {
         return oTd_Operate;
     }
 
+    /**
+     * 从服务器读取数据，并调用RefreshData 方法
+     */
     var readData_User = function () {
         $.ajax({
             url: "/manage/user",
@@ -77,6 +162,10 @@ $(function () {
             }
         })
     };
+
+    /**
+     * 根据该页的List来刷新视图
+     */
     var refreshData_User = function () {
         var oTbody = $('#manage_user_tbody').get(0);
         oTbody.innerHTML = "";
@@ -139,7 +228,6 @@ $(function () {
             var oTd_Owner = document.createElement('td');
             var oTd_Operate = getOperate();
 
-
             oTd_Id.innerHTML = topicList[i].id;
             oTd_Title.innerHTML = topicList[i].title;
             oTd_Owner.innerHTML = topicList[i].owner;
@@ -156,11 +244,25 @@ $(function () {
 
     };
     var Initilization = function () {
+        $('#manage_to_user').click(function () {
+            tabCursor = 0;
+        });
+        $('#manage_to_question').click(function () {
+            tabCursor = 1;
+        });
+        $('#manage_to_topic').click(function () {
+            tabCursor = 2;
+        });
+        $('#manage_to_match').click(function () {
+            tabCursor = 3;
+        });
+
         readData_User();
         readData_Question();
         readData_Topic();
         // readData_Match();
     };
+    
     //初始化调用
     Initilization();
 });

@@ -26,10 +26,10 @@
 <div class="container">
     <div class="row">
         <ul id="main_tab" class="nav nav-tabs">
-            <li class="active"><a href="#manage_user" data-toggle="tab">人员管理</a></li>
-            <li><a href="#manage_question" data-toggle="tab">题库管理</a></li>
-            <li><a href="#manage_topic" data-toggle="tab">帖子管理</a></li>
-            <li><a href="#manage_match" data-toggle="tab">比赛管理</a></li>
+            <li class="active" id="manage_to_user"><a href="#manage_user" data-toggle="tab">人员管理</a></li>
+            <li id="manage_to_question"><a href="#manage_question" data-toggle="tab">题库管理</a></li>
+            <li id="manage_to_topic"><a href="#manage_topic" data-toggle="tab">帖子管理</a></li>
+            <li id="manage_to_match"><a href="#manage_match" data-toggle="tab">比赛管理</a></li>
         </ul>
     </div>
     <div class="tab-content">
