@@ -9,12 +9,18 @@
 <html>
 <head>
     <title>Modify Question Information</title>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="stylesheet" type="text/css"
+          href="/css/bootstrap.min.css">
     <script>
         var json = ${model};
         console.log(json);
     </script>
+    <script src="/js/manage_modify_question.js"></script>
 </head>
 <body>
+<jsp:include page="/topbar.jsp"/>
 <div class="container">
 
 </div>

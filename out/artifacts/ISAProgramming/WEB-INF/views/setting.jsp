@@ -113,7 +113,7 @@
                     </div>
                     <div class="form-group">
                         <label>class</label>
-                        <input type="text" id="main_tab_moreinfo_class" class="form-control" readonly value="正在获取班级">
+                        <input type="number" id="main_tab_moreinfo_class" class="form-control" readonly value="正在获取班级">
                     </div>
                     <div class="form-group">
                         <div class="alert alert-warning">

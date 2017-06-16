@@ -373,6 +373,7 @@
     <column id="97" parent="25" name="class">
       <Position>6</Position>
       <DataType>int(11)|0</DataType>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
     </column>
     <column id="98" parent="25" name="introduce">
       <Position>7</Position>
