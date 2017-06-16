@@ -22,7 +22,7 @@
 </head>
 <body>
 <jsp:include page="/topbar.jsp"></jsp:include>
-<div id="myCarousel" class="carousel slide">
+<div id="myCarousel" class="carousel slide" style="display: none">
     <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
         <li data-target="#myCarousel" data-slide-to="1"></li>

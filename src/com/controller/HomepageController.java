@@ -181,7 +181,7 @@ public class HomepageController {
 
     //自动登陆成功之后，会再次请求一次获取account
     @RequestMapping("/getname")
-    public void getname(HttpServletRequest rq, HttpServletResponse rsp){
+    public void getname(HttpServletRequest rq, HttpServletResponse rsp) {
         try {
             rq.setCharacterEncoding("UTF-8");
             rsp.setCharacterEncoding("UTF-8");
@@ -189,7 +189,7 @@ public class HomepageController {
 
             Info_Status is = new Info_Status();
             LoginWorker lr = new GetNameWorker();
-            lr.work(rq,is);
+            lr.work(rq, is);
 
             PrintWriter writer = rsp.getWriter();
             writer.print(new Gson().toJson(is));
@@ -198,6 +198,37 @@ public class HomepageController {
 
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @RequestMapping("/logout")
+    public void logout(HttpServletRequest rq, HttpServletResponse rsp) {
+        Info_Status is = new Info_Status();
+        try {
+            rq.setCharacterEncoding("UTF-8");
+            rsp.setCharacterEncoding("UTF-8");
+            rsp.setContentType("text/html");
+
+            rq.getSession().removeAttribute("account");
+            is.setInfo("success");
+            is.setStatus(true);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            is.setStatus(false);
+            is.setInfo("fail");
+        }finally {
+            giveResponse(rsp, is);
+        }
+    }
+
+    private void giveResponse(HttpServletResponse rsp, Info_Status is) {
+        try {
+            PrintWriter writer = rsp.getWriter();
+            writer.write(new Gson().toJson(is));
+            writer.flush();
+            writer.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

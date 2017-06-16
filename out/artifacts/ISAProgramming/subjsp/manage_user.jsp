@@ -10,21 +10,6 @@
     </tr>
     </thead>
     <tbody id="manage_user_tbody">
-    <tr>
-        <td>1</td>
-        <td>Fufangzhou</td>
-        <td>316585692@qq.com</td>
-        <td>
-            <div class="btn-group">
-                <a class="btn btn-default">
-                    <img src="/source/delete.svg">
-                </a>
-                <a class="btn btn-default">
-                    <img src="/source/query.svg">
-                </a>
-            </div>
-        </td>
-    </tr>
     </tbody>
 </table>
 

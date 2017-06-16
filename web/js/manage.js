@@ -376,29 +376,35 @@ $(function () {
      * 初始化调用
      */
     var Initilization = function () {
-        $('#manage_to_user').click(function () {
-            setTips("");
-            tabCursor = 0;
-        });
-        $('#manage_to_question').click(function () {
-            setTips("");
-            tabCursor = 1;
-        });
-        $('#manage_to_topic').click(function () {
-            setTips("");
-            tabCursor = 2;
-        });
-        $('#manage_to_match').click(function () {
-            setTips("");
-            tabCursor = 3;
-        });
+        setTimeout(function () {
+            if (!auto_login) {
+                window.location = "/";
+                alert("你的身份信息不符合")
+            }
+            $('#manage_to_user').click(function () {
+                setTips("");
+                tabCursor = 0;
+            });
+            $('#manage_to_question').click(function () {
+                setTips("");
+                tabCursor = 1;
+            });
+            $('#manage_to_topic').click(function () {
+                setTips("");
+                tabCursor = 2;
+            });
+            $('#manage_to_match').click(function () {
+                setTips("");
+                tabCursor = 3;
+            });
 
-        setTurnPageListener();
+            setTurnPageListener();
 
-        readData_User(0);
-        readData_Question(0);
-        readData_Topic(0);
-        // readData_Match();
+            readData_User(0);
+            readData_Question(0);
+            readData_Topic(0);
+            // readData_Match();
+        }, 2500);
     };
     Initilization();
 });

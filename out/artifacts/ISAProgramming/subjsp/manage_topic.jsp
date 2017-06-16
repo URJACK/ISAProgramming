@@ -10,23 +10,6 @@
     </tr>
     </thead>
     <tbody id="manage_topic_tbody">
-    <tr>
-        <td>1</td>
-        <td>Android入门</td>
-        <td>Debug</td>
-        <td>
-            <div class="btn-group">
-                <a class="btn btn-default" data-toggle="popover" data-trigger='hover' data-placement='bottom'
-                   data-content="删除">
-                    <img src="/source/delete.svg">
-                </a>
-                <a class="btn btn-default" data-toggle="popover" data-trigger='hover' data-placement='bottom'
-                   data-content="修改">
-                    <img src="/source/query.svg">
-                </a>
-            </div>
-        </td>
-    </tr>
     </tbody>
 </table>
 <div class="row">

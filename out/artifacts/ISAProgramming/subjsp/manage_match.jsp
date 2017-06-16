@@ -11,24 +11,6 @@
     </tr>
     </thead>
     <tbody id="manage_match_tbody">
-    <tr>
-        <td>1</td>
-        <td>Fufangzhou</td>
-        <td>开学第一次Java比赛</td>
-        <td>65%</td>
-        <td>
-            <div class="btn-group">
-                <a class="btn btn-default" data-toggle="popover" data-trigger='hover' data-placement='bottom'
-                   data-content="删除">
-                    <img src="/source/delete.svg">
-                </a>
-                <a class="btn btn-default" data-toggle="popover" data-trigger='hover' data-placement='bottom'
-                   data-content="修改">
-                    <img src="/source/query.svg">
-                </a>
-            </div>
-        </td>
-    </tr>
     </tbody>
 </table>
 <div class="row">

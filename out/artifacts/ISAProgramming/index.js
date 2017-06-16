@@ -8,4 +8,7 @@ $(function () {
     $('#carousel_item_3').click(function () {
         console.log('3');
     });
+    setTimeout(function () {
+        $('#myCarousel').fadeIn();
+    },1000);
 });

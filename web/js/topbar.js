@@ -221,6 +221,18 @@ $(function () {
             }
         })
     });
+    $('#navright_hidden_name_logout').click(function () {
+        $.ajax({
+            url:"/home/logout",
+            type:"POST",
+            success:function (json) {
+                json = JSON.parse(json);
+                if(json.status){
+                    window.location="/";
+                }
+            }
+        })
+    });
     $.ajax({
         url: "/home/defaultlogin",
         type: "POST",
