@@ -39,6 +39,53 @@ $(function () {
 
     };
 
+    var syncView_List = function () {
+        var tbody = $('#topic_tbody').get(0);
+        tbody.innerHTML = "";
+        for (var i = 0; i < list.length; i++) {
+            var oTr = document.createElement('tr');
+            var oTd_Id = document.createElement('td');
+            var oTd_Title = document.createElement('td');
+            var oTd_Owner = document.createElement('td');
+
+            oTd_Id.style.display = 'none';
+            oTd_Id.innerHTML = list[i].id;
+            oTd_Title.innerHTML = list[i].title;
+            oTd_Owner.innerHTML = list[i].owner;
+
+            oTr.appendChild(oTd_Id);
+            oTr.appendChild(oTd_Title);
+            oTr.appendChild(oTd_Owner);
+
+            oTr.onclick = function () {
+                var index = this.children[0].innerHTML;
+                gotoTopic(index);
+            };
+
+            tbody.appendChild(oTr);
+        }
+    };
+    var readData_List = function () {
+        $.ajax({
+            url: "/model/topiclist",
+            type: "POST",
+            success: function (json) {
+                json = JSON.parse(json);
+                if (json.status) {
+                    list = json.obj;
+                    syncView_List();
+                }
+            }
+        })
+    };
+
+    var gotoTopic = function (index) {
+        var temp = document.createElement("form");
+        temp.action = "/topic/content?id=" + index;
+        temp.method = "post";
+        temp.style.display = "none";
+        temp.submit();
+    };
 
     var Initialization = function () {
         setTimeout(function () {
@@ -48,7 +95,8 @@ $(function () {
             }
             $('#background').fadeIn();
             readData_Myself();
-        },2500);
+            readData_List();
+        }, 2500);
     };
     Initialization();
 });

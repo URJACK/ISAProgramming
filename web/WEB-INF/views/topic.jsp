@@ -27,12 +27,14 @@
                 <caption>最新</caption>
                 <thead>
                 <tr>
+                    <th style="display: none;"></th>
                     <th>Title</th>
                     <th>Owner</th>
                 </tr>
                 </thead>
                 <tbody id="topic_tbody">
                 <tr>
+                    <td style="display: none;">2</td>
                     <td>Android</td>
                     <td>Sifu Tang</td>
                 </tr>

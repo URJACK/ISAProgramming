@@ -8,6 +8,7 @@ import com.json.HaveSolve_Json;
 import com.json.Info_Status_Object;
 import com.json.Info_Status_User;
 import com.json.Topic.TopicMyself;
+import com.json.admin.Topic_Admin_Json;
 import com.model.*;
 import com.tool.SessionOpenner;
 import com.worker.ModelGetWorker.*;
@@ -223,12 +224,10 @@ public class ModelGetController {
             rsp.setContentType("text/html");
             String account = (String) rq.getSession().getAttribute("account");
             User user = UserDAO.getUser(account, session);
-            System.out.println("DEBUG "+user.toString());
             List<Topic> topicList = TopicDAO.getTopicList(user.getId(), session);
             tm.setAccount(account);
             tm.setCreate(topicList.size());
             tm.setFollow(0);
-            System.out.println("DEBUG "+tm.toString());
             iso.setInfos("Success");
             iso.setStatus(true);
             iso.setObj(tm);
@@ -236,9 +235,9 @@ public class ModelGetController {
             e.printStackTrace();
             iso.setInfos("Failed");
             iso.setStatus(false);
-        }finally {
-            if (session!=null)
-            session.close();
+        } finally {
+            if (session != null)
+                session.close();
             try {
                 PrintWriter writer = rsp.getWriter();
                 writer.print(new Gson().toJson(iso));
@@ -248,6 +247,55 @@ public class ModelGetController {
                 e.printStackTrace();
             }
         }
+    }
+
+    //得到跟自己有关的Topic的信息
+    @RequestMapping("/topiclist")
+    public void topiclist(HttpServletRequest rq, HttpServletResponse rsp) {
+        Session session = null;
+        Info_Status_Object iso = new Info_Status_Object();
+        List<Topic_Admin_Json> list = null;
+        try {
+            rq.setCharacterEncoding("UTF-8");
+            rsp.setCharacterEncoding("UTF-8");
+            rsp.setContentType("text/html");
+
+            session = SessionOpenner.getInstance().getSession();
+            List<Topic> topics = TopicDAO.getAllTopic(session);
+            list = makeTopicJsons(topics);
+
+            iso.setInfos("Success");
+            iso.setStatus(true);
+            iso.setObj(list);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            iso.setInfos("Failed");
+            iso.setStatus(false);
+        } finally {
+            if (session != null)
+                session.close();
+            try {
+                PrintWriter writer = rsp.getWriter();
+                writer.print(new Gson().toJson(iso));
+                writer.flush();
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private List<Topic_Admin_Json> makeTopicJsons(List<Topic> topics) {
+        List<Topic_Admin_Json> list = new ArrayList<>(6);
+        for (int i = 0; i < topics.size(); i++) {
+            Topic topic = topics.get(i);
+            Topic_Admin_Json taj = new Topic_Admin_Json();
+            taj.setTitle(topic.getTitle());
+            taj.setOwner(topic.getUser().getAccount());
+            taj.setId(topic.getId());
+            list.add(taj);
+        }
+        return list;
     }
 
     //根据ChatIndex 将需要被刷新的信息回传给界面
